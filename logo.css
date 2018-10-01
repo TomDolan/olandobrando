@@ -213,10 +213,10 @@ input[type="checkbox"] {
 #brando {
 	position:absolute;
 	top:10px;
-	left:10px;
+	left:60px;
 	width:40px;
 	height:40px;
-	background-color:#eee;
+	background-color:#ccc;
 	border:none;
 	color:#F86C7E;
 }
@@ -224,7 +224,7 @@ input[type="checkbox"] {
 #random {
 	position:absolute;
 	top:10px;
-	left:60px;
+	left:10px;
 	width:40px;
 	height:40px;
 	background-color:#F86C7E;
@@ -238,7 +238,7 @@ input[type="checkbox"] {
 	left:160px;
 	width:40px;
 	height:40px;
-	background-color:#eee;
+	background-color:#ccc;
 	border:none;
 	color:#F86C7E;
 }
