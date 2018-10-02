@@ -2,46 +2,48 @@
 
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="logo.css">
+<link rel="stylesheet" type="text/css" href="olandobrando.css">
 </head>
 
 <body>
 
-<div id = "canvasbox">
-	<canvas id = "graph">Your browser does not support the HTML5 canvas tag.</canvas>
+<div id = "header">
+	<div onclick="randomise()" class="headerbutton" id = "random"><p>&#8635;</p></div>
+	<!--<div onclick="brandoornot()" class="headerbutton" id = "brando"><p>&#9790;</p></div>
+	<div onclick="colour()" class="headerbutton" id = "colour"><p>&#9729;</p></div>
+	<div onclick="grey()" class="headerbutton" id = "grey"><p>&#9730;</p></div>-->
 </div>
 
-<button onclick="brandoornot()" id = "brando">&#9790;</button>
-<button onclick="randomise()" id = "random">&#9728;</button>
-<button onclick="grey()" id = "grey">&#9730;</button>
-<button onclick="colour()" id = "colour">&#9729;</button>
+<div id = "logobox">
+	<canvas id = "logo">Your browser does not support the HTML5 canvas tag.</canvas>
+</div>
+
+<a  href="https://www.instagram.com/olandobrando/">
+<div id = "instabox">
+	<canvas id = "insta">Your browser does not support the HTML5 canvas tag.</canvas>
+</div>
+</a>
 
 <script>
+	///////////logo//////////////////
 
 	// Initialise canvas
-	var c = document.getElementById("graph");
+	var c = document.getElementById("logo");
 	var paper = c.getContext("2d");
-	W=window.innerWidth;
-	H=window.innerHeight;
-	c.width = W;
-	c.height = H;
-	bgc = '#ccc'
-	fgc = '#F86C7E'
-	paper.fillStyle = bgc;
-	paper.fillRect(0,0,W,H);
+	
+	bgc = '#f1f3f5';
+	fgc = '#F8727E';
 	pi = Math.PI;
 	
-	scale = 40;
+	scale = 25;
 	brando = 0;
 	
-	randomise();
+	init();
+	fav();
 	
 	function draw(){
 		
-		paper.fillStyle = bgc;
-		paper.fillRect(0,0,W,H);
-		
-		paper.transform(1,0,0,-1,W/2,H/2);
+		paper.transform(1,0,0,-1,boxwidth/2,letterheight/2);
 		
 		paper.fillStyle= fgc;
 		/*paper.beginPath();
@@ -217,77 +219,69 @@
 		paper.resetTransform();
 	}
 	
-	window.onresize = function() {
+	function init(){
 		W=window.innerWidth;
-		H=window.innerHeight;
+		H=100;//window.innerHeight;
 		c.width = W;
 		c.height = H;
-		paper.fillStyle = bgc;
-		paper.fillRect(0,0,W,H);
-		
-		/*letterspacing += 10*(Math.random()-.5);
-		letterradius += 10*(Math.random()-.5);
-		letterheight += 10*(Math.random()-.5);
-		letterwidth += 10*(Math.random()-.5);
-		boxwidth = 5*letterradius*2 + letterwidth + 5*letterspacing;*/
-
-		draw()
+		//paper.fillStyle = bgc;
+		//paper.fillRect(0,0,W,H);
+		paper.clearRect(0,0,W,H)
+	}
+	
+	window.onresize = function() {
+		init();
+		draw();
 	}
 	
 	function randomise(){
-		W=window.innerWidth;
-		H=window.innerHeight;
-		c.width = W;
-		c.height = H;
-		paper.fillStyle = bgc;
-		paper.fillRect(0,0,W,H);
-		
+		init();
 		
 		letterspacing = Math.random()*(scale-1)+1;
 		letterradius = scale;
-		letterheight = letterradius*2+Math.random()*(scale-1)+1;
+		letterheight = letterradius*2+Math.random()*(2*scale)+1;
 		letterwidth = Math.max(1,Math.random()*letterradius);
 		letterhole = Math.random()>.5;
 		
-		boxwidth = 21*letterradius + 1*letterwidth + 11*letterspacing;
+		boxwidth = 5*letterradius*2 + letterwidth + 5*letterspacing;
+		
+		
+		draw()
+	}
+	
+	function fav(){
+		init();
+		
+		letterspacing = 4;
+		letterradius = scale;
+		letterheight = 80;
+		letterwidth = 15;
+		letterhole = 0;
+		
+		boxwidth = 5*letterradius*2 + letterwidth + 5*letterspacing;
 		
 		
 		draw()
 	}
 	
 	function grey(){
-		W=window.innerWidth;
-		H=window.innerHeight;
-		c.width = W;
-		c.height = H;
-		paper.fillStyle = bgc;
-		paper.fillRect(0,0,W,H);
+		bgc = '#f1f3f5';
 		
-		bgc = '#ccc';
+		init();
 		
 		draw()
 	}
 	
 	function colour(){
-		W=window.innerWidth;
-		H=window.innerHeight;
-		c.width = W;
-		c.height = H;
-		paper.fillStyle = bgc;
-		paper.fillRect(0,0,W,H);
-		
 		bgc = getRandomColor();
+		
+		init();
 		
 		draw()
 	}
 	
 	function brandoornot(){
-		W=window.innerWidth;
-		H=window.innerHeight;
-		c.width = W;
-		c.height = H;
-		paper.fillStyle = bgc;
-		paper.fillRect(0,0,W,H);
+		init();
 		
 		brando = 1-brando;
 		
@@ -302,6 +296,35 @@
 		}
 		return color;
 	}
+	
+	////////////////insta////////////////////
+	
+	// Initialise canvas
+	var c2 = document.getElementById("insta");
+	var paper2 = c2.getContext("2d");
+	c2.width = 40;
+	c2.height = 40;
+	paper2.fillStyle = fgc;
+	paper2.strokeStyle = fgc;
+	paper2.lineWidth = 2;
+	
+	paper2.beginPath();
+	paper2.moveTo(13,1);
+	paper2.lineTo(27,1);
+	paper2.arcTo(39,1,39,13,12);
+	paper2.lineTo(39,27);
+	paper2.arcTo(39,39,27,39,12);
+	paper2.lineTo(13,39);
+	paper2.arcTo(1,39,1,27,12);
+	paper2.lineTo(1,13);
+	paper2.arcTo(1,1,13,1,12);
+	
+	paper2.moveTo(0,20);
+	paper2.arc(20,20,10,0,2*pi,-1);
+	paper2.moveTo(0,20);
+	paper2.arc(30,10,2,0,2*pi,-1);
+	paper2.moveTo(0,20);
+	paper2.fill();
 
 </script>
 
