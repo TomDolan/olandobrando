@@ -9,21 +9,56 @@
 <body>
 
 <div id = "header">
-	<div onclick="randomise()" class="headerbutton" id = "random"><p>&#8635;</p></div>
-	<!--<div onclick="brandoornot()" class="headerbutton" id = "brando"><p>&#9790;</p></div>
-	<div onclick="colour()" class="headerbutton" id = "colour"><p>&#9729;</p></div>
-	<div onclick="grey()" class="headerbutton" id = "grey"><p>&#9730;</p></div>-->
+	<div id = "menu">
+		<a href="olandobrando.html">
+		<div class = "menuitem">
+			OLANDO
+		</div>
+		</a>
+		<div class = "menudivider">
+			by
+		</div>
+		<a href="olandobrando.html">
+		<div class = "menuitem">
+			ABOUT
+		</div>
+		</a>
+		<div class = "menudivider">
+			for
+		</div>
+		<a href="olandobrando.html">
+		<div class = "menuitem">
+			OTHER
+		</div>
+		</a>
+		<div class = "menudivider">
+			&copy
+		</div>
+		<a href="olandobrando.html">
+		<div class = "menuitem">
+			CONTACT
+		</div>
+		</a>
+	</div>
 	
-	
-	<div class="headercolour" style="background-color:#ddd;"><p>4</p></div>
-	<div class="headercolour" style="background-color:#fafafa;"><p>3</p></div>
-	<div class="headercolour" style="background-color:#1a1a1a;"><p>2</p></div>
-	<div class="headercolour" style="background-color:#F8727E;"><p>1</p></div>
+	<div class="headercolour" style="background-color:#fafafa;" onclick="grey()" id = "changingheadercolour"><p>4</p></div>
+	<div class="headercolour" style="background-color:#ddd;" onclick="colour()"><p>3</p></div>
+	<div class="headercolour" style="background-color:#1a1a1a;" onclick="brandoornot()"><p>2</p></div>
+	<div class="headercolour" style="background-color:#F8727E;" onclick="randomise()"><p>1</p></div>
 </div>
 
 <div id = "contentbox">
 	<div id = "logobox">
 		<canvas id = "logo">Your browser does not support the HTML5 canvas tag.</canvas>
+	</div>
+	<div class = "contentitem">
+		
+	</div>
+	<div class = "contentitem">
+		
+	</div>
+	<div class = "contentitem">
+		
 	</div>
 	<div class = "contentitem">
 		
@@ -67,8 +102,6 @@
 	
 	function draw(){
 		
-		paper.transform(1,0,0,-1,boxwidth/2,40);
-		
 		paper.fillStyle= fgc;
 		/*paper.beginPath();
 		paper.arc(0,100,100,0,Math.PI)
@@ -93,6 +126,7 @@
 		
 		if (brando){
 			boxwidth = 21*letterradius + 1*letterwidth + 11*letterspacing;
+			paper.transform(1,0,0,-1,boxwidth/2,40);
 			//letters
 			paper.beginPath();
 			//o
@@ -191,6 +225,7 @@
 			}
 		} else {
 			boxwidth = 5*letterradius*2 + letterwidth + 5*letterspacing;
+			paper.transform(1,0,0,-1,boxwidth/2,40);
 			//letters
 			paper.beginPath();
 			//o
@@ -288,20 +323,31 @@
 		draw()
 	}
 	
+	colourrandomness = 0;
+	
 	function grey(){
-		bgc = '#f1f3f5';
-		
+		fgc = '#fafafa';
+		colourrandomness = 0;
 		init();
 		
 		draw()
+		
+		document.getElementById("changingheadercolour").style.backgroundColor = fgc;
 	}
 	
 	function colour(){
-		bgc = getRandomColor();
-		
+		colourrandomness ++;
+		fullrandom = 20;
+		if (colourrandomness>20){
+			fgc = getRandomColor();
+		} else {
+			fgc = "hsl("+ Math.round(360*Math.random()) +","+ Math.round(100*colourrandomness/20*Math.random()) +"%,"+ Math.round(100-100*colourrandomness/20*Math.random()) +"%)";
+		}	
 		init();
 		
-		draw()
+		draw();
+		
+		document.getElementById("changingheadercolour").style.backgroundColor = fgc;
 	}
 	
 	function brandoornot(){
