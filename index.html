@@ -3,6 +3,7 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="olandobrando.css">
+<link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
@@ -12,15 +13,38 @@
 	<!--<div onclick="brandoornot()" class="headerbutton" id = "brando"><p>&#9790;</p></div>
 	<div onclick="colour()" class="headerbutton" id = "colour"><p>&#9729;</p></div>
 	<div onclick="grey()" class="headerbutton" id = "grey"><p>&#9730;</p></div>-->
+	
+	
+	<div class="headercolour" style="background-color:#ddd;"><p>4</p></div>
+	<div class="headercolour" style="background-color:#fafafa;"><p>3</p></div>
+	<div class="headercolour" style="background-color:#1a1a1a;"><p>2</p></div>
+	<div class="headercolour" style="background-color:#F8727E;"><p>1</p></div>
 </div>
 
-<div id = "logobox">
-	<canvas id = "logo">Your browser does not support the HTML5 canvas tag.</canvas>
+<div id = "contentbox">
+	<div id = "logobox">
+		<canvas id = "logo">Your browser does not support the HTML5 canvas tag.</canvas>
+	</div>
+	<div class = "contentitem">
+		
+	</div>
+	<div class = "contentitem">
+		
+	</div>
+	<div class = "contentitem">
+		
+	</div>
+	<div class = "contentitem">
+		
+	</div>
+	<div class = "contentitem">
+		
+	</div>
 </div>
 
 <a  href="https://www.instagram.com/olandobrando/">
 <div id = "instabox">
-	<canvas id = "insta">Your browser does not support the HTML5 canvas tag.</canvas>
+	<canvas id = "insta" style = "position:absolute;bottom:0px;right:0px;">Your browser does not support the HTML5 canvas tag.</canvas>
 </div>
 </a>
 
@@ -31,11 +55,11 @@
 	var c = document.getElementById("logo");
 	var paper = c.getContext("2d");
 	
-	bgc = '#f1f3f5';
-	fgc = '#F8727E';
+	bgc = '#1a1a1a';//'#f1f3f5';
+	fgc = '#fafafa';//'#F8727E';
 	pi = Math.PI;
 	
-	scale = 25;
+	scale = 18;
 	brando = 0;
 	
 	init();
@@ -43,7 +67,7 @@
 	
 	function draw(){
 		
-		paper.transform(1,0,0,-1,boxwidth/2,letterheight/2);
+		paper.transform(1,0,0,-1,boxwidth/2,40);
 		
 		paper.fillStyle= fgc;
 		/*paper.beginPath();
@@ -302,28 +326,29 @@
 	// Initialise canvas
 	var c2 = document.getElementById("insta");
 	var paper2 = c2.getContext("2d");
-	c2.width = 40;
-	c2.height = 40;
-	paper2.fillStyle = fgc;
-	paper2.strokeStyle = fgc;
+	instaW=40;
+	c2.width = instaW;
+	c2.height = instaW;
+	paper2.fillStyle = "#F8727E";
+	paper2.strokeStyle = "#F8727E";
 	paper2.lineWidth = 2;
 	
 	paper2.beginPath();
 	paper2.moveTo(13,1);
-	paper2.lineTo(27,1);
-	paper2.arcTo(39,1,39,13,12);
-	paper2.lineTo(39,27);
-	paper2.arcTo(39,39,27,39,12);
-	paper2.lineTo(13,39);
-	paper2.arcTo(1,39,1,27,12);
+	paper2.lineTo(instaW-13,1);
+	paper2.arcTo(instaW-1,1,instaW-1,13,12);
+	paper2.lineTo(instaW-1,instaW-13);
+	paper2.arcTo(instaW-1,instaW-1,instaW-13,instaW-1,12);
+	paper2.lineTo(13,instaW-1);
+	paper2.arcTo(1,instaW-1,1,instaW-13,12);
 	paper2.lineTo(1,13);
 	paper2.arcTo(1,1,13,1,12);
 	
-	paper2.moveTo(0,20);
-	paper2.arc(20,20,10,0,2*pi,-1);
-	paper2.moveTo(0,20);
-	paper2.arc(30,10,2,0,2*pi,-1);
-	paper2.moveTo(0,20);
+	paper2.moveTo(0,instaW/2);
+	paper2.arc(instaW/2,instaW/2,instaW/4,0,2*pi,-1);
+	paper2.moveTo(0,instaW/2);
+	paper2.arc(3*instaW/4,instaW/4,2,0,2*pi,-1);
+	paper2.moveTo(0,instaW/2);
 	paper2.fill();
 
 </script>
