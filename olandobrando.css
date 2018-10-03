@@ -99,7 +99,7 @@ button:focus {outline:0;}
 	height:30px;
 	margin:5px;
 	padding:0px;
-	border-radius:15px;
+	border-radius:20px;
 	border:solid 1px #555;
 	text-align:center;
 	line-height: 0px;
@@ -147,4 +147,13 @@ button:focus {outline:0;}
 	float:left;
 	background-color:#fafafa;
 	border-radius:1000px;
+}
+
+#stripes{
+border:solid 1px #bdddcf;
+position:fixed;
+top:-100%;
+left:5px;
+width:4px;
+height:300%;
 }
