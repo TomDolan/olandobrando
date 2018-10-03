@@ -9,37 +9,42 @@ body {
 	height:100%;
     margin:0px;
 	padding:0px;
-	overflow:hidden;
 	cursor: default;
- 	background-color:#f1f3f5;
+ 	background-color:#1a1a1a;
+	font-family: 'Roboto', sans-serif;
 }
 
 #header {
-	position:absolute;
+	position:fixed;
 	top:0px;
 	width:100%;
 	height:40px;
-	background-color:#333;
+	background-color:#fafafa;
 	margin:0px;
 	padding:0px;
 }
 
-#logobox {
-	position:absolute;
-	top:40px;
-	margin:0px;
-	padding:0px;
+#random {
+	background-color:#F8727E;
+	color:#fafafa;
 }
 
-#instabox {
-	position:absolute;
-	bottom:5px;
-	right:5px;
-	width:40px;
-	height:40px;
-	margin:0px;
-	padding:0px;
+#brando {
+	background-color:#ddd;
+	color:#F86C7E;
 }
+
+#grey {
+	background-color:#ddd;
+	color:#F86C7E;
+}
+
+#colour {
+	background-color:#56a;
+	color:#ddd;
+}
+
+button:focus {outline:0;}
 
 .headerbutton {
 	display:block;
@@ -59,25 +64,59 @@ body {
   	user-select: none;
 }
 
-#random {
-	background-color:#F8727E;
+.headercolour{
+	display:block;
+	float:right;
+	width:30px;
+	height:30px;
+	margin:5px;
+	padding:0px;
+	border-radius:15px;
+	border:solid 1px #555;
+	text-align:center;
+	line-height: 0px;
+	font-size:16px;
+	-webkit-user-select: none;  /* Chrome all / Safari all */
+  	-moz-user-select: none;     /* Firefox all */
+ 	-ms-user-select: none;      /* IE 10+ */
+  	user-select: none;
+	color:#fafafa;
+	
+}
+
+#logobox {
+	position:fixed;
+	height:100px;
+	top:40px;
+	margin:0px;
+	padding:0px;
+}
+
+#instabox {
+	position:fixed;
+	bottom:0px;
+	right:0px;
+	width:40px;
+	height:40px;
+	margin:0px;
+	padding:0px;
+}
+
+#contentbox{
+	width:90%;
+	max-width:800px;
+	height:100%;
+	margin:auto;
+	margin-top:100px;
+	overflow:scroll;
 	color:#ddd;
 }
 
-#brando {
-	background-color:#ddd;
-	color:#F86C7E;
+.contentitem{
+	width:33%;
+	padding-top: 33%;
+	display:block;
+	float:left;
+	background-color:#fafafa;
+	border-radius:1000px;
 }
-
-#grey {
-	background-color:#ddd;
-	color:#F86C7E;
-}
-
-#colour {
-	background-color:#56a;
-	color:#ddd;
-}
-
-
-button:focus {outline:0;}
