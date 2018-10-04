@@ -22,13 +22,13 @@ body {
 	background-color:#fafafa;
 	margin:0px;
 	padding:0px;
+	z-index:100;
 }
 
 #menu{
-	/*float:left;
-	padding-left:40px;*/
 	width:850px;
 	margin:auto;
+	display:block;
 }
 .menuitem{
 	float:left;
@@ -50,6 +50,83 @@ body {
 	margin-left:30px;
 	margin-right:30px;
 	color:#1a1a1a;
+}
+
+
+#menudrop {
+	display: none;
+}
+
+@media only screen and (max-width: 850px) {
+	#menu{
+		display:none;
+	}
+
+	#menudrop {
+		position: relative;
+		display: block;
+		float:left;
+		margin-left:2%;
+	}
+
+	#menudropmenu{
+		height:40px;
+		line-height: 40px;
+		font-size:25px;
+		color:#1a1a1a;
+		cursor: crosshair;
+		min-width:160px;
+		padding-left:10px;
+		margin-right:-10px;
+	}
+
+	#menudroplist {
+		display:none;
+		position:absolute;
+		min-width:160px;
+	}
+
+	#menudroplist a{
+		display:block;
+		height:40px;
+		line-height: 40px;
+		font-size:25px;
+		text-decoration: none;
+		padding-left:10px;
+		padding-right:10px;
+		margin-right:-10px;
+		cursor: crosshair;
+		background-color:#fafafa;
+		color:#1a1a1a;
+	}
+
+	#menudrop:hover #menudroplist{
+		display:block;
+	}
+
+	#menudrop:hover #menudropmenu{
+		background-color:#eee;
+	}
+
+	#menudroplist a:hover{
+		background-color:#eee;
+	}
+	
+	#menubars {
+		display:block;
+		float:right;
+		margin:10px;
+		width:20px;
+		height:25px;
+	}
+	.menubar{
+		height:10%;
+		width:100%;
+		background-color:#F8727E;
+		margin-top:17%;
+		margin-bottom:17%;
+		border-radius:1000px;
+	}
 }
 
 #random {
@@ -112,12 +189,37 @@ button:focus {outline:0;}
 	
 }
 
+#contentbox{
+	position:relative;
+	width:90%;
+	max-width:800px;
+	height:100%;
+	margin:auto;
+	margin-top:100px;
+	overflow:scroll;
+	color:#ddd;
+}
+
 #logobox {
 	position:fixed;
-	height:100px;
+	height:60px;
 	top:40px;
 	margin:0px;
 	padding:0px;
+	z-index:1;
+}
+
+#logo {
+	position:absolute;
+	z-index:1;
+}
+.contentitem{
+	width:33%;
+	padding-top: 33%;
+	display:block;
+	float:left;
+	background-color:#fafafa;
+	border-radius:1000px;
 }
 
 #instabox {
@@ -130,30 +232,12 @@ button:focus {outline:0;}
 	padding:0px;
 }
 
-#contentbox{
-	width:90%;
-	max-width:800px;
-	height:100%;
-	margin:auto;
-	margin-top:100px;
-	overflow:scroll;
-	color:#ddd;
-}
-
-.contentitem{
-	width:33%;
-	padding-top: 33%;
-	display:block;
-	float:left;
-	background-color:#fafafa;
-	border-radius:1000px;
-}
 
 #stripes{
-border:solid 1px #bdddcf;
-position:fixed;
-top:-100%;
-left:5px;
-width:4px;
-height:300%;
+	border:solid 1px #bdddcf;
+	position:fixed;
+	top:-100%;
+	left:5px;
+	width:4px;
+	height:300%;
 }
