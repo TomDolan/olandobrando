@@ -18,7 +18,7 @@ body {
 	position:fixed;
 	top:0px;
 	width:100%;
-	height:40px;
+	height:50px;
 	background-color:#fafafa;
 	margin:0px;
 	padding:0px;
@@ -33,8 +33,8 @@ body {
 .menuitem{
 	float:left;
 	display:block;
-	height:40px;
-	line-height: 40px;
+	height:50px;
+	line-height: 50px;
 	font-size:25px;
 	color:#1a1a1a;
 	padding-left:10px;
@@ -44,8 +44,8 @@ body {
 .menudivider{
 	float:left;
 	display:block;
-	height:40px;
-	line-height: 40px;
+	height:50px;
+	line-height: 50px;
 	font-size:9px;
 	margin-left:30px;
 	margin-right:30px;
@@ -70,8 +70,8 @@ body {
 	}
 
 	#menudropmenu{
-		height:40px;
-		line-height: 40px;
+		height:50px;
+		line-height: 50px;
 		font-size:25px;
 		color:#1a1a1a;
 		cursor: crosshair;
@@ -88,8 +88,8 @@ body {
 
 	#menudroplist a{
 		display:block;
-		height:40px;
-		line-height: 40px;
+		height:50px;
+		line-height: 50px;
 		font-size:25px;
 		text-decoration: none;
 		padding-left:10px;
@@ -154,8 +154,8 @@ button:focus {outline:0;}
 .headerbutton {
 	display:block;
 	float:left;
-	width:40px;
-	height:40px;
+	width:50px;
+	height:50px;
 	border:none;
 	margin:0px;
 	padding:0px;
@@ -174,7 +174,10 @@ button:focus {outline:0;}
 	float:right;
 	width:30px;
 	height:30px;
-	margin:5px;
+	margin-top:10px;
+	margin-bottom:10px;
+	margin-left:5px;
+	margin-right:5px;
 	padding:0px;
 	border-radius:20px;
 	border:solid 1px #555;
@@ -234,10 +237,11 @@ button:focus {outline:0;}
 
 
 #stripes{
-	border:solid 1px #bdddcf;
+	border:solid 4px #b1e9d0;
 	position:fixed;
 	top:-100%;
-	left:5px;
-	width:4px;
+	left:10px;
+	width:5px;
 	height:300%;
+	z-index:1000;
 }
