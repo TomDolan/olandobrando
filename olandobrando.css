@@ -9,6 +9,7 @@ body {
 	flex-direction: column;
 	font-family: 'Roboto', sans-serif;
  	background-color:#1a1a1a;
+        -webkit-text-size-adjust: 100%;
 }
 
 /*///////////////////////HEADER//////////////////////*/
