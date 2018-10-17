@@ -38,7 +38,8 @@ function draw(){
 
 	if (brando){
 		boxwidth = 21*letterradius + 1*letterwidth + 11*letterspacing;
-		paper.transform(1,0,0,-1,boxwidth/2,40);
+		
+		paper.transform(.5,0,0,-.5,boxwidth/2,40);
 		//letters
 		paper.beginPath();
 		//o
@@ -138,6 +139,7 @@ function draw(){
 		}
 	} else {
 		boxwidth = 5*letterradius*2 + letterwidth + 5*letterspacing;
+		
 		paper.transform(1,0,0,-1,boxwidth/2,40);
 		//letters
 		paper.beginPath();
@@ -194,11 +196,14 @@ function draw(){
 function init(){
 	W=Math.min(600,window.innerWidth*.9);
 	H=61;
-	c.width = W;
-	c.height = H;
+	c.width = W*2;
+	c.height = H*2;
+	c.style.width = W+"px";
+	c.style.height = H+"px";
 	//paper.fillStyle = bgc;
 	//paper.fillRect(0,0,W,H);
 	paper.clearRect(0,0,W,H)
+	paper.scale(2,2);
 }
 
 function randomise(){
@@ -277,8 +282,11 @@ function getRandomColor() {
 var c2 = document.getElementById("insta");
 var paper2 = c2.getContext("2d");
 instaW=40;
-c2.width = instaW;
-c2.height = instaW;
+c2.width = instaW*2;
+c2.height = instaW*2;
+c2.style.width = instaW+"px";
+c2.style.height = instaW+"px";
+paper2.scale(2,2);
 paper2.fillStyle = "#F8727E";
 
 paper2.beginPath();
