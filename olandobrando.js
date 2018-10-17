@@ -192,7 +192,7 @@ function draw(){
 }
 
 function init(){
-	W=Math.min(600,window.innerWidth);
+	W=Math.min(600,window.innerWidth*.9);
 	H=61;
 	c.width = W;
 	c.height = H;
