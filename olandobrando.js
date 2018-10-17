@@ -192,7 +192,7 @@ function draw(){
 }
 
 function init(){
-	W=600;
+	W=Math.min(600,window.innerWidth);
 	H=61;
 	c.width = W;
 	c.height = H;
@@ -281,7 +281,7 @@ function getRandomColor() {
 // Initialise canvas
 var c2 = document.getElementById("insta");
 var paper2 = c2.getContext("2d");
-instaW=50;
+instaW=40;
 c2.width = instaW;
 c2.height = instaW;
 paper2.fillStyle = "#F8727E";
@@ -307,12 +307,12 @@ paper2.fill();
 /////////////////menu///////////////////////
 
 window.onscroll = function() {stickyolando()};
-var x = document.getElementById("menu");
 var logo = document.getElementById("logobox");
 var logoheight = logo.offsetTop;
 var content = document.getElementById("content");
 
 function expandmenu() {
+	var x = document.getElementById("menu");
 	if (x.className === "menu") {
 		x.className += " expanded";
 	} else {
@@ -321,12 +321,12 @@ function expandmenu() {
 }
 
 function stickyolando() {
-  if (window.pageYOffset > logoheight) {
-	logo.classList.add("stickylogo");
-	content.classList.add("stickycontent");
-	x.className = "menu";
-  } else {
-	logo.classList.remove("stickylogo");
-	content.classList.remove("stickycontent");
-  }
+	var x = document.getElementById("menu");
+	if (window.pageYOffset > logoheight && content.offsetHeight>window.innerHeight && x.className === "menu") {
+		logo.classList.add("stickylogo");
+		content.classList.add("stickycontent");
+	} else {
+		logo.classList.remove("stickylogo");
+		content.classList.remove("stickycontent");
+	}
 }
