@@ -38,7 +38,8 @@ function draw(){
 
 	if (brando){
 		boxwidth = 21*letterradius + 1*letterwidth + 11*letterspacing;
-		paper.transform(1,0,0,-1,boxwidth/2,40);
+		
+		paper.transform(.5,0,0,-.5,boxwidth/2,40);
 		//letters
 		paper.beginPath();
 		//o
@@ -138,6 +139,7 @@ function draw(){
 		}
 	} else {
 		boxwidth = 5*letterradius*2 + letterwidth + 5*letterspacing;
+		
 		paper.transform(1,0,0,-1,boxwidth/2,40);
 		//letters
 		paper.beginPath();
@@ -192,18 +194,16 @@ function draw(){
 }
 
 function init(){
-	W=600;
+	W=Math.min(600,window.innerWidth*.9);
 	H=61;
-	c.width = W;
-	c.height = H;
+	c.width = W*2;
+	c.height = H*2;
+	c.style.width = W+"px";
+	c.style.height = H+"px";
 	//paper.fillStyle = bgc;
 	//paper.fillRect(0,0,W,H);
 	paper.clearRect(0,0,W,H)
-}
-
-window.onresize = function() {
-	init();
-	draw();
+	paper.scale(2,2);
 }
 
 function randomise(){
@@ -282,8 +282,11 @@ function getRandomColor() {
 var c2 = document.getElementById("insta");
 var paper2 = c2.getContext("2d");
 instaW=40;
-c2.width = instaW;
-c2.height = instaW;
+c2.width = instaW*2;
+c2.height = instaW*2;
+c2.style.width = instaW+"px";
+c2.style.height = instaW+"px";
+paper2.scale(2,2);
 paper2.fillStyle = "#F8727E";
 
 paper2.beginPath();
@@ -307,12 +310,12 @@ paper2.fill();
 /////////////////menu///////////////////////
 
 window.onscroll = function() {stickyolando()};
-var x = document.getElementById("menu");
 var logo = document.getElementById("logobox");
 var logoheight = logo.offsetTop;
 var content = document.getElementById("content");
 
 function expandmenu() {
+	var x = document.getElementById("menu");
 	if (x.className === "menu") {
 		x.className += " expanded";
 	} else {
@@ -321,12 +324,12 @@ function expandmenu() {
 }
 
 function stickyolando() {
-  if (window.pageYOffset > logoheight) {
-	logo.classList.add("stickylogo");
-	content.classList.add("stickycontent");
-	x.className = "menu";
-  } else {
-	logo.classList.remove("stickylogo");
-	content.classList.remove("stickycontent");
-  }
+	var x = document.getElementById("menu");
+	if (window.pageYOffset > logoheight && content.offsetHeight>window.innerHeight && x.className === "menu") {
+		logo.classList.add("stickylogo");
+		content.classList.add("stickycontent");
+	} else {
+		logo.classList.remove("stickylogo");
+		content.classList.remove("stickycontent");
+	}
 }
