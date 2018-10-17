@@ -201,11 +201,6 @@ function init(){
 	paper.clearRect(0,0,W,H)
 }
 
-window.onresize = function() {
-	init();
-	draw();
-}
-
 function randomise(){
 	init();
 
