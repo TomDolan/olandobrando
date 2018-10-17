@@ -149,10 +149,24 @@ body {
 	padding-top: 33%;
 	display:block;
 	float:left;
-	background-color:#fafafa;
+	background-image:linear-gradient(#eee, #fafafa 10%, #fafafa 20%);
+    background-attachment: fixed;
 	border-radius:1000px;
 }
 .homecontentitem:hover{
+	background-image:none;
+	background-color:#eee;
+}
+.bigcontentitem{
+	width:100%;
+	padding-top: 100%;
+	display:block;
+	float:left;
+	background-image:linear-gradient(#eee, #fafafa 10%, #fafafa 20%);
+    background-attachment: fixed;
+	border-radius:1000px;
+}
+.bigcontentitem:hover{
 	background-color:#eee;
 }
 
