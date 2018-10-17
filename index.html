@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127186217-1"></script>
+	
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-127186217-1');
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="olandobrando.css">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+	<div id = "header">
+		<div id = "menu" class = "menu">  			
+			<a style="font-size:25px;cursor: pointer;" class="menuicon" onclick="expandmenu()">&#9776;</a>
+			<a href="index" id = "active">
+				OLANDO
+			</a>
+			<div class = "menudivider">
+				by
+			</div>
+			<a href="about">
+				ABOUT
+			</a>
+			<div class = "menudivider">
+				for
+			</div>
+			<a href="other">
+				OTHER
+			</a>
+			<div class = "menudivider">
+				&copy
+			</div>
+			<a href="contact">
+				CONTACT
+			</a>
+		</div>
+	
+		<div class="headercolour" style="background-color:#fafafa;" onclick="grey()" id = "changingheadercolour"><p>4</p></div>
+		<div class="headercolour" style="background-color:#b1e9d0;" onclick="colour()"><p>3</p></div>
+		<div class="headercolour" style="background-color:#1a1a1a;" onclick="brandoornot()"><p>2</p></div>
+		<div class="headercolour" style="background-color:#F8727E;" onclick="randomise()"><p>1</p></div>
+	</div>
+	<div id = "content">	
+		<div id = "logobox">
+			<canvas id = "logo">Your browser does not support the HTML5 canvas tag.</canvas>
+		</div>
+		<div class = "homecontentitem">
+		
+		</div>
+		<div class = "homecontentitem">
+		
+		</div>
+		<div class = "homecontentitem">
+		
+		</div>
+		<div class = "homecontentitem">
+		
+		</div>
+		<div class = "homecontentitem">
+		
+		</div>
+		<div class = "homecontentitem">
+		
+		</div>
+		<div class = "homecontentitem">
+		
+		</div>
+		<div class = "homecontentitem">
+		
+		</div>
+		<div class = "homecontentitem">
+		
+		</div>
+		<div class = "homecontentitem">
+		
+		</div>
+		<div class = "homecontentitem">
+		
+		</div>
+		<div class = "homecontentitem">
+		
+		</div>
+	</div>
+	<div id = "footer">
+	
+		<div class="headercolour" style="background-color:#fafafa;" onclick="grey()"><p>4</p></div>
+		<div class="headercolour" style="background-color:#b1e9d0;" onclick="colour()"><p>3</p></div>
+		<div class="headercolour" style="background-color:#1a1a1a;" onclick="brandoornot()"><p>2</p></div>
+		<div class="headercolour" style="background-color:#F8727E;" onclick="randomise()"><p>1</p></div>
+	</div>
+
+	<a  href="https://www.instagram.com/olandobrando/">
+	<div id = "instabox">
+		<canvas id = "insta" style = "position:absolute;bottom:0px;right:0px;">Your browser does not support the HTML5 canvas tag.</canvas>
+	</div>
+	</a>
+	
+	<script src="olandobrando.js"></script>
+	
+</body>
+</html>
