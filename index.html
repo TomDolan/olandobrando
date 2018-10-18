@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127186217-1"></script>
+	
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-127186217-1');
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="olandobrando.css">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+	<div id = "header">
+		<div id = "menu" class = "menu">  			
+			<a style="font-size:25px;cursor: pointer;" class="menuicon" onclick="expandmenu()">&#9776;</a>
+			<a href="index" id = "active">
+				OLANDO
+			</a>
+			<div class = "menudivider">
+				by
+			</div>
+			<a href="about">
+				ABOUT
+			</a>
+			<div class = "menudivider">
+				for
+			</div>
+			<a href="other">
+				OTHER
+			</a>
+			<div class = "menudivider">
+				&copy
+			</div>
+			<a href="contact">
+				CONTACT
+			</a>
+		</div>
+	
+		<div class="headercolour" style="background-color:#fafafa;" onclick="grey()" id = "changingheadercolour"><p>4</p></div>
+		<div class="headercolour" style="background-color:#b1e9d0;" onclick="colour()"><p>3</p></div>
+		<div class="headercolour" style="background-color:#1a1a1a;" onclick="brandoornot()"><p>2</p></div>
+		<div class="headercolour" style="background-color:#F8727E;" onclick="randomise()"><p>1</p></div>
+	</div>
+	<div id = "content">	
+		<div id = "logobox">
+			<canvas id = "logo">Your browser does not support the HTML5 canvas tag.</canvas>
+		</div>
+		<div class = "homecontentitem" style="background-image:url('1.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
+		
+		</div>
+		<div class = "homecontentitem" style="background-image:url('2.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
+		
+		</div>
+		<div class = "homecontentitem" style="background-image:url('3.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
+		
+		</div>
+		<div class = "homecontentitem" style="background-image:url('4.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
+		
+		</div>
+		<div class = "homecontentitem"style="background-image:url('1.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
+		
+		</div>
+		<div class = "homecontentitem" style="background-image:url('2.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
+		
+		</div>
+		<div class = "homecontentitem"style="background-image:url('1.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
+		
+		</div>
+		<div class = "homecontentitem" style="background-image:url('2.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
+		
+		</div>
+		<div class = "homecontentitem"style="background-image:url('4.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
+		
+		</div>
+		<div class = "homecontentitem" style="background-image:url('3.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
+		
+		</div>
+		<div class = "homecontentitem"style="background-image:url('3.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
+		
+		</div>
+		<div class = "homecontentitem" style="background-image:url('2.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
+		
+		</div>
+		<div class = "homecontentitem"style="background-image:url('4.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
+		
+		</div>
+		<div class = "homecontentitem" style="background-image:url('2.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
+		
+		</div>
+		<div class = "homecontentitem" style="background-image:url('3.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
+		
+		</div>
+		<div class = "homecontentitem"style="background-image:url('3.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
+		
+		</div>
+		<div class = "homecontentitem" style="background-image:url('2.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
+		
+		</div>
+		<div class = "homecontentitem" style="background-image:url('2.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
+		
+		</div>
+		
+		<div id = "expandedhomecontentitembg" onclick="closeitem()">
+		
+		</div>
+		
+		<div id = "expandedhomecontentitem">
+		
+		</div>
+	</div>
+	<div id = "footer">
+	
+		<div class="headercolour" style="background-color:#fafafa;" onclick="grey()"><p>4</p></div>
+		<div class="headercolour" style="background-color:#b1e9d0;" onclick="colour()"><p>3</p></div>
+		<div class="headercolour" style="background-color:#1a1a1a;" onclick="brandoornot()"><p>2</p></div>
+		<div class="headercolour" style="background-color:#F8727E;" onclick="randomise()"><p>1</p></div>
+	</div>
+
+	<a  href="https://www.instagram.com/olandobrando/">
+	<div id = "instabox">
+		<canvas id = "insta" style = "position:absolute;bottom:0px;right:0px;">Your browser does not support the HTML5 canvas tag.</canvas>
+	</div>
+	</a>
+	
+	<script src="olandobrando.js"></script>
+
+	<script>
+		function expanditem(item) {
+			var expandeditembg = document.getElementById("expandedhomecontentitembg");
+			expandeditembg.style.display = "block";
+			var expandeditem = document.getElementById("expandedhomecontentitem");
+			expandeditem.style.display = "block";
+			expandeditem.style.top = window.pageYOffset+62+"px";
+			expandeditem.style.backgroundImage = item.style.backgroundImage;
+			expandeditem.style.backgroundAttachment = "scroll";
+			expandeditem.style.backgroundSize = "cover";
+		}
+		function closeitem(item) {
+			var expandeditembg = document.getElementById("expandedhomecontentitembg");
+			expandeditembg.style.display = "none";
+			var expandeditem = document.getElementById("expandedhomecontentitem");
+			expandeditem.style.display = "none";
+		}
+	</script>
+	
+</body>
+</html>
