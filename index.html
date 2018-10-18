@@ -25,7 +25,7 @@
 	<div id = "header">
 		<div id = "menu" class = "menu">  			
 			<a style="font-size:25px;cursor: pointer;" class="menuicon" onclick="expandmenu()">&#9776;</a>
-			<a href="/" id = "active">
+			<a href="index" id = "active">
 				OLANDO
 			</a>
 			<div class = "menudivider">
@@ -57,58 +57,66 @@
 		<div id = "logobox">
 			<canvas id = "logo">Your browser does not support the HTML5 canvas tag.</canvas>
 		</div>
-		<div class = "homecontentitem">
+		<div class = "homecontentitem" style="background-image:url('1.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
 		
 		</div>
-		<div class = "homecontentitem">
+		<div class = "homecontentitem" style="background-image:url('2.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
 		
 		</div>
-		<div class = "homecontentitem">
+		<div class = "homecontentitem" style="background-image:url('3.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
 		
 		</div>
-		<div class = "homecontentitem">
+		<div class = "homecontentitem" style="background-image:url('4.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
 		
 		</div>
-		<div class = "homecontentitem">
+		<div class = "homecontentitem"style="background-image:url('1.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
 		
 		</div>
-		<div class = "homecontentitem">
+		<div class = "homecontentitem" style="background-image:url('2.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
 		
 		</div>
-		<div class = "homecontentitem">
+		<div class = "homecontentitem"style="background-image:url('1.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
 		
 		</div>
-		<div class = "homecontentitem">
+		<div class = "homecontentitem" style="background-image:url('2.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
 		
 		</div>
-		<div class = "homecontentitem">
+		<div class = "homecontentitem"style="background-image:url('4.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
 		
 		</div>
-		<div class = "homecontentitem">
+		<div class = "homecontentitem" style="background-image:url('3.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
 		
 		</div>
-		<div class = "homecontentitem">
+		<div class = "homecontentitem"style="background-image:url('3.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
 		
 		</div>
-		<div class = "homecontentitem">
+		<div class = "homecontentitem" style="background-image:url('2.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
 		
 		</div>
-		<div class = "homecontentitem">
+		<div class = "homecontentitem"style="background-image:url('4.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
 		
 		</div>
-		<div class = "homecontentitem">
+		<div class = "homecontentitem" style="background-image:url('2.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
 		
 		</div>
-		<div class = "homecontentitem">
+		<div class = "homecontentitem" style="background-image:url('3.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
 		
 		</div>
-		<div class = "homecontentitem">
+		<div class = "homecontentitem"style="background-image:url('3.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
 		
 		</div>
-		<div class = "homecontentitem">
+		<div class = "homecontentitem" style="background-image:url('2.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
 		
 		</div>
-		<div class = "homecontentitem">
+		<div class = "homecontentitem" style="background-image:url('2.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
+		
+		</div>
+		
+		<div id = "expandedhomecontentitembg" onclick="closeitem()">
+		
+		</div>
+		
+		<div id = "expandedhomecontentitem">
 		
 		</div>
 	</div>
@@ -127,6 +135,25 @@
 	</a>
 	
 	<script src="olandobrando.js"></script>
+
+	<script>
+		function expanditem(item) {
+			var expandeditembg = document.getElementById("expandedhomecontentitembg");
+			expandeditembg.style.display = "block";
+			var expandeditem = document.getElementById("expandedhomecontentitem");
+			expandeditem.style.display = "block";
+			expandeditem.style.top = window.pageYOffset+62+"px";
+			expandeditem.style.backgroundImage = item.style.backgroundImage;
+			expandeditem.style.backgroundAttachment = "scroll";
+			expandeditem.style.backgroundSize = "cover";
+		}
+		function closeitem(item) {
+			var expandeditembg = document.getElementById("expandedhomecontentitembg");
+			expandeditembg.style.display = "none";
+			var expandeditem = document.getElementById("expandedhomecontentitem");
+			expandeditem.style.display = "none";
+		}
+	</script>
 	
 </body>
 </html>
