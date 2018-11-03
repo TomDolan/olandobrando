@@ -54,8 +54,9 @@
 			<canvas id = "logo">Your browser does not support the HTML5 canvas tag.</canvas>
 		</div>
 		<div class = "bigcontentitem">
-			<h1>CONTACT</h1>
-			<p>A message has been sent</p>
+			<form action="contact.php" method="post">
+			<input type="submit">
+			</form>
 		</div>
 	</div>
 	<div id = "footer">
@@ -73,11 +74,6 @@
 	</a>
 	
 	<script src="olandobrando.js"></script>
-	<?php
-	echo "hi";
-	//mail("olandobrando@gmail.com","Hi","You have been contacted");
-	//echo "<script type='text/javascript'>alert('Hi?');</script>";
-	?>
 
 </body>
 </html>
