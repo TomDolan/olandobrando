@@ -105,6 +105,7 @@ body {
 @media screen and (max-width: 550px) {
 	.menu.expanded a {
 		width:100%;
+		z-index:100;
 	}
 }
 
