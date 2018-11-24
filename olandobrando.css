@@ -135,9 +135,16 @@ body {
 	z-index:10;
 }
 .stickylogo {
-	position: fixed;
-  left: 0;
-  right: 0;
+	position:fixed;
+	left: 0;
+	right: 0;
+	top:0px;
+}
+.unstickylogo {
+	position:absolute;
+	left: 0;
+	right: 0;
+	top:40px;
 }
 /*//////////////////////////CONTENT////////////////////////*/
 #content {
