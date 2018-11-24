@@ -38,7 +38,7 @@
 			background-color:#1a1afa;
 			opacity: 0;
 		}
-		#secondaryimg{
+		#heroimg{
 			width:100%;
 		}
 	</style>
@@ -89,9 +89,13 @@
 		<!--<div class = "indexhero" style="background-image:url('indexbg.png'),url('indexbg2.png');"></div>
 		<div id = "heroopacity"></div>-->
 		
-		<img src="secondaryimg.png" alt="secondaryimg" id="secondaryimg">
-
-		<div id = "content" style="padding:0px;">	
+		<div id = "content">	
+			<picture>
+				<source srcset="herosmall.png" media="(max-width: 750px)">
+				<source srcset="herobig.png" media="(max-width: 1500px)">
+				<img src="herobig.png" alt="heroimage" id="heroimg">
+			</picture>
+			
 			<div class = "contentitem">
 	
 			</div>
@@ -101,14 +105,9 @@
 			<div class = "contentitem">
 	
 			</div>
-			<a href="#" class="longcontentbutton" >
+			<a href="projects" class="longcontentbutton" >
 				More Projects
 			</a>
-		
-		
-			<div class = "bigcontentitem">
-			
-			</div><!---->
 
 		</div>
 	</div>
