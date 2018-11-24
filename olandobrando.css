@@ -147,8 +147,12 @@ body {
 	top:40px;
 }
 /*//////////////////////////CONTENT////////////////////////*/
-#content {
+#contentbox {
 	flex: 1 0 auto;
+	width:100%;
+}
+
+#content{
 	max-width:850px;
 	width:90%;
 	margin:0 auto;
