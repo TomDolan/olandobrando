@@ -15,13 +15,36 @@
 
 	  gtag('config', 'UA-127186217-1');
 	</script>
+	
+	<style>
+		.indexspacer{
+			flex: 1 0 auto;
+			width:100%;
+			background-size: cover;
+			background-position:bottom left;
+			background-repeat: no-repeat;
+			background-attachment:fixed;
+		} 
+		#spaceropacity{
+			position:absolute;
+			width:100%;
+			height:100%;
+			background-color:#1a1a1a;
+			opacity: 0;
+		}
+		#secondaryimg{
+			width:100%;
+			border-top-right-radius: 22px;
+			border-top-left-radius: 22px;
+		}
+	</style>
 
 	<link rel="stylesheet" type="text/css" href="olandobrando.css">
 	<link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+	<link rel="icon" href="icon.png" type="image/png">
 </head>
 
 <body>
-
 	<div id = "header">
 		<div id = "menu" class = "menu">  			
 			<a style="font-size:25px;cursor: pointer;" class="menuicon" onclick="expandmenu()">&#9776;</a>
@@ -31,14 +54,14 @@
 			<div class = "menudivider">
 				by
 			</div>
-			<a href="about">
-				ABOUT
+			<a href="projects">
+				PROJECTS
 			</a>
 			<div class = "menudivider">
 				for
 			</div>
-			<a href="other">
-				OTHER
+			<a href="about">
+				ABOUT
 			</a>
 			<div class = "menudivider">
 				&copy
@@ -52,73 +75,35 @@
 		<div class="headercolour" style="background-color:#b1e9d0;" onclick="colour()"><p>3</p></div>
 		<div class="headercolour" style="background-color:#1a1a1a;" onclick="brandoornot()"><p>2</p></div>
 		<div class="headercolour" style="background-color:#F8727E;" onclick="randomise()"><p>1</p></div>
+	
+	<div id = "logobox">
+		<canvas id = "logo">Your browser does not support the HTML5 canvas tag.</canvas>
 	</div>
-	<div id = "content">	
-		<div id = "logobox">
-			<canvas id = "logo">Your browser does not support the HTML5 canvas tag.</canvas>
+	
+	</div>
+	<div class = "indexspacer" style="height:calc(100% - 40px);background-image:url('indexbg.png'),url('indexbg2.png');">
+		<div id = "spaceropacity"></div>
+	</div>
+	<div id = "content" style="padding-top:60px;">	
+		<div class = "contentitem">
+	
 		</div>
-		<div class = "homecontentitem" style="background-image:url('1.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
-		
+		<div class = "contentitem">
+	
 		</div>
-		<div class = "homecontentitem" style="background-image:url('2.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
-		
+		<div class = "contentitem">
+	
 		</div>
-		<div class = "homecontentitem" style="background-image:url('3.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
+		<a href="#" class="longcontentbutton" >
+			More Projects
+		</a>
 		
+		<img src="secondaryimg.png" alt="secondaryimg" id="secondaryimg">
+		
+		<div class = "bigcontentitem">
+			
 		</div>
-		<div class = "homecontentitem" style="background-image:url('4.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
-		
-		</div>
-		<div class = "homecontentitem"style="background-image:url('1.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
-		
-		</div>
-		<div class = "homecontentitem" style="background-image:url('2.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
-		
-		</div>
-		<div class = "homecontentitem"style="background-image:url('1.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
-		
-		</div>
-		<div class = "homecontentitem" style="background-image:url('2.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
-		
-		</div>
-		<div class = "homecontentitem"style="background-image:url('4.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
-		
-		</div>
-		<div class = "homecontentitem" style="background-image:url('3.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
-		
-		</div>
-		<div class = "homecontentitem"style="background-image:url('3.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
-		
-		</div>
-		<div class = "homecontentitem" style="background-image:url('2.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
-		
-		</div>
-		<div class = "homecontentitem"style="background-image:url('4.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
-		
-		</div>
-		<div class = "homecontentitem" style="background-image:url('2.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
-		
-		</div>
-		<div class = "homecontentitem" style="background-image:url('3.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
-		
-		</div>
-		<div class = "homecontentitem"style="background-image:url('3.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
-		
-		</div>
-		<div class = "homecontentitem" style="background-image:url('2.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
-		
-		</div>
-		<div class = "homecontentitem" style="background-image:url('2.jpg');background-size: cover;background-attachment:scroll;" onclick="expanditem(this);">
-		
-		</div>
-		
-		<div id = "expandedhomecontentitembg" onclick="closeitem()">
-		
-		</div>
-		
-		<div id = "expandedhomecontentitem">
-		
-		</div>
+
 	</div>
 	<div id = "footer">
 	
@@ -135,25 +120,13 @@
 	</a>
 	
 	<script src="olandobrando.js"></script>
-
+	
 	<script>
-		function expanditem(item) {
-			var expandeditembg = document.getElementById("expandedhomecontentitembg");
-			expandeditembg.style.display = "block";
-			var expandeditem = document.getElementById("expandedhomecontentitem");
-			expandeditem.style.display = "block";
-			expandeditem.style.top = window.pageYOffset+62+"px";
-			expandeditem.style.backgroundImage = item.style.backgroundImage;
-			expandeditem.style.backgroundAttachment = "scroll";
-			expandeditem.style.backgroundSize = "cover";
-		}
-		function closeitem(item) {
-			var expandeditembg = document.getElementById("expandedhomecontentitembg");
-			expandeditembg.style.display = "none";
-			var expandeditem = document.getElementById("expandedhomecontentitem");
-			expandeditem.style.display = "none";
+		window.onscroll = function() {spacerbg()};
+		function spacerbg(){
+			stickyolando();
+			document.getElementById("spaceropacity").style.opacity = window.pageYOffset/window.innerHeight;
 		}
 	</script>
-	
 </body>
 </html>
