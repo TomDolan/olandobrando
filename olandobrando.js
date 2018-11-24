@@ -411,10 +411,12 @@ function expandmenu() {
 
 function stickyolando() {
 	var x = document.getElementById("menu");
-	if (window.pageYOffset > 40 && x.className === "menu") {
+	if (window.pageYOffset > 40) {
+		logo.classList.remove("unstickylogo");
 		logo.classList.add("stickylogo");
 	} else {
 		logo.classList.remove("stickylogo");
+		logo.classList.add("unstickylogo");
 	}
 }
 
