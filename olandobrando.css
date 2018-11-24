@@ -82,12 +82,15 @@ body {
 		float: left;
 		display: block;
 		color:#F8727E;
+		z-index:100;
 	}
 	.menu .menuicon:hover{
 		text-decoration:none;
+		z-index:100;
 	}
 	.menu.expanded {
 		position: absolute;
+		z-index:100;
 	}
 	.menu.expanded a {
 		float:none;
@@ -138,12 +141,14 @@ body {
 	left: 0;
 	right: 0;
 	top:0px;
+	z-index:10;
 }
 .unstickylogo {
 	position:absolute;
 	left: 0;
 	right: 0;
 	top:40px;
+	z-index:10;
 }
 /*//////////////////////////CONTENT////////////////////////*/
 #contentbox {
