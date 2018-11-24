@@ -17,7 +17,6 @@ body {
 /*///////////////////////HEADER//////////////////////*/
 #header {
 	flex-shrink: 0;
-	background-color:gray;
 	background-color:#fafafa;
 	height:40px;
 	z-index:1000;
