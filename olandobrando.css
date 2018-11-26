@@ -189,7 +189,7 @@ body {
 	background-color: rgba(26,26,26,.5);
 }
 
-.contentitem:hover .overlay {
+.contentitem:hover .overlay, .contentitem:active .overlay,  {
 	opacity:1;
 }
 
