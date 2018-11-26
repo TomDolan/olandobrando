@@ -245,7 +245,7 @@ body {
 #projecttitle {
 	position:relative;
 }
-#projecttitle p {
+#projectsubtitle {
 	color:#fafafa;
 	vertical-align:bottom;
 	display:block;
