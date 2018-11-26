@@ -166,13 +166,40 @@ body {
 }
 .contentitem{
 	width:33%;
-	padding-top: 33%;
 	display:block;
 	float:left;
-	background-image:linear-gradient(#eee, #fafafa 10%, #fafafa 20%);
-    background-attachment: fixed;
-	background-color:#fafafa;
+	position:relative;
+	cursor:pointer;
+}
+#placeholder{
+	width:100%;
 	border-radius:50%;
+}
+.overlay {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	opacity: 0;
+	transition: .5s ease;
+	border-radius:49%;
+	background-color: rgba(26,26,26,.5);
+}
+
+.contentitem:hover .overlay {
+	opacity:1;
+}
+
+.overlayimg {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	height:36px;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
 }
 .bigcontentitem{
 	width:100%;
