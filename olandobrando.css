@@ -237,6 +237,18 @@ body {
 .longcontentbutton:hover{
   	text-decoration: underline #F8727E;
 }
+/*///////////////////////project/////////////////////*/
+#projecttitle {
+	color:#fafafa;
+	position:relative;
+}
+#projecttitle p {
+	vertical-align:bottom;
+	display:block;
+	float:left;
+	letter-spacing: 2px;
+	padding-left:10px;
+}
 
 /*///////////////////////FOOTER//////////////////////*/
 #footer {
