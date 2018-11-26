@@ -243,10 +243,10 @@ body {
 }
 /*///////////////////////project/////////////////////*/
 #projecttitle {
-	color:#fafafa;
 	position:relative;
 }
 #projecttitle p {
+	color:#fafafa;
 	vertical-align:bottom;
 	display:block;
 	float:left;
