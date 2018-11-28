@@ -13,6 +13,9 @@ body {
     -webkit-text-size-adjust: 100%;
     box-sizing: border-box;
 }
+img{
+	vertical-align:bottom;
+}
 
 /*///////////////////////HEADER//////////////////////*/
 #header {
@@ -241,12 +244,12 @@ body {
 /*///////////////////////project/////////////////////*/
 #projecttitle {
 	position:relative;
+	width:100%;
 }
 #projectsubtitle {
 	color:#fafafa;
 	vertical-align:bottom;
-	display:block;
-	float:left;
+	display:inline;
 	letter-spacing: 2px;
 	padding-left:10px;
 }
