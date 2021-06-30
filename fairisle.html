@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="fairisle.css">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+<div id="iconbox">
+	<div class="icon">
+		<img id="new-icon" class="icon-img" width="32" height="32" src="new-icon.png" alt="new" onclick="confirmreset()">
+		<span class="helpbox">Blank Punchcard</span>
+		<div id="confirmscreen" >
+			<div onclick="cancelreset()" style="position:fixed;top:0px;left:0px;width:100%;height:100%;"></div>
+			<div id = "confirmbox">
+				<span id="confirmmessage">Confirm Blank Punchcard</span>
+				<br />
+				<span >Have you saved? You can't undo this action</span>
+				<br />
+				<button onclick="cancelreset()" id="cancelbutton">Cancel</button>
+				<button onclick="reset()" id="confirmbutton">Confirm</button>
+			</div>
+		</div>
+	</div>
+	<div class="icon">
+		<input type="text" value="10" id="length-icon" onclick="closemenus()">
+		<span class="helpbox">Set Length</span>
+	</div>
+	<div class="icon">
+		<img id="save-icon" class="icon-img" width="32" height="32" src="save-icon.png" alt="save" onclick="savescreen()">
+		<span class="helpbox">Save Punchcard</span>
+		<div id="savescreen">
+			<div onclick="cancelsave()" style="position:fixed;top:0px;left:0px;width:100%;height:100%;"></div>
+			<div id = "savebox">
+				<span id="savemessage">Save Punchcard</span>
+				<br />
+				<span>I've made two ways to save your punchcards. Either as an image (your current screen without the controls) or as an array which you can use to load this punchcard again on here. </span>
+				<br />
+				<input type="text" value="name" id="arraytext" style = "width:90%;">
+				<br />
+				<button onclick="saveimg()" id="saveimgbutton">Save Image</button>
+				<button onclick="savearray()" id="savearraybutton">Save Array</button>
+				<br />
+				<button onclick="copyimg()" id="copyimgbutton">Copy Image</button>
+				<button onclick="copyarray()" id="copyarraybutton">Copy Array</button>
+				<br />
+				<button onclick="cancelsave()" id="cancelsavebutton">Done</button>
+			</div>
+		</div>
+	</div>
+	<div class="icon">
+		<img id="view-icon" class="icon-img" width="32" height="32" src="punchcard-icon.png" alt="view" onclick="changeview()">
+		<span class="helpbox" id = "view-helpbox">Punchcard View</span>
+	</div>
+	<div class="icon">
+		<img id="grid-icon" class="icon-img" width="32" height="32" src="grid-icon.png" alt="grid" onclick="guidesonoff()">
+		<span class="helpbox">Grid On/Off</span>
+	</div>
+	<div class="icon">
+		<img id="scale-icon" class="icon-img" width="32" height="32" src="zoom-icon.png" alt="scale" onclick="openzoommenu()">
+		<span class="helpbox">Zoom</span>
+		<div id="scalemenu">	
+			<input type="range" min="20" max="100" value="x50" class="slider" id="scale" oninput = "changescale()">
+		</div>
+	</div>
+	<div class="icon">
+		<img id="translate-icon" class="icon-img" width="32" height="32" src="translate-icon.png" alt="translate" onclick="opentranslatemenu()">
+		<span class="helpbox">Translate</span>
+		<div id="translatemenu">
+			<button onclick="shiftup()" id="upbutton">v</button>
+			<br />
+			<button onclick="shiftleft()" id="leftbutton">v</button>
+			<button onclick="shiftright()" id="rightbutton">v</button>
+			<br />
+			<button onclick="shiftdown()" id="downbutton">v</button>
+		</div>
+	</div>
+	<div class="icon">
+		<img id="rgb-icon" class="icon-img" width="32" height="32" src="rgb-icon.png" alt="rgb" onclick="opencolourmenu()">
+		<span class="helpbox">Colour Select</span>
+		<div id="colourmenu">
+			<input type="color" id="colour1" name="Colour 1" value="#cccccc" oninput = "draw()">
+			<input type="color" id="colour2" name="Colour 2" value="#444444" oninput = "draw()">
+			<input type="color" id="colourbg" name="Background Colour" value="#202020" oninput = "draw()">
+		</div>
+	</div>
+	<div class="icon">
+		<img id="floats-icon" class="icon-img" width="32" height="32" src="floats-icon.png" alt="long floats" onclick="longfloats()">
+		<span class="helpbox">Highlight Long Floats</span>
+	</div>
+</div>
+
+<div id = "canvasbox">
+	<canvas id = "canvas">Your browser does not support the HTML5 canvas tag.</canvas>
+</div>
+<!--<div id="controls">
+
+	<button onclick="reset()" id="resetbutton">Clear Pattern</button>
+
+	<input type="text" value="10" id="arraylength">
+	<button onclick="changelength()" id="lengthbutton">Change Length</button>
+	
+	<input type="text" value="name" id="arraytext">
+	<button onclick="copyarray()" id="copybutton">Copy Punchcard</button>
+	
+	<button onclick="guidesonoff()" id="guidesbutton">Guides On/Off</button>
+	
+	<input type="range" min="20" max="100" value="x50" class="slider" id="scale" oninput = "changescale()">
+	
+	<button onclick="changeview()" id="viewbutton">Punchcard/Kniting</button>
+	
+	<button onclick="shiftup()" id="upbutton">up</button>
+	<button onclick="shiftleft()" id="leftbutton">left</button>
+	<button onclick="shiftright()" id="rightbutton">right</button>
+	<button onclick="shiftdown()" id="downbutton">down</button>
+	
+	<input type="color" id="colour1" name="Colour 1" value="#cccccc" oninput = "draw()">
+	<input type="color" id="colour2" name="Colour 2" value="#444444" oninput = "draw()">
+	<input type="color" id="colourbg" name="Background Colour" value="#202020" oninput = "draw()">
+	
+	<button onclick="longfloats()" id="floatsbutton">Highlight Long Floats</button>
+	
+</div>-->
+
+<script src="punchcards.js"></script>
+<script src="fairisle.js"></script>
+
+</body>
+</html>
