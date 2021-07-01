@@ -21,6 +21,9 @@ var toffset = 0;
 var xoffset = 0;
 ctx.lineWidth = 1;
 
+var time = new Date();
+var timeold = 0;
+
 draw();
 
 function draw() {
@@ -38,7 +41,7 @@ function draw() {
 	var olandor = Math.min(W,H)/15;
 		
 	if (2*pi*((t+30)%60)/60<pi-.1 || 2*pi*((t+30)%60)/60>pi+.1 || !moving){
-		drawolando2(W/2-32*olandor/5,olandoh,olandor);
+		drawolando(W/2-32*olandor/5,olandoh,olandor);
 	} else {
 		drawolandostatic(W/2-32*olandor/5,olandoh,olandor);
 	}
@@ -46,71 +49,15 @@ function draw() {
 	if (moving){
 		t=(xpos-xoffset)/W*120+toffset+60*W;
 	} else {
-		t+=dt;
+		time = Date.now();
+		t+=(time-timeold)/200;
+		timeold = time;
 	}
-	//t=(xpos+W/2)/W*120+30;
+	
 	window.requestAnimationFrame(draw);
 }
 
-function drawolando1(x,y,r){
-	u = r/2.5
-	
-	ctx.save();
-	ctx.transform(1,0,0,-1,x,H-y);
-	
-	ctx.fillStyle = "#e3e3e5";
-	
-	//o
-	ctx.save();
-	ctx.transform(1,0,0,1,2*r,r);
-	ctx.rotate(pi/2);
-	drawbullet(0,r,r,2*pi*((t+15)%60)/60,1);
-	ctx.restore();
-	//ctx.beginPath();
-	//ctx.arc(r,r,r,0,2*pi);
-	//ctx.stroke();
-	//l
-	ctx.beginPath();
-	ctx.rect(6*u,0,2*u,16/5*r);
-	ctx.stroke();
-	//a
-	drawbullet(r+9*u,r,r,2*pi*(t%60)/60);
-	//ctx.beginPath();
-	//ctx.arc(r+9*u,r,r,pi/2,3*pi/2);
-	//ctx.lineTo(14*u,0);
-	//ctx.lineTo(14*u,2*r);
-	//ctx.closePath();
-	//ctx.stroke();
-	//n
-// 	ctx.beginPath();
-// 	ctx.arc(r+15*u,r,r,0,pi);
-// 	ctx.lineTo(15*u,0);
-// 	ctx.lineTo(20*u,0);
-// 	ctx.closePath();
-// 	ctx.stroke();
-	
-	
-	ctx.save();
-	ctx.transform(1,0,0,1,2*r+15*u,r);
-	ctx.rotate(pi/2);
-	drawbullet(0,r,r,2*pi*((t+30)%60)/60);
-	ctx.restore();
-	//d
-	ctx.beginPath();
-	ctx.arc(r+21*u,r,r,pi/2,3*pi/2);
-	ctx.lineTo(26*u,0);
-	ctx.lineTo(26*u,16/5*r);
-	ctx.lineTo(24*u,16/5*r);
-	ctx.lineTo(24*u,2*r);
-	ctx.closePath();
-	ctx.stroke();
-	//o
-	drawbullet(r+27*u,r,r,2*pi*((t+45)%60)/60,1);
-	
-	ctx.restore();
-}
-
-function drawolando2(x,y,r){
+function drawolando(x,y,r){
 	u = r/2.5
 	
 	ctx.save();
@@ -150,7 +97,6 @@ function drawolando2(x,y,r){
 	ctx.rotate(pi/2);
 	drawbullet(0,r,r,2*pi*((t+15)%60)/60);
 	ctx.restore();
-	//coverd(r+21*u,r,r,2*pi*(t%60)/60,1);
 	
 	ctx.restore();
 }
@@ -215,6 +161,7 @@ function drawbullet(x,y,r,xr,sign){
 	u = r/2.5
 	ctx.save()
 	ctx.transform(1,0,0,1,x,y);
+	xr = (xr+100*pi)%(2*pi);
 	
 	ctx.fillStyle = "#e3e3e5";
 	ctx.strokeStyle = "#111";
@@ -261,9 +208,8 @@ function drawbullet(x,y,r,xr,sign){
 		ctx.ellipse(r*Math.cos(xr), 0, r*(Math.sin(xr)*Math.sin(xr)), r, 0, pi/2, 3*pi/2);
 		ctx.stroke();
 	} else {
-		//alert(xr);
+		alert(xr);
 	}
-
 	
 	ctx.restore();
 }
@@ -297,5 +243,6 @@ function coords(e){
 }
 
 function notmoving() {
+	timeold = Date.now();
 	moving = 0;
 }
