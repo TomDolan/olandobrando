@@ -24,12 +24,16 @@ ctx.lineWidth = 1;
 var time = new Date();
 var timeold = 0;
 
+var bgcolour = "#e3e3e5";
+var fgcolour = "#111";
+var night = 0;
+
 draw();
 
 function draw() {
 	ctx.beginPath();
 	ctx.rect(0,0,W,H);
-	ctx.fillStyle = "#e3e3e5";
+	ctx.fillStyle = bgcolour;
 	ctx.fill();
 	
 	if (W>H){
@@ -63,7 +67,8 @@ function drawolando(x,y,r){
 	ctx.save();
 	ctx.transform(1,0,0,-1,x,H-y);
 	
-	ctx.fillStyle = "#e3e3e5";
+	ctx.fillStyle = bgcolour;
+	ctx.strokeStyle = fgcolour;
 	
 	//o
 	ctx.save();
@@ -106,8 +111,8 @@ function drawolandostatic(x,y,r){
 	ctx.save();
 	ctx.transform(1,0,0,-1,x,H-y);
 	
-	ctx.fillStyle = "#e3e3e5";
-	ctx.strokeStyle = "#111";
+	ctx.fillStyle = bgcolour;
+	ctx.strokeStyle = fgcolour;
 	
 	//o
 	ctx.beginPath();
@@ -163,8 +168,8 @@ function drawbullet(x,y,r,xr,sign){
 	ctx.transform(1,0,0,1,x,y);
 	xr = (xr+100*pi)%(2*pi);
 	
-	ctx.fillStyle = "#e3e3e5";
-	ctx.strokeStyle = "#111";
+	ctx.fillStyle = bgcolour;
+	ctx.strokeStyle = fgcolour;
 	if (xr>=0 && xr<pi/2) {
 		// 0 < xr <pi/2
 		ctx.beginPath();
@@ -245,4 +250,15 @@ function coords(e){
 function notmoving() {
 	timeold = Date.now();
 	moving = 0;
+}
+
+function nightmode(){
+	night = 1-night;
+	if (night){
+		bgcolour = "#111";
+		fgcolour = "#e3e3e5";
+	} else {
+		bgcolour = "#e3e3e5";
+		fgcolour = "#111";
+	}
 }
