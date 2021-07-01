@@ -182,11 +182,35 @@ button:active {
 } 
 
 .dpad {
-	display:inline-block;
+	display:block;
 	width:30px;
 	height:30px;
 	padding:0px;
 	margin:0px;
+}
+
+#upbutton {
+	position:absolute;
+	left:30px;
+	top:0px;
+}
+
+#leftbutton {
+	position:absolute;
+	left:0px;
+	top:30px;
+}
+
+#rightbutton {
+	position:absolute;
+	left:60px;
+	top:30px;
+}
+
+#downbutton {
+	position:absolute;
+	left:30px;
+	top:60px;
 }
 
 .dpadbutton {
@@ -221,15 +245,13 @@ button:active {
 #translatemenu {
 	display:none;
 	position: absolute;
-	height:105px;
-	width:105px;
+	height:90px;
+	width:90px;
 	right: 125%;
 	top: -30px;
 	background-color: #303030;
 	border-radius: 6px;
 	z-index: 4;
-	padding-top:5px;
-	padding-left:5px;
 }
 
 #confirmscreen {
