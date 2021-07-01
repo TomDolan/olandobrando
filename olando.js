@@ -36,9 +36,9 @@ function draw() {
 	}
 	
 	if (2*pi*((t+30)%60)/60<pi-.1 || 2*pi*((t+30)%60)/60>pi+.1 || !moving){
-		drawolando2(W/2-320,H/3,50);
+		drawolando2(W/2-320,olandoh,50);
 	} else {
-		drawolandostatic(W/2-320,H/3,50)
+		drawolandostatic(W/2-320,olandoh,50)
 	}
 	
 	if (moving){
