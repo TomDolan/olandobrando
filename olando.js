@@ -33,7 +33,7 @@ function draw() {
 	ctx.fill();
 	
 	if (W>H){
-		var olandoh = H/3;
+		var olandoh = H/2-50*6/3;
 	} else {
 		var olandoh = H/2-50*6/3;
 	}
