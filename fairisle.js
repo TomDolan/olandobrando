@@ -176,7 +176,6 @@ function click (){
 		punchcard[gridj][gridi]=1-punchcard[gridj][gridi];
 	} else {
 		if(xpos<(punchx-37.5*d) || xpos>(punchx+punchw+37.5*d) || ypos<(punchy-37.5*d) || ypos>(punchy+punchh+37.5*d)){
-			alert("hi");
 		} else {
 			gridi = parseInt((xpos-(punchx-37.5*d))/(punchw+12.5)*stitches);
 			gridj = parseInt((ypos-(punchy-37.5*d))/(punchh+12.5)*rows);
