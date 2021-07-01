@@ -69,12 +69,17 @@
 		<img id="translate-icon" class="icon-img" width="32" height="32" src="translate-icon.png" alt="translate" onclick="opentranslatemenu()">
 		<span class="helpbox">Translate</span>
 		<div id="translatemenu">
-			<button onclick="shiftup()" id="upbutton">v</button>
+			<div class = "dpad"></div>
+			<img id="upbutton" class="dpad, dpadbutton" width="30" height="30" src="arrow-icon.png" alt="up" onclick="shiftup()">
+			<div class = "dpad"></div>
 			<br />
-			<button onclick="shiftleft()" id="leftbutton">v</button>
-			<button onclick="shiftright()" id="rightbutton">v</button>
+			<img id="leftbutton" class="dpad, dpadbutton" width="30" height="30" src="arrow-icon.png" alt="left" onclick="shiftleft()" style="transform: rotate(270deg);">
+			<div class = "dpad"></div>
+			<img id="rightbutton" class="dpad, dpadbutton" width="30" height="30" src="arrow-icon.png" alt="right" onclick="shiftright()" style="transform: rotate(90deg);">
 			<br />
-			<button onclick="shiftdown()" id="downbutton">v</button>
+			<div class = "dpad"></div>
+			<img id="downbutton" class="dpad, dpadbutton" width="30" height="30" src="arrow-icon.png" alt="down" onclick="shiftdown()" style="transform: rotate(180deg);">
+			<div class = "dpad"></div>
 		</div>
 	</div>
 	<div class="icon">
@@ -95,34 +100,6 @@
 <div id = "canvasbox">
 	<canvas id = "canvas">Your browser does not support the HTML5 canvas tag.</canvas>
 </div>
-<!--<div id="controls">
-
-	<button onclick="reset()" id="resetbutton">Clear Pattern</button>
-
-	<input type="text" value="10" id="arraylength">
-	<button onclick="changelength()" id="lengthbutton">Change Length</button>
-	
-	<input type="text" value="name" id="arraytext">
-	<button onclick="copyarray()" id="copybutton">Copy Punchcard</button>
-	
-	<button onclick="guidesonoff()" id="guidesbutton">Guides On/Off</button>
-	
-	<input type="range" min="20" max="100" value="x50" class="slider" id="scale" oninput = "changescale()">
-	
-	<button onclick="changeview()" id="viewbutton">Punchcard/Kniting</button>
-	
-	<button onclick="shiftup()" id="upbutton">up</button>
-	<button onclick="shiftleft()" id="leftbutton">left</button>
-	<button onclick="shiftright()" id="rightbutton">right</button>
-	<button onclick="shiftdown()" id="downbutton">down</button>
-	
-	<input type="color" id="colour1" name="Colour 1" value="#cccccc" oninput = "draw()">
-	<input type="color" id="colour2" name="Colour 2" value="#444444" oninput = "draw()">
-	<input type="color" id="colourbg" name="Background Colour" value="#202020" oninput = "draw()">
-	
-	<button onclick="longfloats()" id="floatsbutton">Highlight Long Floats</button>
-	
-</div>-->
 
 <script src="punchcards.js"></script>
 <script src="fairisle.js"></script>

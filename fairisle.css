@@ -179,6 +179,18 @@ button:hover {background-color: #303030}
 
 button:active {
 	background-color: #202020;
+} 
+
+.dpad {
+	display:inline-block;
+	width:30px;
+	height:30px;
+	padding:0px;
+	margin:0px;
+}
+
+.dpadbutton {
+	cursor: pointer;
 }
 
 #scalemenu {
@@ -209,13 +221,14 @@ button:active {
 #translatemenu {
 	display:none;
 	position: absolute;
-	height:96px;
-	width:96px;
+	height:105px;
+	width:105px;
 	right: 125%;
 	top: -30px;
 	background-color: #303030;
 	border-radius: 6px;
 	z-index: 4;
+	padding-top:5px;
 	padding-left:5px;
 }
 

@@ -214,7 +214,10 @@ function cancelsave() {
 }
 
 function copyimg(){
-	alert("coming soon");
+	c.toBlob(function(blob) { 
+    	const item = new ClipboardItem({ "image/png": blob });
+    	navigator.clipboard.write([item]); 
+	});	
 }
 
 function copyarray(){
@@ -226,11 +229,26 @@ function copyarray(){
 }
 
 function saveimg(){
-	alert("coming soon");
+	  var link = document.createElement('a');
+	  link.download = 'Punchcard.png';
+	  link.href = document.getElementById('canvas').toDataURL()
+	  link.click();
 }
 
 function savearray(){
-	alert("coming soon");
+	var blob = new Blob([document.getElementById("arraytext").value],
+                { type: "text/plain;charset=utf-8" });
+    
+	var link = document.createElement("a"),
+			url = URL.createObjectURL(blob);
+	link.href = url;
+	link.download = "punchcard.txt";
+	document.body.appendChild(link);
+	link.click();
+	setTimeout(function() {
+		document.body.removeChild(link);
+		window.URL.revokeObjectURL(url);  
+	}, 0); 
 }
 
 /* 
