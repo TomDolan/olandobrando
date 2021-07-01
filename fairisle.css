@@ -254,6 +254,24 @@ button:active {
 	z-index: 4;
 }
 
+#confirmmenu {
+	display:none;
+	position: absolute;
+	height:32px;
+	width:32px;
+	right: 125%;
+	top: 0px;
+	background-color: #404040;
+	border-radius: 6px;
+	z-index: 4;
+}
+
+#confirmmenu:hover {background-color: #303030}
+
+#confirmmenu:active {
+	background-color: #202020;
+} 
+
 #confirmscreen {
   position: fixed; /* Sit on top of the page content */
   display: none; /* Hidden by default */
@@ -345,7 +363,8 @@ input[type=range]::-webkit-slider-thumb {
   height: 14px;
   width: 14px;
   border-radius: 7px;
-  background: #ddd;
+  background: #303030;
+  border: 1px solid #dddddd;
   cursor: pointer;
   -webkit-appearance: none;
   margin-top: -5px;

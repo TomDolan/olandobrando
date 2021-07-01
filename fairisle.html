@@ -24,10 +24,17 @@
 			</div>
 		</div>
 	</div>
+	
+	
 	<div class="icon">
-		<input type="text" value="10" id="length-icon" onclick="closemenus()">
-		<span class="helpbox">Set Length</span>
+		<input type="text" value="10" id="length-icon" onclick="openconfirmmenu()">
+		<span class="helpbox" id="lengthhelp">Set Length</span>
+		<div id="confirmmenu">
+			<img id="confirm-icon" width="32" height="32" src="confirm-icon.png" alt="confirm" onclick="clickconfirmmenu()">
+		</div>
 	</div>
+	
+	
 	<div class="icon">
 		<img id="save-icon" class="icon-img" width="32" height="32" src="save-icon.png" alt="save" onclick="savescreen()">
 		<span class="helpbox">Save Punchcard</span>

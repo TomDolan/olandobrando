@@ -19,6 +19,7 @@ var knit = 1;
 var scalemenu = 0;
 var colourmenu = 0;
 var translatemenu = 0;
+var confirmmenu = 0;
 
 var colour1 = "#18110C";
 var colour1 = "#EBD9CB";
@@ -281,6 +282,7 @@ function copyarray() {
  */
 
 function changelength(){
+	closemostmenus();
 	var newn = document.getElementById("length-icon").value;
 	if (!parseInt(newn)) {
 		alert("Whoa cowboy")
@@ -493,7 +495,37 @@ function opentranslatemenu() {
 	}
 }
 
+function openconfirmmenu() {
+	if (!confirmmenu){
+		confirmmenu = 1;
+		document.getElementById("confirmmenu").style.display = "block";
+		document.getElementById("lengthhelp").style.display = "none";
+		closemostmenus();
+	}
+}
+
+function clickconfirmmenu() {
+	if (confirmmenu){
+		confirmmenu = 0;
+		document.getElementById("confirmmenu").style.display = "none";
+		document.getElementById("lengthhelp").style.display = "block";
+		changelength();
+	}
+}
+
 function closemenus(){
+	document.getElementById("scalemenu").style.display = "none";
+	scalemenu = 0;
+	document.getElementById("colourmenu").style.display = "none";
+	colourmenu = 0;
+	document.getElementById("translatemenu").style.display = "none";
+	translatemenu = 0;
+	document.getElementById("confirmmenu").style.display = "none";
+	document.getElementById("lengthhelp").style.display = "block";
+	confirmmenu = 0;
+}
+
+function closemostmenus() {
 	document.getElementById("scalemenu").style.display = "none";
 	scalemenu = 0;
 	document.getElementById("colourmenu").style.display = "none";
