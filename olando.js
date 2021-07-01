@@ -35,7 +35,7 @@ function draw() {
 		var olandoh = H/2-50*6/3;
 	}
 	
-	var olandor = Math.min(W,H)/14;
+	var olandor = Math.min(W,H)/15;
 		
 	if (2*pi*((t+30)%60)/60<pi-.1 || 2*pi*((t+30)%60)/60>pi+.1 || !moving){
 		drawolando2(W/2-32*olandor/5,olandoh,olandor);
