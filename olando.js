@@ -30,15 +30,17 @@ function draw() {
 	ctx.fill();
 	
 	if (W>H){
-		olandoh = H/3;
+		var olandoh = H/3;
 	} else {
-		olandoh = H/2-50*6/3;
+		var olandoh = H/2-50*6/3;
 	}
+	
+	var olandor = Math.min(W,H)/14;
 		
 	if (2*pi*((t+30)%60)/60<pi-.1 || 2*pi*((t+30)%60)/60>pi+.1 || !moving){
-		drawolando2(W/2-320,olandoh,50);
+		drawolando2(W/2-32*olandor/5,olandoh,olandor);
 	} else {
-		drawolandostatic(W/2-320,olandoh,50)
+		drawolandostatic(W/2-32*olandor/5,olandoh,olandor);
 	}
 	
 	if (moving){
