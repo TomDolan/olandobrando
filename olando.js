@@ -29,6 +29,12 @@ function draw() {
 	ctx.fillStyle = "#e3e3e5";
 	ctx.fill();
 	
+	if (H>W){
+		olandoh = H/3;
+	} else {
+		olandoh = H/2-50*8/3;
+	}
+	
 	if (2*pi*((t+30)%60)/60<pi-.1 || 2*pi*((t+30)%60)/60>pi+.1 || !moving){
 		drawolando2(W/2-320,H/3,50);
 	} else {
