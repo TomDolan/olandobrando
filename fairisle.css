@@ -5,6 +5,11 @@ body {
 	cursor: default;
 	background-color:#fff;
 	font-family: 'Roboto', sans-serif;
+	user-select: none; /* supported by Chrome and Opera */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none;
 }
 
 #canvasbox {
@@ -55,28 +60,8 @@ body {
 }
 
 #length-icon {
-	background-color:#404040;
-	border:none;
-	border-radius:4px;
 	width:32px;
 	height:32px;
-	display:block;
-	margin:4px;
-	color:white;
-	text-align:center;
-	font-size:15px;
-	font-family: 'Roboto', sans-serif;
-	padding:0px;
-}
-
-#length-icon:hover {
-	background-color:#303030;
-}
-
-#length-icon:focus {
-	border:none;
-	outline:none;
-	background-color:#202020;
 }
 
 #colourpopup{
@@ -127,39 +112,11 @@ body {
 	visibility: visible;
 	opacity: 1;
 }
-
-
-
-
-
-
-/* 
-button {
-	display: block;
-	padding: 5px 10px;
-	font-size: 12px;
-	cursor: pointer;
-	text-align: center;
-	text-decoration: none;
-	outline: none;
-	color: #fff;
-	background-color: #a3a5a4;
-	border:none;
-}
-
-button:hover {background-color: #939594}
-
-button:active {
-	background-color: #666;
-	transform: translateY(1px);
-}
- */
  
 button {
 	background-color:#404040;
 	border:none;
 	border-radius:4px;
-/* 	width:62px; */
 	height:32px;
 	display:inline-block;
 	margin:4px;
@@ -303,6 +260,45 @@ button:active {
 
 #confirmmessage {
 	font-size: 30px;
+} 
+
+#openscreen {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 5; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+} 
+
+#openbox {
+	position:relative;
+	top:50%;
+	left:50%;
+	width:400px;
+	height:100px;
+	background-color: #999;
+	color: #eee;
+	text-align:center;
+	border-radius: 20px;
+	transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+	padding:15px;
+}
+
+#openmessage {
+	font-size: 30px;
+}
+
+#codetextinput {
+	height: 32px; 
+	width: 300px; 
+	display:inline-block;
 }
 
 #savescreen {
@@ -324,7 +320,7 @@ button:active {
 	top:50%;
 	left:50%;
 	width:400px;
-	height:250px;
+	height:265px;
 	background-color: #999;
 	color: #eee;
 	text-align:center;
@@ -338,6 +334,10 @@ button:active {
 	font-size: 30px;
 }
 
+#codetext {
+	height: 32px; 
+	display:inline-block;
+}
  
 input[type=color] {
   -webkit-appearance: none;
@@ -409,4 +409,34 @@ input[type=range]:focus::-ms-fill-lower {
 }
 input[type=range]:focus::-ms-fill-upper {
   background: #ddd;
+} 
+
+input[type=text] {
+	background-color:#404040;
+	border:none;
+	border-radius:4px;
+	display:block;
+	margin:4px;
+	color:white;
+	text-align:center;
+	font-size:15px;
+	font-family: 'Roboto', sans-serif;
+	padding:0px;
+	line-height:32px;
+}
+
+input[type=text]:hover {
+	background-color:#303030;
+}
+
+input[type=text]:focus {
+	border:none;
+	outline:none;
+	background-color:#202020;
+}
+
+::selection {
+	height:32px;
+	color: #228C63;
+	background: #C6ACEC;
 }

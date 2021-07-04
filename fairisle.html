@@ -10,57 +10,64 @@
 
 <div id="iconbox">
 	<div class="icon">
-		<img id="new-icon" class="icon-img" width="32" height="32" src="new-icon.png" alt="new" onclick="confirmreset()">
-		<span class="helpbox">Blank Punchcard</span>
-		<div id="confirmscreen" >
-			<div onclick="cancelreset()" style="position:fixed;top:0px;left:0px;width:100%;height:100%;"></div>
+		<img id="new-icon" class="icon-img" width="32" height="32" src="new-icon.png" alt="new" onclick="openscreen()">
+		<span class="helpbox">New/Open</span>
+		<div id="openscreen" >
+			<div onclick="closescreen()" style="position:fixed;top:0px;left:0px;width:100%;height:100%;"></div>
+			<div id = "openbox">
+				<span id="openmessage">New/Open Punchcard</span>
+				<br />
+				<button onclick="confirmreset()" id="confirmbutton">New</button>
+				<br />
+				<input type="text" placeholder="<Punchcard Code>" id="codetextinput" spellcheck="false">
+				<button onclick="openbutton()" id="openmbutton">Open</button>
+			</div>
 			<div id = "confirmbox">
 				<span id="confirmmessage">Confirm Blank Punchcard</span>
 				<br />
 				<span >Have you saved? You can't undo this action</span>
 				<br />
-				<button onclick="cancelreset()" id="cancelbutton">Cancel</button>
+				<button onclick="closescreen()" id="cancelbutton">Cancel</button>
 				<button onclick="reset()" id="confirmbutton">Confirm</button>
 			</div>
 		</div>
 	</div>
 	
+	<div class="icon">
+		<img id="save-icon" class="icon-img" width="32" height="32" src="save-icon.png" alt="save" onclick="savescreen()">
+		<span class="helpbox">Save</span>
+		<div id="savescreen">
+			<div onclick="cancelsave()" style="position:fixed;top:0px;left:0px;width:100%;height:100%;"></div>
+			<div id = "savebox">
+				<span id="savemessage">Save Punchcard</span>
+				<br />
+				<span>I've made a few ways to save your punchcards. Either copy or save it as an image (your current screen without the controls), copy as an  aray of 1s and 0s, or copy as a code which you can use to load this punchcard again. </span>
+				<br />
+				<input type="text" value="name" id="codetext" style = "width:90%;" spellcheck="false">
+				<button onclick="saveimg()" id="saveimgbutton">Save Image</button>
+				<button onclick="copyimg()" id="copyimgbutton">Copy Image</button>
+				<br />
+				<button onclick="copyarray()" id="copyarraybutton">Copy Array</button>
+				<button onclick="copycode()" id="savearraybutton">Copy Code</button>
+				<br />
+				<button onclick="cancelsave()" id="cancelsavebutton">Done</button>
+			</div>
+		</div>
+	</div>
 	
 	<div class="icon">
-		<input type="text" value="10" id="length-icon" onclick="openconfirmmenu()">
+		<input type="text" value="10" id="length-icon" onclick="openconfirmmenu()" spellcheck="false">
 		<span class="helpbox" id="lengthhelp">Set Length</span>
 		<div id="confirmmenu">
 			<img id="confirm-icon" width="32" height="32" src="confirm-icon.png" alt="confirm" onclick="clickconfirmmenu()">
 		</div>
 	</div>
 	
-	
-	<div class="icon">
-		<img id="save-icon" class="icon-img" width="32" height="32" src="save-icon.png" alt="save" onclick="savescreen()">
-		<span class="helpbox">Save Punchcard</span>
-		<div id="savescreen">
-			<div onclick="cancelsave()" style="position:fixed;top:0px;left:0px;width:100%;height:100%;"></div>
-			<div id = "savebox">
-				<span id="savemessage">Save Punchcard</span>
-				<br />
-				<span>I've made two ways to save your punchcards. Either as an image (your current screen without the controls) or as an array which you can use to load this punchcard again on here. </span>
-				<br />
-				<input type="text" value="name" id="arraytext" style = "width:90%;">
-				<br />
-				<button onclick="saveimg()" id="saveimgbutton">Save Image</button>
-				<button onclick="savearray()" id="savearraybutton">Save Array</button>
-				<br />
-				<button onclick="copyimg()" id="copyimgbutton">Copy Image</button>
-				<button onclick="copyarray()" id="copyarraybutton">Copy Array</button>
-				<br />
-				<button onclick="cancelsave()" id="cancelsavebutton">Done</button>
-			</div>
-		</div>
-	</div>
 	<div class="icon">
 		<img id="view-icon" class="icon-img" width="32" height="32" src="punchcard-icon.png" alt="view" onclick="changeview()">
 		<span class="helpbox" id = "view-helpbox">Punchcard View</span>
 	</div>
+	
 	<div class="icon">
 		<img id="grid-icon" class="icon-img" width="32" height="32" src="grid-icon.png" alt="grid" onclick="guidesonoff()">
 		<span class="helpbox">Grid On/Off</span>
@@ -86,9 +93,9 @@
 		<img id="rgb-icon" class="icon-img" width="32" height="32" src="rgb-icon.png" alt="rgb" onclick="opencolourmenu()">
 		<span class="helpbox">Colour Select</span>
 		<div id="colourmenu">
-			<input type="color" id="colour1" name="Colour 1" value="#cccccc" oninput = "draw()">
-			<input type="color" id="colour2" name="Colour 2" value="#444444" oninput = "draw()">
-			<input type="color" id="colourbg" name="Background Colour" value="#202020" oninput = "draw()">
+			<input type="color" id="colour1" name="Colour 1" value="#C6ACEC" oninput = "draw()">
+			<input type="color" id="colour2" name="Colour 2" value="#228C63" oninput = "draw()">
+			<input type="color" id="colourbg" name="Background Colour" value="#5A92C4" oninput = "draw()">
 		</div>
 	</div>
 	<div class="icon">

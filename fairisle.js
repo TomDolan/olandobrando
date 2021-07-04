@@ -21,9 +21,9 @@ var colourmenu = 0;
 var translatemenu = 0;
 var confirmmenu = 0;
 
-var colour1 = "#18110C";
-var colour1 = "#EBD9CB";
-var bgcolour = "#4940C";
+var colour1 = "#C6ACEC";
+var colour1 = "#228C63";
+var bgcolour = "#5A92C4";
 
 
 var d = .2;
@@ -32,7 +32,7 @@ var nx = W/80/d;
 var ny = H/65/d+1;
 	
 var punchcard = [];
-punchcard = PC_olando;
+punchcard=PC_littleheartscheck;//toPC("PC_vagesticleb1gm0n3y$$");
 
 var floatarray = [];
 var displayfloats = 0;
@@ -41,11 +41,15 @@ var floatsdisplayed = 0;
 rows = punchcard.length;
 stitches = punchcard[0].length;
 document.getElementById("length-icon").value = rows;
+
+const queryString = window.location.search;
+console.log(queryString);
 		
 var punchw = (stitches-1)*80*d;
 var punchh = (rows-1)*80*d;
 var punchx = W/2-punchw/2;
 var punchy = Math.max(H/2-punchh/2,20);
+
 
 draw();
 
@@ -190,7 +194,31 @@ function savescreen() {
 	closemenus();
   	document.getElementById("savescreen").style.display = "block";
 	
-	var copyText = document.getElementById("arraytext");	
+	document.getElementById("codetext").value = tocode(punchcard);
+}
+
+function cancelsave() {
+  	document.getElementById("savescreen").style.display = "none";
+}
+
+function copyimg(){
+	c.toBlob(function(blob) { 
+    	const item = new ClipboardItem({ "image/png": blob });
+    	navigator.clipboard.write([item]); 
+	});	
+}
+
+function copycode(){
+	var copyText = document.getElementById("codetext");
+	
+	copyText.select();
+	copyText.setSelectionRange(0, 99999)
+	document.execCommand("copy");
+	copyText.blur();
+}
+
+function copyarray(){
+	var copyText = document.getElementById("codetext");
 	var str = "[";
 	
 	for (i=0; i<rows-1; i++){
@@ -207,25 +235,13 @@ function savescreen() {
 	str += punchcard[rows-1][stitches-1] + "]]";
 
 	copyText.value = str;
-}
-
-function cancelsave() {
-  	document.getElementById("savescreen").style.display = "none";
-}
-
-function copyimg(){
-	c.toBlob(function(blob) { 
-    	const item = new ClipboardItem({ "image/png": blob });
-    	navigator.clipboard.write([item]); 
-	});	
-}
-
-function copyarray(){
-	var copyText = document.getElementById("arraytext");
 	
 	copyText.select();
 	copyText.setSelectionRange(0, 99999)
 	document.execCommand("copy");
+	 
+	copyText.value = tocode(punchcard);
+	copyText.blur();
 }
 
 function saveimg(){
@@ -235,6 +251,7 @@ function saveimg(){
 	  link.click();
 }
 
+/* 
 function savearray(){
 	var blob = new Blob([document.getElementById("arraytext").value],
                 { type: "text/plain;charset=utf-8" });
@@ -250,6 +267,7 @@ function savearray(){
 		window.URL.revokeObjectURL(url);  
 	}, 0); 
 }
+ */
 
 /* 
 function copyarray() {
@@ -345,13 +363,25 @@ function changeview(){
 	draw();
 }
 
+function openscreen() {
+	closemenus();
+  	document.getElementById("openscreen").style.display = "block";
+  	document.getElementById("openbox").style.display = "block";
+  	document.getElementById("confirmbox").style.display = "none";
+}
+
 function confirmreset() {
 	closemenus();
-  	document.getElementById("confirmscreen").style.display = "block";
+  	document.getElementById("openbox").style.display = "none";
+  	document.getElementById("confirmbox").style.display = "block";
 }
 
 function cancelreset() {
-  	document.getElementById("confirmscreen").style.display = "none";
+	closescreen();
+}
+
+function closescreen() {
+  	document.getElementById("openscreen").style.display = "none";
 }
 
 function reset(){
@@ -361,8 +391,25 @@ function reset(){
 			punchcard[i][j] = 0;
 		}
 	}
-  	document.getElementById("confirmscreen").style.display = "none";
+  	document.getElementById("openscreen").style.display = "none";
 	draw();
+}
+
+function openbutton(){
+	var str = document.getElementById("codetextinput").value;
+	if (str) {
+		if (toPC(str)) {
+			punchcard = toPC(str);
+		
+			document.getElementById("openscreen").style.display = "none";
+
+			rows = punchcard.length;
+			stitches = punchcard[0].length;
+			document.getElementById("length-icon").value = rows;
+		
+			draw();
+		}
+	}
 }
 
 function shiftup(){
@@ -464,6 +511,14 @@ lengthicon.addEventListener("keyup", function(event) {
   }
 });
 
+var opentext = document.getElementById("codetextinput");
+opentext.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   openbutton();
+  }
+});
+
 
 function openzoommenu() {
 	if (!scalemenu){
@@ -534,9 +589,74 @@ function closemostmenus() {
 	translatemenu = 0;
 }
 
+function tocode(str) {
+	var code = "PC_"
+	for (i = 0; i < str.length; i ++) {
+		var result = str[i].join('')
+		code += to64(result.substr(0, 6)) + to64(result.substr(6, 6)) + to64(result.substr(12, 6)) + to64(result.substr(18, 6));
+	}
+	return code;
+}
 
+function to64(str){
+	var result = parseInt(str,2);
+	if (result>=38 && result<64) {
+		result+=59;
+	} else if (result==37) {
+		result+=58;
+	} else if (result>=11 && result<37) {
+		result+=54;
+	}  else if (result>=1 && result<11) {
+		result+=47;
+	}  else if (result==0) {
+		result = 36;
+	} else {
+		alert("! " + result)
+	}
+	return String.fromCharCode(result);
+}
 
+function toPC(str) {
+	PC = [];
+	if (str[0]=="P" && str[1]=="C" && str[2]=="_"){
+		if ((str.length-3)%4!=0||str.length==3){
+			alert("wrong length")
+			return;
+		}
+		for (i = 3; i < str.length; i +=4) {
+			PC[(i-3)/4] = [];
+			for (j = 0; j < 4; j ++) {
+				result=tobin(str[i+j]);
+				for (k = 0; k < 6; k ++) {
+					PC[(i-3)/4][j*6+k] = parseInt(result[k]);
+				}
+			}
+		}
+		return PC;
+	} else {
+		alert("wrong format")
+	}
+}
 
+function tobin(str) {
+	result = str.charCodeAt(0);
+	if (result == 36) {
+		return "000000";
+	} else if (result>=48 && result<58) {
+		result-=47;
+	} else if (result>=65 && result<91) {
+		result-=54;
+	} else if (result==95) {
+		result-=58;
+	} else if (result>=97 && result<123) {
+		result-=59;
+	} else {
+		alert("invalid character")
+	}
+	result = result.toString(2);
+	result = "000000".substr(result.length) + result;
+	return result;
+}
 
 
 
