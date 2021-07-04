@@ -244,6 +244,7 @@ button:active {
 } 
 
 #confirmbox {
+	display:none;
 	position:relative;
 	top:50%;
 	left:50%;
