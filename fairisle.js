@@ -42,10 +42,10 @@ rows = punchcard.length;
 stitches = punchcard[0].length;
 document.getElementById("length-icon").value = rows;
 
-const queryString = window.location.search;
-console.log(queryString);
-
-const urlParams = new URLSearchParams(queryString);
+// const queryString = window.location.search;
+// console.log(queryString);
+// 
+// const urlParams = new URLSearchParams(queryString);
 		
 var punchw = (stitches-1)*80*d;
 var punchh = (rows-1)*80*d;
