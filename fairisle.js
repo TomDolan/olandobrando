@@ -32,7 +32,7 @@ var nx = W/80/d;
 var ny = H/65/d+1;
 	
 var punchcard = [];
-punchcard=PC_water;//toPC("PC_vagesticleb1gm0n3y$$");
+punchcard=PC_littleheartscheck;//toPC("PC_vagesticleb1gm0n3y$$");
 
 var floatarray = [];
 var displayfloats = 0;
