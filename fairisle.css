@@ -27,10 +27,6 @@ body {
 	z-index: -1;
 }
 
-#controls {
-	float:left;
-}
-
 #iconbox {
 	display:block;
 	position:absolute;
@@ -451,7 +447,7 @@ input[type=text]:focus {
 
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
-  #controls {
+  #iconbox {
   	display:none;
   }
 }
