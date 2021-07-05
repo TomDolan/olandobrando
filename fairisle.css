@@ -445,7 +445,7 @@ input[type=text]:focus {
 }
 
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 900px) {
   /* For mobile phones: */
   #iconbox {
   	display:none;
