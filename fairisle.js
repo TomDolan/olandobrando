@@ -24,6 +24,7 @@ var confirmmenu = 0;
 var colour1 = "#C6ACEC";
 var colour2 = "#228C63";
 var bgcolour = "#5A92C4";
+var whichcolour = 0;
 
 var d = .2;
 
@@ -31,7 +32,7 @@ var nx = W/80/d;
 var ny = H/65/d+1;
 	
 var punchcard = [];
-punchcard=PC_littleheartscheck;//toPC("PC_vagesticleb1gm0n3y$$");
+punchcard=PC_water;//toPC("PC_vagesticleb1gm0n3y$$");
 
 var floatarray = [];
 var displayfloats = 0;
@@ -168,10 +169,27 @@ window.onresize = function() {
 
 document.getElementById("canvasbox").onmousemove = coords;
 document.getElementById("canvasbox").onmousedown = click;
+document.getElementById("canvasbox").onmouseup = declick;
 
 function coords(e){
 	xpos = e.clientX;
 	ypos = e.clientY;
+	if (clicked) {
+		if (knit){
+			gridi = parseInt((xpos)/W*nx)%stitches;
+			//gridj = parseInt((ypos)/H*(ny-1)+rows-.7)%rows;
+			gridj = parseInt((ypos)/H*(ny-1)+rows-.3+.4*Math.cos(xpos*(2*pi)/(W/nx)))%rows;
+			punchcard[gridj][gridi]=whichcolour;
+		} else {
+			if(xpos<(punchx-37.5*d) || xpos>(punchx+punchw+37.5*d) || ypos<(punchy-37.5*d) || ypos>(punchy+punchh+37.5*d)){
+			} else {
+				gridi = parseInt((xpos-(punchx-37.5*d))/(punchw+12.5)*stitches);
+				gridj = parseInt((ypos-(punchy-37.5*d))/(punchh+12.5)*rows);
+				punchcard[gridj][gridi]=1-punchcard[gridj][gridi];
+			}
+		}
+		draw()
+	}
 }
 
 function click (){
@@ -182,6 +200,7 @@ function click (){
 		//gridj = parseInt((ypos)/H*(ny-1)+rows-.7)%rows;
 		gridj = parseInt((ypos)/H*(ny-1)+rows-.3+.4*Math.cos(xpos*(2*pi)/(W/nx)))%rows;
 		punchcard[gridj][gridi]=1-punchcard[gridj][gridi];
+		whichcolour = punchcard[gridj][gridi];
 	} else {
 		if(xpos<(punchx-37.5*d) || xpos>(punchx+punchw+37.5*d) || ypos<(punchy-37.5*d) || ypos>(punchy+punchh+37.5*d)){
 		} else {
@@ -191,6 +210,10 @@ function click (){
 		}
 	}
 	draw()
+}
+
+function declick (){
+	clicked = 0;
 }
 
 function savescreen() {
