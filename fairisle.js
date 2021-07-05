@@ -8,7 +8,7 @@ ctx.rect(0,0,W,H);
 ctx.fillStyle = "#000";
 ctx.fill();
 
-
+var pi = Math.PI;
 
 var xpos = -1;
 var ypos = -1;
@@ -22,9 +22,8 @@ var translatemenu = 0;
 var confirmmenu = 0;
 
 var colour1 = "#C6ACEC";
-var colour1 = "#228C63";
+var colour2 = "#228C63";
 var bgcolour = "#5A92C4";
-
 
 var d = .2;
 
@@ -56,12 +55,13 @@ var punchy = Math.max(H/2-punchh/2,20);
 draw();
 
 function draw(){
+
 	if (floatsdisplayed){
 		floatsdisplayed = 0;
 	}
 	ctx.beginPath();
 	ctx.rect(0,0,W,H);
-	ctx.fillStyle = document.getElementById("colourbg").value;
+	ctx.fillStyle = bgcolour;
 	ctx.fill();
 	if(knit){
 		if (displayfloats) {
@@ -70,9 +70,9 @@ function draw(){
 		for (i=0; i<nx && i<1000; i++){
 			for(j=0; j<ny && j<1000; j++){
 				if (punchcard[(j+rows-1)%rows][i%stitches]){
-					ctx.fillStyle = document.getElementById("colour1").value;
+					ctx.fillStyle = colour1;
 				} else {
-					ctx.fillStyle = document.getElementById("colour2").value;
+					ctx.fillStyle = colour2;
 				}		
 				var highlight = 0;
 				if (displayfloats){
@@ -179,7 +179,8 @@ function click (){
 	clicked = 1;
 	if (knit){
 		gridi = parseInt((xpos)/W*nx)%stitches;
-		gridj = parseInt((ypos)/H*ny+.25+rows-1)%rows;
+		//gridj = parseInt((ypos)/H*(ny-1)+rows-.7)%rows;
+		gridj = parseInt((ypos)/H*(ny-1)+rows-.3+.4*Math.cos(xpos*(2*pi)/(W/nx)))%rows;
 		punchcard[gridj][gridi]=1-punchcard[gridj][gridi];
 	} else {
 		if(xpos<(punchx-37.5*d) || xpos>(punchx+punchw+37.5*d) || ypos<(punchy-37.5*d) || ypos>(punchy+punchh+37.5*d)){
@@ -384,6 +385,7 @@ function cancelreset() {
 
 function closescreen() {
   	document.getElementById("openscreen").style.display = "none";
+  	document.getElementById("codetextinput").value = "";
 }
 
 function reset(){
@@ -408,7 +410,8 @@ function openbutton(){
 			rows = punchcard.length;
 			stitches = punchcard[0].length;
 			document.getElementById("length-icon").value = rows;
-		
+			
+			closescreen();
 			draw();
 		}
 	}
@@ -512,6 +515,18 @@ lengthicon.addEventListener("keyup", function(event) {
    changelength();
   }
 });
+
+function changecolours(){
+	var root = document.querySelector(':root');
+	colour1 = document.getElementById("colour1").value
+	colour2 = document.getElementById("colour2").value
+	bgcolour = document.getElementById("bgcolour").value
+	root.style.setProperty('--colour1', colour1);
+	root.style.setProperty('--colour2', colour2);
+	root.style.setProperty('--bgcolour', bgcolour);
+	
+	draw();
+}
 
 var opentext = document.getElementById("codetextinput");
 opentext.addEventListener("keyup", function(event) {
