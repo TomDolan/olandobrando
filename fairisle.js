@@ -30,6 +30,7 @@ var d = .2;
 
 var nx = W/80/d;
 var ny = H/65/d+1;
+alert(W);
 	
 var punchcard = [];
 punchcard=PC_littleheartscheck;//toPC("PC_vagesticleb1gm0n3y$$");
