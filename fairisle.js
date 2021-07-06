@@ -24,6 +24,7 @@ var confirmmenu = 0;
 var colour1 = "#C6ACEC";
 var colour2 = "#228C63";
 var bgcolour = "#5A92C4";
+changecolours();
 var whichcolour = 0;
 
 var d = .2;
