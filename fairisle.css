@@ -268,8 +268,7 @@ button:active {
 	position:relative;
 	top:50%;
 	left:50%;
-	width:400px;
-	height:100px;
+	width:500px;
 	background-color: #999;
 	color: #eee;
 	text-align:center;
@@ -303,7 +302,6 @@ button:active {
 	top:50%;
 	left:50%;
 	width:400px;
-	height:100px;
 	background-color: #999;
 	color: #eee;
 	text-align:center;
@@ -336,7 +334,6 @@ button:active {
 	top:50%;
 	left:50%;
 	width:400px;
-	height:100px;
 	background-color: #999;
 	color: #eee;
 	text-align:center;
@@ -375,7 +372,6 @@ button:active {
 	top:50%;
 	left:50%;
 	width:400px;
-	height:265px;
 	background-color: #999;
 	color: #eee;
 	text-align:center;
