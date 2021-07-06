@@ -444,6 +444,7 @@ input[type=text]:focus {
 	background: var(--colour1);
 }
 
+/* 
 
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
@@ -451,3 +452,4 @@ input[type=text]:focus {
   	display:none;
   }
 }
+ */
