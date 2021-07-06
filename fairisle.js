@@ -172,6 +172,16 @@ document.getElementById("canvasbox").onmousemove = coords;
 document.getElementById("canvasbox").onmousedown = click;
 document.getElementById("canvasbox").onmouseup = declick;
 
+document.addEventListener("mouseleave", function(event){
+
+  if(event.clientY <= 0 || event.clientX <= 0 || (event.clientX >= window.innerWidth || event.clientY >= window.innerHeight))
+  {
+
+     clicked = 0;
+
+  }
+});
+
 function coords(e){
 	xpos = e.clientX;
 	ypos = e.clientY;
