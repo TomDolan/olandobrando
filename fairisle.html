@@ -12,6 +12,21 @@
 
 <div id="iconbox">
 	<div class="icon">
+		<img id="info-icon" class="icon-img" width="32" height="32" src="new-icon.png" alt="info" onclick="infoscreen()">
+		<span class="helpbox">Info</span>
+		<div id="infoscreen" >
+			<div onclick="closeinfoscreen()" style="position:fixed;top:0px;left:0px;width:100%;height:100%;"></div>
+			<div id = "infobox">
+				<span id="infomessage">Info</span>
+				<br />
+				<span>text</span>
+				<br />
+				<button onclick="closeinfoscreen()" id="closeinfobutton">Done</button>
+			</div>
+		</div>
+	</div>
+	
+	<div class="icon">
 		<img id="new-icon" class="icon-img" width="32" height="32" src="new-icon.png" alt="new" onclick="openscreen()">
 		<span class="helpbox">New/Open</span>
 		<div id="openscreen" >
@@ -90,14 +105,15 @@
 			<img id="rightbutton" class="dpad, dpadbutton" width="30" height="30" src="arrow-icon.png" alt="right" onclick="shiftright()" style="transform: rotate(90deg);">
 			<img id="downbutton" class="dpad, dpadbutton" width="30" height="30" src="arrow-icon.png" alt="down" onclick="shiftdown()" style="transform: rotate(180deg);">
 		</div>
+
 	</div>
 	<div class="icon">
 		<img id="rgb-icon" class="icon-img" width="32" height="32" src="rgb-icon.png" alt="rgb" onclick="opencolourmenu()">
 		<span class="helpbox">Colour Select</span>
 		<div id="colourmenu">
-			<input type="color" id="colour1" name="Colour 1" value="#C6ACEC" oninput = "changecolours()">
-			<input type="color" id="colour2" name="Colour 2" value="#228C63" oninput = "changecolours()">
-			<input type="color" id="bgcolour" name="Background Colour" value="#6C464F" oninput = "changecolours()">
+			<input type="color" id="colour1" name="Colour 1" value="#ba9be8" oninput = "changecolours()">
+			<input type="color" id="colour2" name="Colour 2" value="#148f76" oninput = "changecolours()">
+			<input type="color" id="bgcolour" name="Background Colour" value="#3d6ca9" oninput = "changecolours()">
 		</div>
 	</div>
 	<div class="icon">

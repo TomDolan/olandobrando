@@ -28,6 +28,7 @@ body {
 }
 
 #iconbox {
+	width:40px;
 	display:block;
 	position:absolute;
 	bottom:0px;
@@ -35,14 +36,28 @@ body {
 	background-color:var(--bgcolour);
 	margin:4px;
 	border-radius:4px;
+	height:365px;
+	padding:0px;
+}
+
+.icon {
+	position: relative;
+	display: block;
+	float:left;
+	margin:0px;
+	padding:0px;
 }
 
 .icon-img {
-	margin:4px;
-	display:block;
-	background-color:#404040;
+	margin-top:4px;
+	margin-left:4px;
+	margin-right:0px;
+	margin-bottom:0px;
+	padding:0px;
 	border:none;
 	border-radius:4px;
+	vertical-align: bottom;
+	background-color:#404040;
 }
 
 .icon-img:hover {
@@ -50,11 +65,15 @@ body {
 }
 
 .icon-img-clicked {
-	margin:4px;
-	display:block;
-	background-color:#202020;
+	margin-top:4px;
+	margin-left:4px;
+	margin-right:0px;
+	margin-bottom:0px;
+	padding:0px;
 	border:none;
 	border-radius:4px;
+	vertical-align: bottom;
+	background-color:#202020;
 }
 
 .icon-img-clicked:hover {
@@ -64,6 +83,10 @@ body {
 #length-icon {
 	width:32px;
 	height:32px;
+	margin-top:4px;
+	margin-left:4px;
+	margin-right:0px;
+	margin-bottom:0px;
 }
 
 #colourpopup{
@@ -75,10 +98,6 @@ body {
 
 
 
-.icon {
-	position: relative;
-	display: block;
-}
 
 .icon .helpbox {
 	visibility: hidden;
@@ -229,6 +248,39 @@ button:active {
 
 #confirmmenu:active {
 	background-color: #202020;
+} 
+
+#infoscreen {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 5; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+} 
+
+#infobox {
+	position:relative;
+	top:50%;
+	left:50%;
+	width:400px;
+	height:100px;
+	background-color: #999;
+	color: #eee;
+	text-align:center;
+	border-radius: 20px;
+	transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+	padding:15px;
+}
+
+#infomessage {
+	font-size: 30px;
 } 
 
 #confirmscreen {
@@ -446,11 +498,19 @@ input[type=text]:focus {
 
  
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-height: 375px) {
   /* For mobile phones: */
-  .icon {
-/* 
-  	display:none;
- */
-  }
+  
+	#iconbox {
+		width:76px;
+		display:block;
+		position:absolute;
+		bottom:0px;
+		right:0px;
+		background-color:var(--bgcolour);
+		margin:4px;
+		border-radius:4px;
+		height:185px;
+		padding:0px;
+	}
 }

@@ -390,6 +390,16 @@ function changeview(){
 	draw();
 }
 
+function infoscreen() {
+	closemenus();
+  	document.getElementById("infoscreen").style.display = "block";
+}
+
+function closeinfoscreen() {
+	closemenus();
+  	document.getElementById("infoscreen").style.display = "none";
+}
+
 function openscreen() {
 	closemenus();
   	document.getElementById("openscreen").style.display = "block";
