@@ -38,6 +38,21 @@ var ny = H/dy/d+1;
 var punchcard = [];
 punchcard=PC_littleheartscheck;//toPC("PC_vagesticleb1gm0n3y$$");
 
+
+const queryString = window.location.search;
+console.log(queryString);
+
+const urlParams = new URLSearchParams(queryString);
+
+const urlPC = urlParams.get('PC')
+if (urlPC){
+	var punchcardnew = toPC(urlPC);
+	if (punchcardnew){
+		punchcard = punchcardnew;
+	}
+}
+
+
 var floatarray = [];
 var displayfloats = 0;
 var floatsdisplayed = 0;
@@ -45,11 +60,6 @@ var floatsdisplayed = 0;
 rows = punchcard.length;
 stitches = punchcard[0].length;
 document.getElementById("length-icon").value = rows;
-
-// const queryString = window.location.search;
-// console.log(queryString);
-// 
-// const urlParams = new URLSearchParams(queryString);
 		
 var punchw = (stitches-1)*dx*d;
 var punchh = (rows-1)*dx*d;
