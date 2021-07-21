@@ -53,13 +53,8 @@ if (urlPC){
 
 const urlcolour1 = urlParams.get('colour1')
 if (urlcolour1){
-	alert("hi");
 	if (checkcolour(urlcolour1)){
-	alert("hi there");
 		colour1 = "#"+urlcolour1;
-	} else {
-	
-	alert("bi");
 	}
 }
 
