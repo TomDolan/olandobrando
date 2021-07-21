@@ -414,7 +414,6 @@ function copyarray() {
  */
 
 function changelength(){
-	closemostmenus();
 	var newn = document.getElementById("length-icon").value;
 	if (!parseInt(newn)) {
 		alert("Whoa cowboy")
@@ -440,7 +439,7 @@ function changelength(){
 		rows = newn;
 		draw();
 	}
-	
+	closemostmenus();
 }
 
 function guidesonoff(){
