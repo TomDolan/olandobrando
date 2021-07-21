@@ -86,12 +86,11 @@ var punchh = (rows-1)*dx*d;
 var punchx = W/2-punchw/2;
 var punchy = Math.max(H/2-punchh/2,20);
 
-
 draw();
 
-
 function draw(){
-
+	changecolours();
+	
 	if (floatsdisplayed){
 		floatsdisplayed = 0;
 	}
@@ -639,8 +638,6 @@ function changecolours(){
 	root.style.setProperty('--colour1', colour1);
 	root.style.setProperty('--colour2', colour2);
 	root.style.setProperty('--bgcolour', bgcolour);
-	
-	draw();
 }
 
 var opentext = document.getElementById("codetextinput");
