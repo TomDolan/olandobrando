@@ -24,7 +24,6 @@ var confirmmenu = 0;
 var colour1 = "#C6ACEC";
 var colour2 = "#228C63";
 var bgcolour = "#5A92C4";
-changecolours();
 var whichcolour = 0;
 
 var d = .2;
@@ -36,7 +35,7 @@ var nx = W/dx/d;
 var ny = H/dy/d+1;
 	
 var punchcard = [];
-punchcard=PC_littleheartscheck;//toPC("PC_vagesticleb1gm0n3y$$");
+punchcard=littlehearts;//toPC("PC_vagesticleb1gm0n3y$$");
 
 
 const queryString = window.location.search;
@@ -71,6 +70,8 @@ if (urlbgcolour){
 		bgcolour = "#"+urlbgcolour;
 	}
 }
+
+updatecolours();
 
 
 var floatarray = [];
@@ -635,6 +636,16 @@ function changecolours(){
 	colour1 = document.getElementById("colour1").value
 	colour2 = document.getElementById("colour2").value
 	bgcolour = document.getElementById("bgcolour").value
+	root.style.setProperty('--colour1', colour1);
+	root.style.setProperty('--colour2', colour2);
+	root.style.setProperty('--bgcolour', bgcolour);
+}
+
+function updatecolours(){
+	var root = document.querySelector(':root');
+	document.getElementById("colour1").value = colour1;
+	document.getElementById("colour2").value = colour2;
+	document.getElementById("bgcolour").value = bgcolour;
 	root.style.setProperty('--colour1', colour1);
 	root.style.setProperty('--colour2', colour2);
 	root.style.setProperty('--bgcolour', bgcolour);
