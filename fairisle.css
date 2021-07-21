@@ -133,6 +133,48 @@ body {
 	visibility: visible;
 	opacity: 1;
 }
+
+.savebutton {
+	position: relative;
+	display: inline-block;
+	margin:0px;
+	padding:0px;
+}
+
+.savebutton .savehelp {
+	visibility: hidden;
+	height:19px;
+	background-color: #303030;
+	color: #eee;
+	text-align: center;
+	font-size:15px;
+	white-space: nowrap;
+	border-radius: 6px;
+	padding: 5px 10px;
+	position: absolute;
+	z-index: 3;
+	right: 105%;
+	top: 12%;
+	opacity: 0;
+	transition: opacity .3s;
+	transition-delay: .5s;
+}
+
+.savebutton .savehelp::after {
+	content: "";
+	position: absolute;
+	left: 100%;
+	top: 50%;
+	margin-top: -5px;
+	border-width: 4px;
+	border-style: solid;
+	border-color: transparent transparent transparent #303030;
+}
+
+.savebutton:hover .savehelp {
+	visibility: visible;
+	opacity: 1;
+}
  
 button {
 	background-color:#404040;
@@ -269,6 +311,7 @@ button:active {
 	top:50%;
 	left:50%;
 	width:500px;
+	max-width:90%;
 	background-color: #999;
 	color: #eee;
 	text-align:center;
@@ -302,6 +345,7 @@ button:active {
 	top:50%;
 	left:50%;
 	width:400px;
+	max-width:90%;
 	background-color: #999;
 	color: #eee;
 	text-align:center;
@@ -334,6 +378,7 @@ button:active {
 	top:50%;
 	left:50%;
 	width:400px;
+	max-width:90%;
 	background-color: #999;
 	color: #eee;
 	text-align:center;
@@ -372,6 +417,7 @@ button:active {
 	top:50%;
 	left:50%;
 	width:400px;
+	max-width:90%;
 	background-color: #999;
 	color: #eee;
 	text-align:center;

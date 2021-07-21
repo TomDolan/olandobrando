@@ -56,22 +56,40 @@
 	<div class="icon">
 		<img id="save-icon" class="icon-img" width="32" height="32" src="save-icon.png" alt="save" onclick="savescreen()">
 		<span class="helpbox">Save</span>
-		<div id="savescreen">
-			<div onclick="cancelsave()" style="position:fixed;top:0px;left:0px;width:100%;height:100%;"></div>
-			<div id = "savebox">
-				<span id="savemessage">Save Punchcard</span>
-				<br />
-				<span>I've made a few ways to save your punchcards. Either copy or save it as an image (your current screen without the controls), copy as an  aray of 1s and 0s, or copy as a code which you can use to load this punchcard again. </span>
-				<br />
-				<input type="text" value="name" id="codetext" style = "width:90%;" spellcheck="false">
-				<button onclick="saveimg()" id="saveimgbutton">Save Image</button>
-				<button onclick="copyimg()" id="copyimgbutton">Copy Image</button>
-				<br />
-				<button onclick="copyarray()" id="copyarraybutton">Copy Array</button>
-				<button onclick="copycode()" id="savearraybutton">Copy Code</button>
-				<br />
-				<button onclick="cancelsave()" id="cancelsavebutton">Done</button>
+	</div>
+	<div id="savescreen">
+		<div onclick="cancelsave()" style="position:fixed;top:0px;left:0px;width:100%;height:100%;"></div>
+		<div id = "savebox">
+			<span id="savemessage">Save Punchcard</span>
+			<br />
+			
+			<div class="savebutton">
+			<button onclick="saveimg()" id="saveimgbutton">Save Image</button>
+			<button onclick="copyimg()" id="copyimgbutton">Copy Image</button>
+			<span class="savehelp">Copy or save as an image (without the controls)</span>
 			</div>
+			<br />
+			
+			<div class="savebutton">
+			<button onclick="copyarray()" id="copyarraybutton">Copy Array</button>
+			<span class="savehelp">Copy as a binary array</span>
+			</div>
+			<br />
+			
+			<div class="savebutton">
+			<button onclick="copycode()" id="copycodebutton">Copy Code</button>
+			<span class="savehelp">Create a code to reload this punchcard</span>
+			</div>
+			<br />
+			
+			<div class="savebutton">
+			<button onclick="copyurl()" id="copyurlbutton">Copy URL</button>
+			<span class="savehelp">Create URL containing punchcard code and colour values</span>
+			</div>
+			<br />
+			
+			<button onclick="cancelsave()" id="cancelsavebutton">Done</button>
+			<input type="text" value="name" id="codetext" style = "width:90%;display:none;" spellcheck="false">
 		</div>
 	</div>
 	

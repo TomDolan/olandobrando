@@ -40,7 +40,6 @@ punchcard=PC_littleheartscheck;//toPC("PC_vagesticleb1gm0n3y$$");
 
 
 const queryString = window.location.search;
-console.log(queryString);
 
 const urlParams = new URLSearchParams(queryString);
 
@@ -49,6 +48,32 @@ if (urlPC){
 	var punchcardnew = toPC(urlPC);
 	if (punchcardnew){
 		punchcard = punchcardnew;
+	}
+}
+
+const urlcolour1 = urlParams.get('colour1')
+if (urlcolour1){
+	alert("hi");
+	if (checkcolour(urlcolour1)){
+	alert("hi there");
+		colour1 = "#"+urlcolour1;
+	} else {
+	
+	alert("bi");
+	}
+}
+
+const urlcolour2 = urlParams.get('colour2')
+if (urlcolour2){
+	if (checkcolour(urlcolour2)){
+		colour2 = "#"+urlcolour2;
+	}
+}
+
+const urlbgcolour = urlParams.get('bgcolour')
+if (urlbgcolour){
+	if (checkcolour(urlbgcolour)){
+		bgcolour = "#"+urlbgcolour;
 	}
 }
 
@@ -282,15 +307,31 @@ function copyimg(){
 
 function copycode(){
 	var copyText = document.getElementById("codetext");
+	copyText.style.display = "block";
+	copyText.value = tocode(punchcard);
 	
 	copyText.select();
 	copyText.setSelectionRange(0, 99999)
 	document.execCommand("copy");
 	copyText.blur();
+	copyText.style.display = "none";
+}
+
+function copyurl(){
+	var copyText = document.getElementById("codetext");
+	copyText.style.display = "block";
+	copyText.value = tourl(punchcard);
+	
+	copyText.select();
+	copyText.setSelectionRange(0, 99999)
+	document.execCommand("copy");
+	copyText.blur();
+	copyText.style.display = "none";
 }
 
 function copyarray(){
 	var copyText = document.getElementById("codetext");
+	copyText.style.display = "block";
 	var str = "[";
 	
 	for (i=0; i<rows-1; i++){
@@ -314,6 +355,7 @@ function copyarray(){
 	 
 	copyText.value = tocode(punchcard);
 	copyText.blur();
+	copyText.style.display = "none";
 }
 
 function saveimg(){
@@ -689,6 +731,11 @@ function closemostmenus() {
 	document.getElementById("length-icon").value = rows;
 }
 
+function tourl(str) {
+	var url = "https://olandobrando.com/fairisle?PC="+tocode(punchcard)+"&colour1="+colour1.substr(1,6)+"&colour2="+colour2.substr(1,6)+"&bgcolour="+bgcolour.substr(1,6)
+	return url;
+}
+
 function tocode(str) {
 	var code = "PC_"
 	for (i = 0; i < str.length; i ++) {
@@ -758,5 +805,9 @@ function tobin(str) {
 	return result;
 }
 
-
+function checkcolour(str) {
+  return typeof str === 'string'
+      && str.length === 6
+      && !isNaN(Number('0x' + str))
+}
 
