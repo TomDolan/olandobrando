@@ -13,6 +13,7 @@ var pi = Math.PI;
 var xpos = -1;
 var ypos = -1;
 var clicked = 0;
+var f = 0;
 
 var guides = 0;
 var knit = 1;
@@ -21,9 +22,9 @@ var colourmenu = 0;
 var translatemenu = 0;
 var confirmmenu = 0;
 
-var colour1 = "#C6ACEC";
-var colour2 = "#228C63";
-var bgcolour = "#5A92C4";
+var colour1 = "#111111";
+var colour2 = "#963838";
+var bgcolour = "#e3e3e5";
 var whichcolour = 0;
 
 var d = .2;
@@ -35,7 +36,13 @@ var nx = W/dx/d;
 var ny = H/dy/d+1;
 	
 var punchcard = [];
-punchcard=PC_poo1;//toPC("PC_vagesticleb1gm0n3y$$");
+punchcard=littlehearts;
+
+var undopc=[];
+var undolength=0;
+var ctrlkey = 0;
+var zkey=0;
+var canundo=0;
 
 
 const queryString = window.location.search;
@@ -110,7 +117,7 @@ function draw(){
 				} else {
 					ctx.fillStyle = colour2;
 				}		
-				var highlight = 0;
+				highlight = 0;
 				if (displayfloats){
  					if (floatarray[(j+rows-1)%rows][i%stitches]){
  						highlight = 1;
@@ -135,7 +142,7 @@ function draw(){
 		
 			ctx.stroke();
 		}
-	} else {
+	} else { //punchcard view
 		
 		punchw = (stitches-1)*dx*d;
 		punchh = (rows-1)*dx*d;
@@ -188,18 +195,18 @@ function drawstitch(x,y,w,h, highlight){
 	ctx.beginPath();
 	ctx.transform(w,0,0,h,x,y);
 	ctx.moveTo(0.15,0);
-	ctx.bezierCurveTo(-0.1,0.2, 0.05,0.4, 0.4,1.02);
+	ctx.bezierCurveTo(-0.1,0.2, 0.05,0.4, 0.43,1.02);
 	ctx.bezierCurveTo(0.48,0.75, 0.6,0.75, 0.2,0.1);
 	ctx.lineTo(0.15,0);
 	
 	ctx.transform(-1,0,0,1,1,0);
 	ctx.moveTo(0.15,0);
-	ctx.bezierCurveTo(-0.1,0.2, 0.05,0.4, 0.4,1.02);
+	ctx.bezierCurveTo(-0.1,0.2, 0.05,0.4, 0.43,1.02);
 	ctx.bezierCurveTo(0.48,0.75, 0.6,0.75, 0.2,0.1);
 	ctx.lineTo(0.15,0);
 	ctx.strokeStyle = bgcolour;
 	ctx.lineWidth = .07;
-	ctx.stroke();
+	//ctx.stroke();
 	ctx.fill();
 	
 	if (highlight) {
@@ -240,46 +247,111 @@ document.addEventListener("mouseleave", function(event){
 function coords(e){
 	xpos = e.clientX;
 	ypos = e.clientY;
-	if (clicked) {
-		if (knit){
-			gridi = parseInt((xpos)/W*nx)%stitches;
-			//gridj = parseInt((ypos)/H*(ny-1)+rows-.7)%rows;
-			gridj = parseInt((ypos)/H*(ny-1)+rows-.35+.4*Math.cos(xpos*(2*pi)/(W/nx)))%rows;
-			punchcard[gridj][gridi]=whichcolour;
-		} else {
-			if(xpos<(punchx-37.5*d) || xpos>(punchx+punchw+37.5*d) || ypos<(punchy-37.5*d) || ypos>(punchy+punchh+37.5*d)){
-			} else {
-				gridi = parseInt((xpos-(punchx-37.5*d))/(punchw+12.5)*stitches);
-				gridj = parseInt((ypos-(punchy-37.5*d))/(punchh+12.5)*rows);
-				punchcard[gridj][gridi]=1-punchcard[gridj][gridi];
-			}
-		}
-		draw()
-	}
-}
+// 	if (clicked) {
+// 		if (knit){
+// 			gridi = parseInt((xpos)/W*nx)%stitches;
+// 			//gridj = parseInt((ypos)/H*(ny-1)+rows-.7)%rows;
+// 			gridj = parseInt((ypos)/H*(ny-1)+rows-.35+.4*Math.cos(xpos*(2*pi)/(W/nx)))%rows;
+// 			punchcard[gridj][gridi]=whichcolour;
+// 		} else {
+// 			if(xpos<(punchx-37.5*d) || xpos>(punchx+punchw+37.5*d) || ypos<(punchy-37.5*d) || ypos>(punchy+punchh+37.5*d)){
+// 			} else {
+// 				gridi = parseInt((xpos-(punchx-37.5*d))/(punchw+12.5)*stitches);
+// 				gridj = parseInt((ypos-(punchy-37.5*d))/(punchh+12.5)*rows);
+// 				punchcard[gridj][gridi]=1-punchcard[gridj][gridi];
+// 			}
+// 		}
+// 	}
+	
+ }
 
 function click (){
 	closemenus();
 	clicked = 1;
+	savestate();
 	if (knit){
 		gridi = parseInt((xpos)/W*nx)%stitches;
-		//gridj = parseInt((ypos)/H*(ny-1)+rows-.7)%rows;
-		gridj = parseInt((ypos)/H*(ny-1)+rows-.35+.4*Math.cos(xpos*(2*pi)/(W/nx)))%rows;
+		gridj = parseInt((ypos)/H*(ny-1)+rows)%rows;
+		//gridj = parseInt((ypos)/H*(ny-1)+rows-.35+.4*Math.cos(xpos*(2*pi)/(W/nx)))%rows;
 		punchcard[gridj][gridi]=1-punchcard[gridj][gridi];
-		whichcolour = punchcard[gridj][gridi];
+		if (f){
+			fill(gridi, gridj,1-punchcard[gridj][gridi]);
+		}
+		//whichcolour = punchcard[gridj][gridi];
 	} else {
 		if(xpos<(punchx-37.5*d) || xpos>(punchx+punchw+37.5*d) || ypos<(punchy-37.5*d) || ypos>(punchy+punchh+37.5*d)){
 		} else {
-			gridi = parseInt((xpos-(punchx-37.5*d))/(punchw+12.5)*stitches);
-			gridj = parseInt((ypos-(punchy-37.5*d))/(punchh+12.5)*rows);
+			gridi = parseInt((xpos-punchx+37.5*d)/dx/d)%stitches;
+			gridj = parseInt((ypos-punchy+37.5*d)/dx/d)%rows;
+// 			gridi = parseInt((xpos-(punchx-37.5*d))/(punchw+12.5)*stitches);
+// 			gridj = parseInt((ypos-(punchy-37.5*d))/(punchh+12.5)*rows);
 			punchcard[gridj][gridi]=1-punchcard[gridj][gridi];
+			if (f){
+				fill(gridi, gridj, 1-punchcard[gridj][gridi]);
+			}
 		}
 	}
-	draw()
+	draw();
 }
 
 function declick (){
 	clicked = 0;
+}
+
+document.getElementById("iconbox").onmouseover = function(){
+  	document.getElementById("pointer").style.display = "none";
+  	document.body.style.cursor = 'auto';
+};
+
+document.getElementById("canvas").onmouseover = function(){
+  	document.getElementById("pointer").style.display = "block";
+  	document.body.style.cursor = 'none';
+};
+document.getElementById("canvas").onmousemove = function(){
+	if (knit){
+	  	document.getElementById("pointer").style.width = (100*d)+4 + "px";
+  		document.getElementById("pointer").style.height = (100*d)+4 + "px";
+ 	 	document.getElementById("pointer").style.left = parseInt((xpos)/W*nx)*W/nx-2 + "px";
+  		document.getElementById("pointer").style.top = parseInt((ypos)/H*(ny-1))*H/(ny-1)-2 + "px";
+	} else {
+		document.getElementById("pointer").style.width = (70*d) + "px";
+		document.getElementById("pointer").style.height = (70*d) + "px";
+		if(xpos<(punchx-37.5*d) || xpos>(punchx+punchw+37.5*d) || ypos<(punchy-37.5*d) || ypos>(punchy+punchh+37.5*d)){
+			document.getElementById("pointer").style.left = parseInt(xpos-75*d/2) + "px";
+			document.getElementById("pointer").style.top = parseInt(ypos-75*d/2) + "px";
+		} else {
+ 	 		document.getElementById("pointer").style.left = punchx-parseInt(37.5*d)+parseInt((xpos-punchx+37.5*d)/dx/d)*dx*d + "px";
+  			document.getElementById("pointer").style.top = punchy-parseInt(37.5*d)+parseInt((ypos-punchy+37.5*d)/dx/d)*dx*d + "px";///W*nx)*W/nx + "px";
+		}	 
+	}
+};
+
+function fill(gridi, gridj, clicked){
+	var queue = [];
+	queue[0] = [gridi, gridj];
+	while (queue.length>0){
+		var currentpoint = queue.pop();
+		var uppoint = [currentpoint[0], (currentpoint[1]-1+rows)%rows];
+		var downpoint = [currentpoint[0], (currentpoint[1]+1)%rows];
+		var leftpoint = [(currentpoint[0]-1+stitches)%stitches, currentpoint[1]];
+		var rightpoint = [(currentpoint[0]+1)%stitches, currentpoint[1]];
+		if (punchcard[uppoint[1]][uppoint[0]]==clicked){
+			queue.push([uppoint[0],uppoint[1]]);
+			punchcard[uppoint[1]][uppoint[0]]=1-clicked;
+		}
+		if (punchcard[downpoint[1]][downpoint[0]]==clicked){
+			queue.push([downpoint[0],downpoint[1]]);
+			punchcard[downpoint[1]][downpoint[0]]=1-clicked;
+		}
+		if (punchcard[leftpoint[1]][leftpoint[0]]==clicked){
+			queue.push([leftpoint[0],leftpoint[1]]);
+			punchcard[leftpoint[1]][leftpoint[0]]=1-clicked;
+		}
+		if (punchcard[rightpoint[1]][rightpoint[0]]==clicked){
+			queue.push([rightpoint[0],rightpoint[1]]);
+			punchcard[rightpoint[1]][rightpoint[0]]=1-clicked;
+		}
+	}
 }
 
 function savescreen() {
@@ -421,6 +493,9 @@ function changelength(){
 		document.getElementById("length-icon").value = rows;
 		return;
 	}
+	if (newn!=rows){	
+		savestate();
+	}
 	if (newn>rows){
 		for (i = rows; i<newn; i++){
 			punchcard[i] = [];
@@ -464,9 +539,11 @@ function changeview(){
 	if (knit){
 		document.getElementById("view-icon").src = "punchcard-icon.png";
 		document.getElementById("view-helpbox").innerHTML = "Punchcard View";
+		document.getElementById("pointer").src = "knitpointer.png"
 	} else {
 		document.getElementById("view-icon").src = "knit-icon.png";
 		document.getElementById("view-helpbox").innerHTML = "Knit View";
+		document.getElementById("pointer").src = "punchpointer.png"
 	}
 	draw();
 }
@@ -813,3 +890,80 @@ function checkcolour(str) {
       && !isNaN(Number('0x' + str))
 }
 
+//shortcuts
+
+document.addEventListener('keydown', shortcut);
+function shortcut(e) {
+  if(e.keyCode==70){
+	document.getElementById("confirmmenu").style.display = "none";
+	document.getElementById("lengthhelp").style.display = "block";
+	confirmmenu = 0;		
+	document.getElementById("length-icon").value = rows;
+  	f=1;
+  	document.getElementById("length-icon").blur();
+  }
+  if(e.keyCode==37){
+  	shiftleft();
+  }
+  if(e.keyCode==38){
+  	shiftup();
+  }
+  if(e.keyCode==39){
+  	shiftright();
+  }
+  if(e.keyCode==40){
+  	shiftdown();
+  }
+  if(e.keyCode==90){
+	document.getElementById("confirmmenu").style.display = "none";
+	document.getElementById("lengthhelp").style.display = "block";
+	confirmmenu = 0;		
+	document.getElementById("length-icon").value = rows;
+  	document.getElementById("length-icon").blur();
+  	undo();
+  }
+}
+
+document.addEventListener('keyup', deshortcut);
+function deshortcut(e) {
+  if(e.keyCode==70){
+  	f=0;
+  }
+}
+
+function savestate(){
+	for (i=0; i<rows; i++){
+		undopc[i]=[];
+		for(j=0; j<stitches; j++){
+			undopc[i][j] = punchcard[i][j];
+		}
+	}
+	undolength=rows;
+	canundo=1;
+}
+
+function undo(){
+	var temppc=[];
+	for (i=0; i<rows; i++){
+		temppc[i]=[];
+		for(j=0; j<stitches; j++){
+			temppc[i][j] = punchcard[i][j];
+		}
+	}
+	for (i=0; i<undolength; i++){
+		for(j=0; j<stitches; j++){
+			punchcard[i][j] = undopc[i][j];
+		}
+	}
+	for (i=0; i<rows; i++){
+		undopc[i]=[];
+		for(j=0; j<stitches; j++){
+			undopc[i][j] = temppc[i][j];
+		}
+	}
+	var templength = rows;
+	rows=undolength;
+	undolength=templength;
+	document.getElementById("length-icon").value = rows;
+	draw();
+}
