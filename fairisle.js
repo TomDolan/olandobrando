@@ -22,9 +22,9 @@ var colourmenu = 0;
 var translatemenu = 0;
 var confirmmenu = 0;
 
-var colour1 = "#111111";
-var colour2 = "#963838";
-var bgcolour = "#e3e3e5";
+var colour1 = "#E1A975";
+var colour2 = "#8071CC";
+var bgcolour = "#7A6669";
 var whichcolour = 0;
 
 var d = .2;
@@ -36,7 +36,7 @@ var nx = W/dx/d;
 var ny = H/dy/d+1;
 	
 var punchcard = [];
-punchcard=littlehearts;
+punchcard=PC_littleheartscheck;
 
 var undopc=[];
 var undolength=0;
