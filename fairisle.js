@@ -319,6 +319,7 @@ document.getElementById("canvas").onmousemove = function(){
   		document.getElementById("pointer").style.height = (100*d)+4 + "px";
  	 	document.getElementById("pointer").style.left = parseInt((xpos)/W*nx)*W/nx-2 + "px";
   		document.getElementById("pointer").style.top = parseInt((ypos)/H*(ny-1))*H/(ny-1)-2 + "px";
+  		
 	} else {
 		document.getElementById("pointer").style.width = (70*d) + "px";
 		document.getElementById("pointer").style.height = (70*d) + "px";
