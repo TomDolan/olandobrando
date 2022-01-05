@@ -94,6 +94,9 @@ var punchh = (rows-1)*dx*d;
 var punchx = W/2-punchw/2;
 var punchy = Math.max(H/2-punchh/2,20);
 
+var xclick;
+var yclick;
+
 draw();
 
 function draw(){
@@ -265,19 +268,22 @@ function coords(e){
 	
  }
 
-function click (){
+function click (e){
 	closemenus();
 	clicked = 1;
 	savestate();
 	if (knit){
 		gridi = parseInt((xpos)/W*nx)%stitches;
 		gridj = parseInt((ypos)/H*(ny-1)+rows)%rows;
-		//gridj = parseInt((ypos)/H*(ny-1)+rows-.35+.4*Math.cos(xpos*(2*pi)/(W/nx)))%rows;
 		punchcard[gridj][gridi]=1-punchcard[gridj][gridi];
 		if (f){
 			fill(gridi, gridj,1-punchcard[gridj][gridi]);
 		}
-		//whichcolour = punchcard[gridj][gridi];
+		if (e.shiftKey){
+			linebetween(xclick,yclick,parseInt((xpos)/W*nx),parseInt((ypos)/H*(ny-1)),punchcard[gridj][gridi]);
+		}
+		xclick = parseInt((xpos)/W*nx);
+		yclick = parseInt((ypos)/H*(ny-1));
 	} else {
 		if(xpos<(punchx-37.5*d) || xpos>(punchx+punchw+37.5*d) || ypos<(punchy-37.5*d) || ypos>(punchy+punchh+37.5*d)){
 		} else {
@@ -321,7 +327,7 @@ document.getElementById("canvas").onmousemove = function(){
 			document.getElementById("pointer").style.top = parseInt(ypos-75*d/2) + "px";
 		} else {
  	 		document.getElementById("pointer").style.left = punchx-parseInt(37.5*d)+parseInt((xpos-punchx+37.5*d)/dx/d)*dx*d + "px";
-  			document.getElementById("pointer").style.top = punchy-parseInt(37.5*d)+parseInt((ypos-punchy+37.5*d)/dx/d)*dx*d + "px";///W*nx)*W/nx + "px";
+  			document.getElementById("pointer").style.top = punchy-parseInt(37.5*d)+parseInt((ypos-punchy+37.5*d)/dx/d)*dx*d + "px";
 		}	 
 	}
 };
@@ -350,6 +356,68 @@ function fill(gridi, gridj, clicked){
 		if (punchcard[rightpoint[1]][rightpoint[0]]==clicked){
 			queue.push([rightpoint[0],rightpoint[1]]);
 			punchcard[rightpoint[1]][rightpoint[0]]=1-clicked;
+		}
+	}
+}
+
+function linebetween(x1,y1,x2,y2,colour){
+	var rise = y2-y1;
+	var run = x2-x1;
+	if(run==0){
+		if(y2<y1){
+			var ytemp=y2;
+			y2 = y1;
+			y1=ytemp;
+		}
+		for (var y = y1; y<y2+1; y++){
+			punchcard[(y+rows)%rows][(x1+stitches)%stitches]=colour;
+		}
+	} else {
+		var m = rise/run;
+		if (m>=0){
+			var adjust=1;
+		} else {
+			var adjust=-1;
+		}
+		var offset = 0;
+		if (m<=1 && m>=-1){
+			var delta = Math.abs(rise)*2;
+			var threshold = Math.abs(run);
+			var thresholdinc = Math.abs(run)*2;
+			var y = y1;
+			if (x2<x1){
+				y=y2;
+				var xtemp = x2;
+				x2 = x1;
+				x1 = xtemp;
+			}
+			for (var x = x1; x<x2+1; x++ ){
+				punchcard[(y+rows)%rows][(x+stitches)%stitches]=colour;
+				offset+=delta;
+				if (offset>=threshold){
+					y+=adjust;
+					threshold+=thresholdinc;
+				}
+			}
+		} else {
+			var delta = Math.abs(run)*2;
+			var threshold = Math.abs(rise);
+			var thresholdinc = Math.abs(rise)*2;
+			var x = x1;
+			if (y2<y1){
+				x=x2;
+				var ytemp = y2;
+				y2 = y1;
+				y1 = ytemp;
+			}
+			for (var y = y1; y<y2+1; y++ ){
+				punchcard[(y+rows)%rows][(x+stitches)%stitches]=colour;
+				offset+=delta;
+				if (offset>=threshold){
+					x+=adjust;
+					threshold+=thresholdinc;
+				}
+			}
 		}
 	}
 }
