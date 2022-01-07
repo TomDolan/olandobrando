@@ -8,6 +8,10 @@ ctx.rect(0,0,W,H);
 ctx.fillStyle = "#000";
 ctx.fill();
 
+
+document.getElementById("pointer").style.width = 0 + "px";
+document.getElementById("pointer").style.height = 0 + "px";
+
 var pi = Math.PI;
 
 var xpos = -1;
@@ -319,7 +323,6 @@ document.getElementById("canvas").onmousemove = function(){
   		document.getElementById("pointer").style.height = (100*d)+4 + "px";
  	 	document.getElementById("pointer").style.left = parseInt((xpos)/W*nx)*W/nx-2 + "px";
   		document.getElementById("pointer").style.top = parseInt((ypos)/H*(ny-1))*H/(ny-1)-2 + "px";
-  		
 	} else {
 		document.getElementById("pointer").style.width = (70*d) + "px";
 		document.getElementById("pointer").style.height = (70*d) + "px";
