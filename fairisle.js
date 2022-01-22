@@ -240,6 +240,7 @@ window.onresize = function() {
 document.getElementById("canvasbox").onmousemove = coords;
 document.getElementById("canvasbox").onmousedown = click;
 document.getElementById("canvasbox").onmouseup = declick;
+document.getElementById("canvasbox").ontouchstart = nocursor;
 
 document.addEventListener("mouseleave", function(event){
 
@@ -306,6 +307,10 @@ function click (e){
 
 function declick (){
 	clicked = 0;
+}
+
+function nocursor (){
+  	document.getElementById("pointer").style.display = "none";
 }
 
 document.getElementById("iconbox").onmouseover = function(){
