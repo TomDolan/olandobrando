@@ -452,7 +452,7 @@ function copyimg(){
 function copycode(){
 	var copyText = document.getElementById("codetext");
 	copyText.style.display = "block";
-	copyText.value = tocode(punchcard);
+	copyText.value = tocode(punchcard, rows);
 	
 	copyText.select();
 	copyText.setSelectionRange(0, 99999)
@@ -464,7 +464,7 @@ function copycode(){
 function copyurl(){
 	var copyText = document.getElementById("codetext");
 	copyText.style.display = "block";
-	copyText.value = tourl(punchcard);
+	copyText.value = tourl(punchcard, rows);
 	
 	copyText.select();
 	copyText.setSelectionRange(0, 99999)
@@ -497,7 +497,7 @@ function copyarray(){
 	copyText.setSelectionRange(0, 99999)
 	document.execCommand("copy");
 	 
-	copyText.value = tocode(punchcard);
+	copyText.value = tocode(punchcard, rows);
 	copyText.blur();
 	copyText.style.display = "none";
 }
@@ -508,54 +508,6 @@ function saveimg(){
 	  link.href = document.getElementById('canvas').toDataURL()
 	  link.click();
 }
-
-/* 
-function savearray(){
-	var blob = new Blob([document.getElementById("arraytext").value],
-                { type: "text/plain;charset=utf-8" });
-    
-	var link = document.createElement("a"),
-			url = URL.createObjectURL(blob);
-	link.href = url;
-	link.download = "punchcard.txt";
-	document.body.appendChild(link);
-	link.click();
-	setTimeout(function() {
-		document.body.removeChild(link);
-		window.URL.revokeObjectURL(url);  
-	}, 0); 
-}
- */
-
-/* 
-function copyarray() {
-	closemenus();
-	var copyText = document.getElementById("arraytext");
-	var name = copyText.value;
-	
-	var str = "PC_" + name + " = [";
-	
-	for (i=0; i<rows-1; i++){
-		str += "[";
-		for (j=0; j<stitches-1; j++){
-			str += punchcard[i][j] + ", ";
-		}
-		str += punchcard[i][stitches-1] + "],";
-	}
-	str += "[";
-	for (j=0; j<stitches-1; j++){
-		str += punchcard[rows-1][j] + ", ";
-	}
-	str += punchcard[rows-1][stitches-1] + "]];";
-
-	copyText.value = str;
-	copyText.select();
-	copyText.setSelectionRange(0, 99999)
-	document.execCommand("copy");
-	
-	copyText.value = name;
-}
- */
 
 function changelength(){
 	var newn = document.getElementById("length-icon").value;
@@ -887,14 +839,15 @@ function closemostmenus() {
 	document.getElementById("length-icon").value = rows;
 }
 
-function tourl(str) {
-	var url = "https://olandobrando.com/fairisle?PC="+tocode(punchcard)+"&colour1="+colour1.substr(1,6)+"&colour2="+colour2.substr(1,6)+"&bgcolour="+bgcolour.substr(1,6)
+function tourl(str, n) {
+	var url = "https://olandobrando.com/fairisle?PC="+tocode(punchcard, n)+"&colour1="+colour1.substr(1,6)+"&colour2="+colour2.substr(1,6)+"&bgcolour="+bgcolour.substr(1,6)
 	return url;
 }
 
-function tocode(str) {
+function tocode(str, n) {
 	var code = "PC_"
-	for (i = 0; i < str.length; i ++) {
+	n=Math.min(n,str.length);
+	for (i = 0; i < n; i ++) {
 		var result = str[i].join('')
 		code += to64(result.substr(0, 6)) + to64(result.substr(6, 6)) + to64(result.substr(12, 6)) + to64(result.substr(18, 6));
 	}
