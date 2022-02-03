@@ -399,6 +399,12 @@ button:active {
 	display:inline-block;
 }
 
+#punchselect {
+	height: 32px; 
+	width: 300px; 
+	display:inline-block;
+}
+
 #savescreen {
   position: fixed; /* Sit on top of the page content */
   display: none; /* Hidden by default */
@@ -528,6 +534,30 @@ input[type=text]:hover {
 }
 
 input[type=text]:focus {
+	border:none;
+	outline:none;
+	background-color:#202020;
+}
+
+select {
+	background-color:#404040;
+	border:none;
+	border-radius:4px;
+	display:inline-block;
+	margin:4px;
+	color:white;
+	text-align:center;
+	font-size:15px;
+	font-family: 'Roboto', sans-serif;
+	padding:0px;
+	height:32px;
+}
+
+select:hover {
+	background-color:#303030;
+}
+
+select:focus {
 	border:none;
 	outline:none;
 	background-color:#202020;

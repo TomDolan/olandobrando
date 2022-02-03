@@ -610,6 +610,7 @@ function closescreen() {
 }
 
 function reset(){
+	savestate();
 	for (i = 0; i<rows; i++){
 		punchcard[i] = [];
 		for (j = 0; j < stitches; j++){
@@ -621,6 +622,7 @@ function reset(){
 }
 
 function openbutton(){
+	savestate();
 	var str = document.getElementById("codetextinput").value;
 	if (str) {
 		if (toPC(str)) {
@@ -995,5 +997,59 @@ function undo(){
 	rows=undolength;
 	undolength=templength;
 	document.getElementById("length-icon").value = rows;
+	draw();
+}
+
+
+function loadbutton(){
+	savestate();
+	var name = document.getElementById("punchselect").value;
+	var str;
+	if (name=="hearts"){
+		str = "PC_eZHeKDtKejueKEtKebmeKI_Ked9eKJKKeeeeKKKKeeee4KKGHeeZtKKDueejtKKEmeeb_KKI9eedKKKJeeeeKG4K";
+	} else if (name=="littlehearts"){
+		str = "PC_eeeeKKKKVeVeGKGKeeeeKUKUeieiKKKK";
+	} else if (name=="mediumhearts"){
+		str = "PC_wR7bw7Srs$UnkXUlWrUk0zEV8z61Sz16wy$6wR7bw7Srs$UnkXUlWrUk0zEV8z61Sz16wy$6";
+	} else if (name=="bighearts"){
+		str = "PC_k6k6YYYY6k6kEsEsDwTsSTxRPjugSMpRPfegSKKRPeegCKKNDees6KKk6eflYpMYluj6sxTEwTwTTEsxj6luMYYpfl6eKk6KesDeKNCKegPeKRSKegPfpRSMugPjxRSTTsDwEsEs6k6kYYYYk6k6sEsEsDwTRSTxgPjuRSMpgPfeRSKKgPeeNCKKsDeek6KKl6efYYpM6lujEsxTTwTwxTEsuj6lpMYYefl6KKk6eesDKKNCeegPKKRSfegPMpRSjugPTxRSwTsDsEsE";
+	} else if (name=="heartsmix"){
+		str = "PC_tgeisspjsFejn5K6bj9f5v3t6j$FIy93dwU97sU8NFUBn5D5bj3f5v$t5I3FI5G3";
+	} else if (name=="heartsandstars"){
+		str = "PC_OswmQxymvjisr66Nr9bSrSrSrUrUrPrUr7bSn45SnXDPtmRuNssmRSlrDEYbb66EtbBxbmUED12bBkOX";
+	} else if (name=="olando"){
+		str = "PC_ItKKdweeJyKKeRee$8KKD1ceU4HJzeb9z_EZzebmU4IsD9dw$KJy9eeU_KKEmeeUtKKUmeeU_KKE9eebKKF$eeYXKK6leejsKKEweejsKK6lec2XKG049YV9_6kJmjsdtExIwjsdy6lJU2XeEV4Kbmee";
+	} else if (name=="chainphoto"){
+		str = "PC_zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzkEzz0Kzy9ezy3MUw72jwJ0rss1vsR0Sss2DsR46sNciNSw6sDy6RSz6iDz2w6U2iDzYr6U0y2jWr6UlvYjVU0rk2YjWGlr$cWu$SlqFDss76FR3DsD16ND0bc5$6RM0YivVIrSkYjiVGrr$0vvXGrxo7visFz6R7vYc3SWF7UVVJSl0sDkYw5kly5klw5NGe1NN31RN7FR7FFR3VNT$$RT0VRD1WRM0Vsy2lRU0VsvYkNU0kkUWkNSlskEVwFEkuZDsSB6kRyEsSR6RDy2sEU6wDz2i6U0w6jYq6U0r2jWy0rlvWvVv0rkzVvktoSkSuD7Rxb$RyvcRxxFSyy$xzU0xzjjvzrUnzuzbzxU6zyVEzz$zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz";
+	} else if (name=="bigchain"){
+		str = "PC_Mw5KbxyeMxyKbxyeMxyKbxyeMxyKbxyeMxyKbxyeMw5KbxueMxwKbxye6xyKMxz9MxzKMxz9rxz3nwzevwzZvyzVvyUptzUlxzEpwzjlyzjpyUElyDEpyVjlyKEpyejlyKEpyejlyKEpyejlyKEpyVjlyDEpyUElyzjpwzjlxzEptzUlvyUpvyzVvwzZnwzerxz3Mxz9MxzKMxz96xyKbxyeMxwKbxue";
+	} else if (name=="stylechain"){
+		str = "PC_UpMxzefyUpMxzcAyUk6xzV2yUV2xz$2yU$2xy$6yT$6xi$EuT$Exg$EuR$Upg$UuJ$Upg$UuJ$U_c$UeJ$U4c$T9J$$4c$F9J$$4c$F9J$$4c$F9J$$4c$F9J$$4c$F9J$$4c$F9J$T4c$U9J$U_g$UuJ$Upg$UuR$Upg$EuT$Exi$EuT$6xy$6yU$2xz$2yUV2xzV2yUk6xzcAyUpMxzefyUpMxzefy";
+	} else if (name=="mediumchain"){
+		str = "PC_54cOaCgOaCgOaOaOaOaOgOaCgOaCcNa4VN50VN50VN50cO54gOaCgOaCaOaOaOaOaCgOaCgOa4cN50VN50VN50VN";
+	} else if (name=="smallchain"){
+		str = "PC_V4aOF2BnGqOVYCl7aN0OBo$nN3SaH7nRLOa$BnC$Oa06r3XBV4aOF2BnGqOVYCl7aN0OBo$nN3SaH7nRLGa$BYC$O506q3XBV4aOF2BnGqOVYCl7aN0OBo$nN3SaH7nRLOa$BnC$Oa06r3XB";
+	} else if (name=="poopemoji"){
+		str = "PC_$$$$zb00yUY2tzYYrzbIjz5tUs0szaEkyTUgxyzTQwwy6snyE$EwDlzv_nzrYYzEWYwz00nz$$$$$$$$00zbY2yUYYtzbIrz5tjz0sUsEkzaUgyTzTxywyQwny6sEwE$zvDlzr_nzEYYwzWYnz00$$$$";
+	} else if (name=="dune"){
+		str = "PC_7X9X7dHX7eXXccHXcX7Xc_JXc6uXc6x1cYy1cMx1czyXcUz1XzyXZUxHXjs1Z0k1VWV1Z0V1eAe74KxFeyicKxrFYyjXpxrJuzjVWw6FXy9VdUKFefsVdJ0FcjeVcK31c9e1d6wHcYsXdGGHcc$XdJ0Hcu1XdS4H7ieX8UKH7iyX8MUH7ePX7KK979e97WFe7cce7ZHX$1V$$3$$$$$$$$$$$$$$$$$$";
+	} else if (name=="zebraprint"){
+		str = "PC_1OZYLt3aZmK3hlZ88bBYQDU6HRyDLtwTonsT_bZwfa7xYBlt5O_n3n8b8DOD$wIDEkHRzXmNw3mnlBar1OZbLv3iZkCBClgOObRIQBsamOtDqImRqraOZj3lhTBngs8b7lQbOXvEIRvDrtmRjlqRU1qOw5qklBal";
+	} else if (name=="checkerboard1x1"){
+		str = "PC_eeeeKKKK";
+	} else if (name=="checkerboard2x2"){
+		str = "PC_OaOaOaOaaOaOaOaO";
+	} else {
+		alert("Something has gone wrong here!");
+		return;
+	}
+	
+	punchcard = toPC(str);
+		
+	rows = punchcard.length;
+	stitches = punchcard[0].length;
+	document.getElementById("length-icon").value = rows;
+			
+	closescreen();
 	draw();
 }

@@ -20,9 +20,9 @@
 			<div id = "infobox">
 				<span id="infomessage">Info</span>
 				<br /><br />
-				<span>Hi! I made this so I could test out fair-isle punchcard patterns for my knitting machine. If you're using it I hope it helps you too!
-				</br><br />Hopefully it is fairly easy to use, click on stitches and they swap colour and there's editing tools on the right. This runs best on desktop/laptop but should still work on your phone.
-				</br><br />If you have any issues or find any bugs send me a message @olandobrando on Instagram. 
+				<span>Hi! I made this so I could test out fair isle punchcard patterns for my knitting machine. If you're using it I hope it helps you too!
+				</br><br />Click on stitches to swap colour, f+click to fill, shift+click for straight lines, z to undo. This runs best on desktop/laptop but you can still try on your phone.
+				</br><br />If you have any issues or find any bugs send me a message @olandobrando on Instagram or TikTok. 
 				</br><br />If you make anything I would love to see! tag me/dm @olandobrando</span>
 				<br /><br />
 				<button onclick="closeinfoscreen()" id="closeinfobutton">Done</button>
@@ -41,12 +41,33 @@
 				<button onclick="confirmreset()" id="confirmbutton">New</button>
 				<br />
 				<input type="text" placeholder="<Punchcard Code>" id="codetextinput" spellcheck="false">
-				<button onclick="openbutton()" id="openmbutton">Open</button>
+				<button onclick="openbutton()" id="openbutton">Open</button>
+				<br />
+				<select name="Select Punchcard" id="punchselect">
+					<option value="hearts">Hearts</option>
+					<option value="littlehearts">Little Hearts</option>
+					<option value="mediumhearts">Medium Hearts</option>
+					<option value="bighearts">Big Hearts</option>
+					<option value="heartsmix">Hearts Mix</option>
+					<option value="heartsandstars">Hearts and Stars</option>
+					<option value="olando">OLANDO</option>
+					<option value="smallchain">Small Chain</option>
+					<option value="mediumchain">Medium Chain</option>
+					<option value="bigchain">Big Chain</option>
+					<option value="stylechain">Big Chain 2</option>
+					<option value="chainphoto">Chain Photo</option>
+					<option value="zebraprint">Zebra Print</option>
+					<option value="poopemoji">Poop Emoji</option>
+					<option value="dune">Dune</option>
+					<option value="checkerboard1x1">Checkerboard 1x1</option>
+					<option value="checkerboard2x2">checkerboard 2x2</option>
+				</select>
+  				<button onclick="loadbutton()" id="loadbutton">Load</button>
 			</div>
 			<div id = "confirmbox">
 				<span id="confirmmessage">Confirm Blank Punchcard</span>
 				<br />
-				<span >Have you saved? You can't undo this action</span>
+				<span >Have you saved?</span>
 				<br />
 				<button onclick="closescreen()" id="cancelbutton">Cancel</button>
 				<button onclick="reset()" id="confirmbutton">Confirm</button>
