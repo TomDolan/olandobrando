@@ -19,3 +19,26 @@ body {
 	padding:0px;
 	z-index: -1;
 }
+
+a {
+	display:block;
+	position:absolute;
+	bottom:50px;
+  	left: 50%;
+  	width:300px;
+	background-color:#404040;
+	margin-left:-150px;
+	border-radius:4px;
+	padding:0px;
+	color: #eee;
+	text-align: center;
+	font-size:15px;
+	white-space: nowrap;
+	border-radius: 6px;
+	padding: 5px 10px;
+	text-decoration: none;
+}
+
+a:hover {
+	background-color:#303030;
+}
