@@ -255,37 +255,47 @@ document.addEventListener("mouseleave", function(event){
 function coords(e){
 	xpos = e.clientX;
 	ypos = e.clientY;
-// 	if (clicked) {
-// 		if (knit){
-// 			gridi = parseInt((xpos)/W*nx)%stitches;
-// 			//gridj = parseInt((ypos)/H*(ny-1)+rows-.7)%rows;
-// 			gridj = parseInt((ypos)/H*(ny-1)+rows-.35+.4*Math.cos(xpos*(2*pi)/(W/nx)))%rows;
-// 			punchcard[gridj][gridi]=whichcolour;
-// 		} else {
-// 			if(xpos<(punchx-37.5*d) || xpos>(punchx+punchw+37.5*d) || ypos<(punchy-37.5*d) || ypos>(punchy+punchh+37.5*d)){
-// 			} else {
-// 				gridi = parseInt((xpos-(punchx-37.5*d))/(punchw+12.5)*stitches);
-// 				gridj = parseInt((ypos-(punchy-37.5*d))/(punchh+12.5)*rows);
-// 				punchcard[gridj][gridi]=1-punchcard[gridj][gridi];
-// 			}
-// 		}
-// 	}
-	
+	if(clicked){
+		if (knit){
+			gridi = parseInt((xpos)/W*nx)%stitches;
+			gridj = parseInt((ypos)/H*(ny-1)+rows)%rows;
+			if(punchcard[gridj][gridi]!=whichcolour){
+				punchcard[gridj][gridi]=whichcolour;
+				xclick = parseInt((xpos)/W*nx);
+				yclick = parseInt((ypos)/H*(ny-1));
+		
+				ctx.beginPath();
+				if (punchcard[gridj][gridi]){
+					ctx.fillStyle = colour1;
+				} else {
+					ctx.fillStyle = colour2;
+				}	
+				for (var i = 0; i<nx; i++){
+					for (var j = 0; j<ny; j++){
+						drawstitch(gridi*dx*d+i*stitches*dx*d, (gridj+1)*dy*d-dy*d+j*rows*dy*d, dx*d, 100*d);
+					}
+				}
+			}
+		} 
+	}
  }
 
 function click (e){
 	closemenus();
-	clicked = 1;
 	savestate();
 	if (knit){
 		gridi = parseInt((xpos)/W*nx)%stitches;
 		gridj = parseInt((ypos)/H*(ny-1)+rows)%rows;
+		whichcolour=1-punchcard[gridj][gridi];
 		punchcard[gridj][gridi]=1-punchcard[gridj][gridi];
 		if (f){
+			clicked=0;
 			fill(gridi, gridj,1-punchcard[gridj][gridi]);
-		}
-		if (e.shiftKey){
+		} else if (e.shiftKey){
+			clicked=0;
 			linebetween(xclick,yclick,parseInt((xpos)/W*nx),parseInt((ypos)/H*(ny-1)),punchcard[gridj][gridi]);
+		} else {
+			clicked=1;
 		}
 		xclick = parseInt((xpos)/W*nx);
 		yclick = parseInt((ypos)/H*(ny-1));
@@ -926,34 +936,62 @@ function checkcolour(str) {
 
 document.addEventListener('keydown', shortcut);
 function shortcut(e) {
-  if(e.keyCode==70){
-	document.getElementById("confirmmenu").style.display = "none";
-	document.getElementById("lengthhelp").style.display = "block";
-	confirmmenu = 0;		
-	document.getElementById("length-icon").value = rows;
-  	f=1;
-  	document.getElementById("length-icon").blur();
-  }
-  if(e.keyCode==37){
-  	shiftleft();
-  }
-  if(e.keyCode==38){
-  	shiftup();
-  }
-  if(e.keyCode==39){
-  	shiftright();
-  }
-  if(e.keyCode==40){
-  	shiftdown();
-  }
-  if(e.keyCode==90){
-	document.getElementById("confirmmenu").style.display = "none";
-	document.getElementById("lengthhelp").style.display = "block";
-	confirmmenu = 0;		
-	document.getElementById("length-icon").value = rows;
-  	document.getElementById("length-icon").blur();
-  	undo();
-  }
+	//alert(e.keyCode);
+	if(e.keyCode==70){
+		document.getElementById("confirmmenu").style.display = "none";
+		document.getElementById("lengthhelp").style.display = "block";
+		confirmmenu = 0;		
+		document.getElementById("length-icon").value = rows;
+		f=1;
+		document.getElementById("length-icon").blur();
+	}
+	if(e.keyCode==37){
+		shiftleft();
+	}
+	if(e.keyCode==38){
+		shiftup();
+	}
+	if(e.keyCode==39){
+		shiftright();
+	}
+	if(e.keyCode==40){
+		shiftdown();
+	}
+	if(e.keyCode==27){
+		closemenus();
+		closeinfoscreen();
+		closescreen(); 
+		cancelsave();
+		document.getElementById("length-icon").blur();
+	}
+	if(e.keyCode==78){
+		if(document.getElementById("openscreen").style.display != "block"){
+			document.getElementById("confirmmenu").style.display = "none";
+			document.getElementById("lengthhelp").style.display = "block";
+			confirmmenu = 0;		
+			document.getElementById("length-icon").value = rows;
+			reset();
+			document.getElementById("length-icon").blur();
+		}
+	}
+	if(e.keyCode==79){
+		if(document.getElementById("openscreen").style.display != "block"){
+			document.getElementById("confirmmenu").style.display = "none";
+			document.getElementById("lengthhelp").style.display = "block";
+			confirmmenu = 0;		
+			document.getElementById("length-icon").value = rows;
+			openscreen();
+			document.getElementById("length-icon").blur();
+		}
+	}
+	if(e.keyCode==90){
+		document.getElementById("confirmmenu").style.display = "none";
+		document.getElementById("lengthhelp").style.display = "block";
+		confirmmenu = 0;		
+		document.getElementById("length-icon").value = rows;
+		document.getElementById("length-icon").blur();
+		undo();
+	}
 }
 
 document.addEventListener('keyup', deshortcut);

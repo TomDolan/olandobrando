@@ -36,34 +36,10 @@
 		<div id="openscreen" >
 			<div onclick="closescreen()" style="position:fixed;top:0px;left:0px;width:100%;height:100%;"></div>
 			<div id = "openbox">
-				<span id="openmessage">New/Open Punchcard</span>
+				<span id="openmessage">New Pattern</span>
 				<br />
 				<button onclick="confirmreset()" id="confirmbutton">New</button>
-				<br />
-				<input type="text" placeholder="<Punchcard Code>" id="codetextinput" spellcheck="false">
-				<button onclick="openbutton()" id="openbutton">Open</button>
-				<br />
-				<select name="Select Punchcard" id="punchselect">
-					<option value="hearts">Hearts</option>
-					<option value="littlehearts">Little Hearts</option>
-					<option value="mediumhearts">Medium Hearts</option>
-					<option value="bighearts">Big Hearts</option>
-					<option value="heartsmix">Hearts Mix</option>
-					<option value="heartsandstars">Hearts and Stars</option>
-					<option value="olando">OLANDO</option>
-					<option value="smallchain">Small Chain</option>
-					<option value="mediumchain">Medium Chain</option>
-					<option value="bigchain">Big Chain</option>
-					<option value="stylechain">Big Chain 2</option>
-					<option value="chainphoto">Chain Photo</option>
-					<option value="zebraprint">Zebra Print</option>
-					<option value="poopemoji">Poop Emoji</option>
-					<option value="dune">Dune</option>
-					<option value="checkerboard1x1">Checkerboard 1x1</option>
-					<option value="checkerboard2x2">checkerboard 2x2</option>
-				</select>
-  				<button onclick="loadbutton()" id="loadbutton">Load</button>
-			</div>
+			</div>	
 			<div id = "confirmbox">
 				<span id="confirmmessage">Confirm Blank Punchcard</span>
 				<br />
@@ -71,7 +47,7 @@
 				<br />
 				<button onclick="closescreen()" id="cancelbutton">Cancel</button>
 				<button onclick="reset()" id="confirmbutton">Confirm</button>
-			</div>
+			</div>	
 		</div>
 	</div>
 	
@@ -79,6 +55,7 @@
 		<img id="save-icon" class="icon-img" width="32" height="32" src="save-icon.png" alt="save" onclick="savescreen()">
 		<span class="helpbox">Save</span>
 	</div>
+	
 	<div id="savescreen">
 		<div onclick="cancelsave()" style="position:fixed;top:0px;left:0px;width:100%;height:100%;"></div>
 		<div id = "savebox">
@@ -86,9 +63,8 @@
 			<br />
 			
 			<div class="savebutton">
-			<button onclick="saveimg()" id="saveimgbutton">Save Image</button>
 			<button onclick="copyimg()" id="copyimgbutton">Copy Image</button>
-			<span class="savehelp">Copy or save as an image (without the controls)</span>
+			<span class="savehelp">Copy as an image (without the controls)</span>
 			</div>
 			<br />
 			
@@ -97,17 +73,6 @@
 			<span class="savehelp">Copy as a binary array</span>
 			</div>
 			<br />
-			
-			<div class="savebutton">
-			<button onclick="copycode()" id="copycodebutton">Copy Code</button>
-			<span class="savehelp">Create a code to reload this punchcard</span>
-			</div>
-			<br />
-			
-			<div class="savebutton">
-			<button onclick="copyurl()" id="copyurlbutton">Copy URL</button>
-			<span class="savehelp">Create URL containing punchcard code and colour values</span>
-			</div>
 			<br />
 			
 			<button onclick="cancelsave()" id="cancelsavebutton">Done</button>
@@ -116,29 +81,13 @@
 	</div>
 	
 	<div class="icon">
-		<input type="text" value="10" id="length-icon" onclick="openconfirmmenu()" spellcheck="false">
-		<span class="helpbox" id="lengthhelp">Set Length</span>
-		<div id="confirmmenu">
-			<img id="confirm-icon" width="32" height="32" src="confirm-icon.png" alt="confirm" onclick="clickconfirmmenu()">
-		</div>
-	</div>
-	
-	<div class="icon">
-		<img id="view-icon" class="icon-img" width="32" height="32" src="punchcard-icon.png" alt="view" onclick="changeview()">
-		<span class="helpbox" id = "view-helpbox">Punchcard View</span>
-	</div>
-	
-	<div class="icon">
-		<img id="grid-icon" class="icon-img" width="32" height="32" src="grid-icon.png" alt="grid" onclick="guidesonoff()">
-		<span class="helpbox">Grid On/Off</span>
-	</div>
-	<div class="icon">
 		<img id="scale-icon" class="icon-img" width="32" height="32" src="zoom-icon.png" alt="scale" onclick="openzoommenu()">
 		<span class="helpbox">Zoom</span>
 		<div id="scalemenu">	
 			<input type="range" min="20" max="100" value="x50" class="slider" id="scale" oninput = "changescale()">
 		</div>
 	</div>
+	
 	<div class="icon">
 		<img id="translate-icon" class="icon-img" width="32" height="32" src="translate-icon.png" alt="translate" onclick="opentranslatemenu()">
 		<span class="helpbox">Translate</span>
@@ -150,19 +99,28 @@
 		</div>
 
 	</div>
+	
 	<div class="icon">
 		<img id="rgb-icon" class="icon-img" width="32" height="32" src="rgb-icon.png" alt="rgb" onclick="opencolourmenu()">
 		<span class="helpbox">Colour Select</span>
 		<div id="colourmenu">
-			<input type="color" id="colour1" name="Colour 1" value="#ba9be8" oninput = "draw()">
-			<input type="color" id="colour2" name="Colour 2" value="#148f76" oninput = "draw()">
-			<input type="color" id="bgcolour" name="Background Colour" value="#3d6ca9" oninput = "draw()">
+			<div>
+				<div class="colour" id="bgcolour"></div>
+				<input type="color" id="colour2" name="Colour 2" value="#148f76" oninput = "draw()">
+			</div>
+			<div>
+				<div class="colour" id="colour1" onclick="swapcolour(1)"></div>
+				<div class="colour" id="colour2" onclick="swapcolour(2)"></div>
+				<div class="colour" id="colour3" onclick="swapcolour(3)"></div>
+				<div class="colour" id="colour4" onclick="swapcolour(4)"></div>
+				<div class="colour" id="colour5" onclick="swapcolour(5)"></div>
+				<div class="colour" id="colour6" onclick="swapcolour(6)"></div>
+				<div class="colour" id="colour7" onclick="swapcolour(7)"></div>
+				<div class="colour" id="colour8" onclick="swapcolour(8)"></div>
+			</div>
 		</div>
 	</div>
-	<div class="icon">
-		<img id="floats-icon" class="icon-img" width="32" height="32" src="floats-icon.png" alt="long floats" onclick="longfloats()">
-		<span class="helpbox">Highlight Long Floats</span>
-	</div>
+	
 </div>
 
 <div id = "canvasbox">
@@ -172,7 +130,6 @@
 <img src="knitpointer.png" id = "pointer" style = "display:none;position:absolute;pointer-events: none;">
 
 
-<script src="punchcards.js"></script>
 <script src="knit.js"></script>
 
 </body>
