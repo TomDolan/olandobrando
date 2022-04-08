@@ -118,7 +118,7 @@ function draw(){
 			checkfloats();
 		}
 		for (i=0; i<nx && i<1000; i++){
-			for(j=Math.round(ny-1); j>=0; j--){
+			for(j=Math.round(ny); j>=0; j--){
 				if (punchcard[(j+rows-1)%rows][i%stitches]){
 					ctx.fillStyle = colour1;
 				} else {

@@ -11,6 +11,9 @@
 
 <body>
 
+<link rel="stylesheet" href="Coloris-main/dist/coloris.css"/>
+<script src="Coloris-main/dist/coloris.js"></script>
+
 <div id="iconbox">
 	<div class="icon">
 		<img id="info-icon" class="icon-img" width="32" height="32" src="info-icon.png" alt="info" onclick="infoscreen()">
@@ -20,8 +23,8 @@
 			<div id = "infobox">
 				<span id="infomessage">Info</span>
 				<br /><br />
-				<span>Hi! I made this so I could test out fair isle punchcard patterns for my knitting machine. If you're using it I hope it helps you too!
-				</br><br />Click on stitches to swap colour, f+click to fill, shift+click for straight lines, z to undo. This runs best on desktop/laptop but you can still try on your phone.
+				<span>Hi! I made this so I could test out intarsia knitting patterns. If you're using it I hope it helps you too!
+				</br><br />Click on stitches to add colour, number keys swap between colours, f+click to fill, shift+click for straight lines, z to undo. This runs best on desktop/laptop but you can still try on your phone.
 				</br><br />If you have any issues or find any bugs send me a message @olandobrando on Instagram or TikTok. 
 				</br><br />If you make anything I would love to see! tag me/dm @olandobrando</span>
 				<br /><br />
@@ -101,13 +104,9 @@
 	</div>
 	
 	<div class="icon">
-		<img id="rgb-icon" class="icon-img" width="32" height="32" src="rgb-icon.png" alt="rgb" onclick="opencolourmenu()">
-		<span class="helpbox">Colour Select</span>
+		<img id="plus-icon" class="icon-img" width="32" height="32" src="plus-icon.png" alt="plus" onclick="opencolourmenu()">
+		<span class="helpbox">Change Colour</span>
 		<div id="colourmenu">
-			<div>
-				<div class="colour" id="bgcolour"></div>
-				<input type="color" id="colour2" name="Colour 2" value="#148f76" oninput = "draw()">
-			</div>
 			<div>
 				<div class="colour" id="colour1" onclick="swapcolour(1)"></div>
 				<div class="colour" id="colour2" onclick="swapcolour(2)"></div>
@@ -119,6 +118,18 @@
 				<div class="colour" id="colour8" onclick="swapcolour(8)"></div>
 			</div>
 		</div>
+	</div>
+	
+	<div class="icon colouricon" id="colouricon">
+			<!--<img id="rgb-icon" class="icon-img" width="32" height="32" src="rgb-icon.png" alt="rgb">-->
+			<input type="text" data-coloris id="colourselect">
+			<span class="helpbox">Select Colour</span>
+	</div>
+	
+	<div class="icon colouricon">
+			<!--<img id="bg-icon" class="icon-img" width="32" height="32" src="bg-icon.png" alt="bg" onclick="selectbgcolour()">-->
+			<input type="text" data-coloris id="bgcolour" value="#148f76">
+			<span class="helpbox">Select BG Colour</span>	
 	</div>
 	
 </div>

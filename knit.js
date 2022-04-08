@@ -152,7 +152,7 @@ function draw(){
 	ctx.fill();
 	if(knit){
 		for (i=0; i<nx && i<1000; i++){
-			for(j=Math.round(ny-1); j>=0; j--){
+			for(j=Math.round(ny); j>=0; j--){
 				ctx.fillStyle = colours[punchcard[(j+rows-1)%rows][i%stitches]];
 				drawstitch(i*dx*d, j*dy*d-dy*d, dx*d, 100*d);
 			}
@@ -528,7 +528,7 @@ function shiftright(){
 
 function changecolours(){
 	var root = document.querySelector(':root');
-	colours = [ document.getElementById("bgcolour").style.backgroundColor, 
+	colours = [ document.getElementById("bgcolour").value, 
 				document.getElementById("colour1").style.backgroundColor,
 				document.getElementById("colour2").style.backgroundColor,
 				document.getElementById("colour3").style.backgroundColor,
@@ -550,7 +550,8 @@ function changecolours(){
 
 function updatecolours(){
 	var root = document.querySelector(':root');
-	document.getElementById("bgcolour").style.backgroundColor = colours[0];
+	document.getElementById("bgcolour").value = colours[0];
+	document.getElementById("colourselect").value = colours[whichcolour];
 	document.getElementById("colour1").style.backgroundColor = colours[1];
 	document.getElementById("colour2").style.backgroundColor = colours[2];
 	document.getElementById("colour3").style.backgroundColor = colours[3];
@@ -568,6 +569,16 @@ function updatecolours(){
 	root.style.setProperty('--colour6', colours[6]);
 	root.style.setProperty('--colour7', colours[7]);
 	root.style.setProperty('--colour8', colours[8]);
+}
+
+document.getElementById("colourselect").oninput = function() {selectcolour()};
+
+function selectcolour(){
+		document.getElementById("colour"+whichcolour).style.backgroundColor = document.getElementById("colourselect").value;
+		var root = document.querySelector(':root');
+		root.style.setProperty('--colour'+whichcolour, document.getElementById("colourselect").value);
+		colours[whichcolour] = document.getElementById("colourselect").value;
+		draw();
 }
 
 function openzoommenu() {
@@ -653,6 +664,36 @@ function shortcut(e) {
 	confirmmenu = 0;		
   	undo();
   }
+  if(e.keyCode==49){
+	whichcolour=1;
+  }
+  if(e.keyCode==50){
+	whichcolour=2;
+  }
+  if(e.keyCode==51){
+	whichcolour=3;
+  }
+  if(e.keyCode==52){
+	whichcolour=4;
+  }
+  if(e.keyCode==53){
+	whichcolour=5;
+  }
+  if(e.keyCode==54){
+	whichcolour=6;
+  }
+  if(e.keyCode==55){
+	whichcolour=7;
+  }
+  if(e.keyCode==56){
+	whichcolour=8;
+  }
+  if(e.keyCode==57){
+	whichcolour=9;
+  }
+  if(e.keyCode==48){
+	whichcolour=0;
+  }
 }
 
 document.addEventListener('keyup', deshortcut);
@@ -697,4 +738,11 @@ function undo(){
 
 function swapcolour(colour){
 	whichcolour=colour;
+	document.getElementById("colourselect").value = colours[whichcolour];
+	
 }
+
+Coloris({
+  themeMode: 'dark',
+  alpha: false
+});

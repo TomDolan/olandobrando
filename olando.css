@@ -20,16 +20,25 @@ body {
 	z-index: -1;
 }
 
+#links{
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	align-items:center;
+	flex-direction: column;
+}
+
 a {
 	display:block;
-	position:absolute;
-	bottom:50px;
-  	left: 50%;
   	width:300px;
 	background-color:#e3e3e5;
-	margin-left:-150px;
 	border-radius:4px;
 	padding:0px;
+	margin-bottom:10px;
 	color: #111;
 	text-align: center;
 	font-size:15px;
