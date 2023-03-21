@@ -1,9 +1,44 @@
+// W=window.innerWidth;
+// H=window.innerHeight;
+// var c = createHiPPICanvas(W, H);
+// var ctx = c.getContext("2d");
+// ctx.beginPath();
+// ctx.rect(0,0,W,H);
+// ctx.fillStyle = "#e3e3e5";
+// ctx.fill();
+// 
+// function createHiPPICanvas(width, height) {
+//     const ratio = window.devicePixelRatio;
+//     const canvas = document.createElement("canvas");
+// 
+//     canvas.width = width * ratio;
+//     canvas.height = height * ratio;
+//     canvas.style.width = width + "px";
+//     canvas.style.height = height + "px";
+//     canvas.getContext("2d").scale(ratio, ratio);
+// 
+//     return canvas;
+// }
+
+// var c = document.getElementById("canvas");
+// var ctx = c.getContext("2d");
+// W=window.innerWidth;
+// H=window.innerHeight;
+// c.width = 1000;
+// c.height = 1000;
+// ctx.beginPath();
+// ctx.rect(0,0,W,H);
+// ctx.fillStyle = "#e3e3e5";
+// ctx.fill();
+
+var ratio = window.devicePixelRatio;
 var c = document.getElementById("canvas");
-var ctx = c.getContext("2d");
 W=window.innerWidth;
 H=window.innerHeight;
-c.width = W;
-c.height = H;
+c.width = W*ratio;
+c.height = H*ratio;
+var ctx = c.getContext("2d");
+ctx.scale(ratio, ratio);
 ctx.beginPath();
 ctx.rect(0,0,W,H);
 ctx.fillStyle = "#e3e3e5";
@@ -25,6 +60,8 @@ var timeold = 0;
 
 var bgcolour = "#e3e3e5";
 var fgcolour = "#111";
+ctx.fillStyle = bgcolour;
+ctx.strokeStyle = fgcolour;
 var night = 0;
 
 draw();
@@ -221,8 +258,9 @@ function drawbullet(x,y,r,xr,sign){
 window.onresize = function() {
 	W=window.innerWidth;
 	H=window.innerHeight;
-	c.width = W;
-	c.height = H;
+	c.width = W*ratio;
+	c.height = H*ratio;
+	ctx.scale(ratio, ratio);
 	ctx.fillStyle = '#e3e3e5';
 	ctx.fillRect(0,0,W,H);
 	draw();
