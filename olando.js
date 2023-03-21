@@ -11,7 +11,6 @@ ctx.fill();
 
 var pi = Math.PI;
 var t = 0;
-var dt = .03;
 var xpos = 0; 
 var ypos = 0;
 
@@ -229,11 +228,29 @@ window.onresize = function() {
 	draw();
 }
 
-document.getElementById("canvasbox").onmousemove = coords;
+document.body.onmousemove = coords;
 
 function coords(e){
 	xpos = e.clientX;
 	ypos = e.clientY;
+	if(!moving){
+		toffset = t;
+		xoffset = xpos;
+	}
+	moving = 1;
+	clearTimeout(timeout);
+	if (2*pi*((t+30)%60)/60<pi-.1 || 2*pi*((t+30)%60)/60>pi+.1){
+		timeout = setTimeout(function(){notmoving();}, 50);
+	} else {
+		timeout = setTimeout(function(){notmoving();}, 5000);
+	}
+}
+
+document.body.ontouchmove = touchcoords;
+
+function touchcoords(e){
+	xpos = e.touches[0].clientX;
+	ypos = e.touches[0].clientY;
 	if(!moving){
 		toffset = t;
 		xoffset = xpos;

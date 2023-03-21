@@ -28,7 +28,6 @@ var confirmmenu = 0;
 
 var colours = ["#7A6669","#8071CC","#e1a975","#74b9a4","#fbb1bc","#ae1e1e","#182253","#ffffff","#000000"]
 var whichcolour = 2;
-
 var d = .2;
 
 dx = 80;
@@ -134,6 +133,7 @@ if (urlbgcolour){
 updatecolours();
 
 
+	
 var floatarray = [];
 var displayfloats = 0;
 var floatsdisplayed = 0;
@@ -581,6 +581,15 @@ function selectcolour(){
 		draw();
 }
 
+document.getElementById("bgcolour").oninput = function() {selectbgcolour()};
+
+function selectbgcolour(){
+		var root = document.querySelector(':root');
+		root.style.setProperty('--bgcolour', document.getElementById("bgcolour").value);
+		colours[0] = document.getElementById("bgcolour").value;
+		draw();
+}
+
 function openzoommenu() {
 	if (!scalemenu){
 		closemenus();
@@ -739,7 +748,6 @@ function undo(){
 function swapcolour(colour){
 	whichcolour=colour;
 	document.getElementById("colourselect").value = colours[whichcolour];
-	
 }
 
 Coloris({
