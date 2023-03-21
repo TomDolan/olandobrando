@@ -1,9 +1,11 @@
+var ratio = window.devicePixelRatio;
 var c = document.getElementById("canvas");
-var ctx = c.getContext("2d");
 W=window.innerWidth;
 H=window.innerHeight;
-c.width = W;
-c.height = H;
+c.width = W*ratio;
+c.height = H*ratio;
+var ctx = c.getContext("2d");
+ctx.scale(ratio, ratio);
 ctx.rect(0,0,W,H);
 ctx.fillStyle = "#000";
 ctx.fill();
@@ -198,7 +200,7 @@ function drawstitch(x,y,w,h, highlight){
 // 	ctx.lineWidth = .02;
 // 	ctx.stroke();
 	
-	
+	ctx.save();
 	ctx.beginPath();
 	ctx.transform(w,0,0,h,x,y);
 	ctx.moveTo(0.15,0);
@@ -221,14 +223,15 @@ function drawstitch(x,y,w,h, highlight){
 		ctx.lineWidth = .1;
 		ctx.stroke();
 	}
-	ctx.resetTransform();
+	ctx.restore();
 }
 		
 window.onresize = function() {
 	W=window.innerWidth;
 	H=window.innerHeight;
-	c.width = W;
-	c.height = H;
+	c.width = W*ratio;
+	c.height = H*ratio;
+	ctx.scale(ratio, ratio);
 	nx = W/dx/d;
 	ny = H/dy/d+1;
 	ctx.fillStyle = '#fff';
@@ -238,9 +241,13 @@ window.onresize = function() {
 
 
 document.getElementById("canvasbox").onmousemove = coords;
+document.getElementById("canvasbox").ontouchmove = touchcoords;
 document.getElementById("canvasbox").onmousedown = click;
 document.getElementById("canvasbox").onmouseup = declick;
 document.getElementById("canvasbox").ontouchstart = nocursor;
+document.getElementById("canvasbox").ontouchstart = click;
+document.getElementById("canvasbox").ontouchend = declick;
+document.getElementById("canvasbox").ontouchcancel = declick;
 
 document.addEventListener("mouseleave", function(event){
 
@@ -255,6 +262,34 @@ document.addEventListener("mouseleave", function(event){
 function coords(e){
 	xpos = e.clientX;
 	ypos = e.clientY;
+	if(clicked){
+		if (knit){
+			gridi = parseInt((xpos)/W*nx)%stitches;
+			gridj = parseInt((ypos)/H*(ny-1)+rows)%rows;
+			if(punchcard[gridj][gridi]!=whichcolour){
+				punchcard[gridj][gridi]=whichcolour;
+				xclick = parseInt((xpos)/W*nx);
+				yclick = parseInt((ypos)/H*(ny-1));
+		
+				ctx.beginPath();
+				if (punchcard[gridj][gridi]){
+					ctx.fillStyle = colour1;
+				} else {
+					ctx.fillStyle = colour2;
+				}	
+				for (var i = 0; i<nx; i++){
+					for (var j = 0; j<ny; j++){
+						drawstitch(gridi*dx*d+i*stitches*dx*d, (gridj+1)*dy*d-dy*d+j*rows*dy*d, dx*d, 100*d);
+					}
+				}
+			}
+		} 
+	}
+ }
+
+function touchcoords(e){
+	xpos = e.touches[0].clientX;
+	ypos = e.touches[0].clientY;
 	if(clicked){
 		if (knit){
 			gridi = parseInt((xpos)/W*nx)%stitches;
