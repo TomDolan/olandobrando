@@ -1,36 +1,3 @@
-// W=window.innerWidth;
-// H=window.innerHeight;
-// var c = createHiPPICanvas(W, H);
-// var ctx = c.getContext("2d");
-// ctx.beginPath();
-// ctx.rect(0,0,W,H);
-// ctx.fillStyle = "#e3e3e5";
-// ctx.fill();
-// 
-// function createHiPPICanvas(width, height) {
-//     const ratio = window.devicePixelRatio;
-//     const canvas = document.createElement("canvas");
-// 
-//     canvas.width = width * ratio;
-//     canvas.height = height * ratio;
-//     canvas.style.width = width + "px";
-//     canvas.style.height = height + "px";
-//     canvas.getContext("2d").scale(ratio, ratio);
-// 
-//     return canvas;
-// }
-
-// var c = document.getElementById("canvas");
-// var ctx = c.getContext("2d");
-// W=window.innerWidth;
-// H=window.innerHeight;
-// c.width = 1000;
-// c.height = 1000;
-// ctx.beginPath();
-// ctx.rect(0,0,W,H);
-// ctx.fillStyle = "#e3e3e5";
-// ctx.fill();
-
 var ratio = window.devicePixelRatio;
 var c = document.getElementById("canvas");
 W=window.innerWidth;
@@ -72,13 +39,20 @@ function draw() {
 	ctx.fillStyle = bgcolour;
 	ctx.fill();
 	
+	var olandor = Math.min(W,H)/15;
 	if (W>H){
-		var olandoh = H/2-50*6/3;
+		var olandoh = H/2-olandor/2;
 	} else {
-		var olandoh = H/2-50*6/3;
+		var olandoh = H/2-olandor/2;
 	}
 	
-	var olandor = Math.min(W,H)/15;
+// 	if (W>H){
+// 		var olandoh = H/2-50*6/3;
+// 	} else {
+// 		var olandoh = H/2-50*6/3;
+// 	}
+// 	
+// 	var olandor = Math.min(W,H)/15;
 		
 	if (2*pi*((t+30)%60)/60<pi-.1 || 2*pi*((t+30)%60)/60>pi+.1 || !moving){
 		drawolando(W/2-32*olandor/5,olandoh,olandor);
