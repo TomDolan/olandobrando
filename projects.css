@@ -10,6 +10,12 @@
 	
 }
 
+.project{
+	flex-basis:50%;
+	aspect-ratio: 16 / 9;
+	padding:3px;
+}
+
 .project img{
 	display:block;
 	width:100%;
@@ -17,14 +23,13 @@
 
 @media only screen and (max-width: 768px) {
 	
-
+	
 	.project{
 		flex-basis:100%;
 		aspect-ratio: 16 / 9;
 		padding:3px;
 	}
-	
-	
+
 }
 
 
