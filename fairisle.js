@@ -241,13 +241,16 @@ window.onresize = function() {
 
 
 document.getElementById("canvasbox").onmousemove = coords;
-//document.getElementById("canvasbox").ontouchmove = touchcoords;
 document.getElementById("canvasbox").onmousedown = click;
 document.getElementById("canvasbox").onmouseup = declick;
-document.getElementById("canvasbox").ontouchstart = nocursor;
+
+var touched = 0;
+document.getElementById("canvasbox").ontouchstart = touchmode;
+//document.getElementById("canvasbox").ontouchmove = touchcoords;
 //document.getElementById("canvasbox").ontouchstart = click;
 //document.getElementById("canvasbox").ontouchend = declick;
 //document.getElementById("canvasbox").ontouchcancel = declick;
+
 
 document.addEventListener("mouseleave", function(event){
 
@@ -354,8 +357,10 @@ function declick (){
 	clicked = 0;
 }
 
-function nocursor (){
+function touchmode (){
   	document.getElementById("pointer").style.display = "none";
+	touched = 1;
+	document.getElementById("canvasbox").ontouchstart = null;
 }
 
 document.getElementById("iconbox").onmouseover = function(){
@@ -364,8 +369,10 @@ document.getElementById("iconbox").onmouseover = function(){
 };
 
 document.getElementById("canvas").onmouseover = function(){
-  	document.getElementById("pointer").style.display = "block";
-  	document.body.style.cursor = 'none';
+  	if (touched==0){
+		document.getElementById("pointer").style.display = "block";
+		document.body.style.cursor = 'none';
+	}
 };
 document.getElementById("canvas").onmousemove = function(){
 	if (knit){
