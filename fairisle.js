@@ -245,9 +245,9 @@ document.getElementById("canvasbox").onmousemove = coords;
 document.getElementById("canvasbox").onmousedown = click;
 document.getElementById("canvasbox").onmouseup = declick;
 document.getElementById("canvasbox").ontouchstart = nocursor;
-document.getElementById("canvasbox").ontouchstart = click;
-document.getElementById("canvasbox").ontouchend = declick;
-document.getElementById("canvasbox").ontouchcancel = declick;
+//document.getElementById("canvasbox").ontouchstart = click;
+//document.getElementById("canvasbox").ontouchend = declick;
+//document.getElementById("canvasbox").ontouchcancel = declick;
 
 document.addEventListener("mouseleave", function(event){
 
