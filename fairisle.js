@@ -241,7 +241,7 @@ window.onresize = function() {
 
 
 document.getElementById("canvasbox").onmousemove = coords;
-document.getElementById("canvasbox").ontouchmove = touchcoords;
+//document.getElementById("canvasbox").ontouchmove = touchcoords;
 document.getElementById("canvasbox").onmousedown = click;
 document.getElementById("canvasbox").onmouseup = declick;
 document.getElementById("canvasbox").ontouchstart = nocursor;
