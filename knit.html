@@ -2,7 +2,7 @@
 
 <html>
 <head>	
-	<title>OLANDO</title>
+	<title>Knit</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no" />
 	<link rel="shortcut icon" type="image/jpg" href="fairisleicon.png"/>
 	<link rel="stylesheet" type="text/css" href="knit.css">
@@ -11,8 +11,13 @@
 
 <body>
 
-<link rel="stylesheet" href="Coloris-main/dist/coloris.css"/>
-<script src="Coloris-main/dist/coloris.js"></script>
+
+<a id = "scrollingobox" href="https://olandobrando.com">
+	<canvas id = "scrollingo">Your browser does not support the HTML5 canvas tag.</canvas>
+</a>
+
+<!-- <link rel="stylesheet" href="Coloris-main/dist/coloris.css"/> -->
+<!-- <script src="Coloris-main/dist/coloris.js"></script> -->
 
 <div id="iconbox">
 	<div class="icon">
@@ -120,16 +125,18 @@
 		</div>
 	</div>
 	
-	<div class="icon colouricon" id="colouricon">
+	<div class="icon colouricon" id="currentcolouricon">
 			<!--<img id="rgb-icon" class="icon-img" width="32" height="32" src="rgb-icon.png" alt="rgb">-->
-			<input type="text" data-coloris id="colourselect">
+			<!-- <input type="text" data-coloris id="colourselect"> -->
+			<input type="color" id="currentcolour" name="currentColour" value="#ffffff" oninput = "draw()">
 			<span class="helpbox">Select Colour</span>
 	</div>
 	
-	<div class="icon colouricon">
+	<div class="icon colouricon" id="bgcolouricon">
 			<!--<img id="bg-icon" class="icon-img" width="32" height="32" src="bg-icon.png" alt="bg" onclick="selectbgcolour()">-->
-			<input type="text" data-coloris id="bgcolour" value="#148f76">
-			<span class="helpbox">Select BG Colour</span>	
+			<!-- <input type="text" data-coloris id="bgcolour" value="#148f76"> -->
+			<input type="color" id="bgcolour" name="bgColour" value="#99d1e1" oninput = "draw()">
+			<span class="helpbox">Select BG Colour</span>
 	</div>
 	
 </div>

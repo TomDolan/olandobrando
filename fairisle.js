@@ -28,9 +28,9 @@ var colourmenu = 0;
 var translatemenu = 0;
 var confirmmenu = 0;
 
-var colour1 = "#E1A975";
-var colour2 = "#8071CC";
-var bgcolour = "#7A6669";
+var colour1 = "#ffffff";
+var colour2 = "#323e67";
+var bgcolour = "#99d1e1";
 var whichcolour = 0;
 
 var d = .2;
@@ -42,7 +42,7 @@ var nx = W/dx/d;
 var ny = H/dy/d+1;
 	
 var punchcard = [];
-punchcard=PC_littleheartscheck;
+punchcard=toPC("PC_Mw5KbxyeMxyKbxyeMxyKbxyeMxyKbxyeMxyKbxyeMw5KbxueMxwKbxye6xyKMxz9MxzKMxz9rxz3nwzevwzZvyzVvyUptzUlxzEpwzjlyzjpyUElyDEpyVjlyKEpyejlyKEpyejlyKEpyejlyKEpyVjlyDEpyUElyzjpwzjlxzEptzUlvyUpvyzVvwzZnwzerxz3Mxz9MxzKMxz96xyKbxyeMxwKbxue");
 
 var undopc=[];
 var undolength=0;
@@ -1126,3 +1126,123 @@ function loadbutton(){
 	closescreen();
 	draw();
 }
+
+
+
+
+
+
+
+
+var ratio = window.devicePixelRatio;
+var ocanvas = document.getElementById("scrollingo");
+oW=50;
+oH=50;
+ocanvas.width = oW*ratio;
+ocanvas.height = oH*ratio;
+var octx = ocanvas.getContext("2d");
+octx.scale(ratio, ratio);
+
+var pi = Math.PI;
+var t = 45+Math.random()*30;
+
+octx.lineWidth = 1;
+
+var bgcolour = "#e3e3e5";
+var fgcolour = "#111";
+
+octx.fillStyle = bgcolour;
+octx.strokeStyle = fgcolour;
+
+drawo();
+
+function drawo(){
+	octx.clearRect(0, 0, oW, oH); 
+	x=12;
+	y=6;
+	r=18;
+	u = r/2.5
+	
+	octx.save();
+	octx.transform(1,0,0,-1,x,oH-y);
+	
+	octx.fillStyle = bgcolour;
+	octx.strokeStyle = fgcolour;
+	
+	// o
+	octx.save();
+	octx.transform(1,0,0,1,2*r,r);
+	octx.rotate(pi/2);
+	drawbullet(0,r,r,2*pi*((t+15)%60)/60,1);
+	octx.restore();
+	
+	octx.restore();
+}
+
+function drawbullet(x,y,r,xr,sign){
+	if (sign){
+		xr = 2*pi-xr;
+	}
+	u = r/2.5
+	octx.save()
+	octx.transform(1,0,0,1,x,y);
+	xr = (xr+100*pi)%(2*pi);
+	
+	octx.fillStyle = "rgba(227, 227, 229, 0.75)";
+	octx.strokeStyle = fgcolour;
+	if (xr>=0 && xr<pi/2) {
+		// 0 < xr <pi/2
+		octx.beginPath();
+		octx.arc(0,0,r,pi/2,3*pi/2);
+		octx.lineTo(r*Math.cos(xr), -r);
+		octx.ellipse(r*Math.cos(xr), 0, r*(Math.sin(xr)*Math.sin(xr)), r, 0, 3*pi/2, 5*pi/2);
+		octx.lineTo(0, r);
+		octx.fill();
+		octx.stroke();
+	} else if (xr>=pi/2 && xr<pi) {
+		// pi/2 < xr < pi
+		octx.beginPath();
+		octx.arc(0,0,r,3*pi/2,5*pi/2);
+		octx.lineTo(r*Math.cos(xr), r);
+		octx.ellipse(r*Math.cos(xr), 0, r*(Math.sin(xr)*Math.sin(xr)), r, 0, pi/2, 3*pi/2);
+		octx.lineTo(0, -r);
+		octx.fill();
+		octx.stroke();
+	} else if (xr>=pi && xr<3*pi/2) {
+		// pi < xr < 3*pi/2
+		octx.beginPath();
+		octx.arc(0,0,r,3*pi/2,5*pi/2);
+		octx.lineTo(r*Math.cos(xr), r);
+		octx.ellipse(r*Math.cos(xr), 0, r*(Math.sin(xr)*Math.sin(xr)), r, 0, pi/2, 3*pi/2);
+		octx.lineTo(0, -r);
+		octx.fill();
+		octx.stroke();
+		octx.beginPath();
+		octx.ellipse(r*Math.cos(xr), 0, r*(Math.sin(xr)*Math.sin(xr)), r, 0, -pi/2, pi/2);
+		octx.stroke();
+	} else if (xr>=3*pi/2 && xr<=2*pi) {
+		// 3*pi/2 < xr < 2*pi
+		octx.beginPath();
+		octx.arc(0,0,r,pi/2,3*pi/2);
+		octx.lineTo(r*Math.cos(xr), -r);
+		octx.ellipse(r*Math.cos(xr), 0, r*(Math.sin(xr)*Math.sin(xr)), r, 0, 3*pi/2, 5*pi/2);
+		octx.lineTo(0, r);
+		octx.fill();
+		octx.stroke();
+		octx.beginPath();
+		octx.ellipse(r*Math.cos(xr), 0, r*(Math.sin(xr)*Math.sin(xr)), r, 0, pi/2, 3*pi/2);
+		octx.stroke();
+	} else {
+		alert(xr);
+	}
+	
+	octx.restore();
+}
+
+document.onvisibilitychange = async(evt) => {
+  if (document.visibilityState === "hidden") {
+  } else {
+		draw();
+		drawo();
+  }
+};

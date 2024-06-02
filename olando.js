@@ -29,7 +29,6 @@ var bgcolour = "#e3e3e5";
 var fgcolour = "#111";
 ctx.fillStyle = bgcolour;
 ctx.strokeStyle = fgcolour;
-var night = 0;
 
 draw();
 
@@ -41,9 +40,9 @@ function draw() {
 	
 	var olandor = Math.min(W,H)/15;
 	if (W>H){
-		var olandoh = H/2-olandor/2;
+		var olandoh = 5*H/12-olandor/2;
 	} else {
-		var olandoh = H/2-olandor/2;
+		var olandoh = 5*H/12-olandor/2;
 	}
 	
 // 	if (W>H){
@@ -279,15 +278,4 @@ function touchcoords(e){
 function notmoving() {
 	timeold = Date.now();
 	moving = 0;
-}
-
-function nightmode(){
-	night = 1-night;
-	if (night){
-		bgcolour = "#111";
-		fgcolour = "#e3e3e5";
-	} else {
-		bgcolour = "#e3e3e5";
-		fgcolour = "#111";
-	}
 }

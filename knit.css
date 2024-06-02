@@ -25,6 +25,29 @@ body {
 	overflow:hidden;
 }
 
+
+#scrollingobox{
+	position:fixed;
+	top:0px;
+	left:0px;
+	width:50px;
+	height:50px;
+	margin:0px;
+	padding:0px;
+	z-index: 100;
+}
+
+#scrollingo{
+	position:fixed;
+	top:0px;
+	left:0px;
+	width:50px;
+	height:50px;
+	margin:0px;
+	padding:0px;
+	z-index: 100;
+}
+
 #canvasbox {
 	position:absolute;
 	left:0px;
@@ -72,16 +95,36 @@ body {
 	margin-right:0px;
 }
 
+#currentcolouricon{
+	background-color:#404040;
+	border-radius: 5px;
+	box-shadow: 3px 3px #404040;
+}
+
+#bgcolouricon{
+	background-color:#404040;
+	border-radius: 5px;
+	box-shadow: 3px 3px #404040;
+}
+
 #bgcolour{
 	width:32px;
 	height:32px;
 	margin:0px;
+	-webkit-appearance: none;
+	border: none;
+	opacity: 0;
+	display: block;
 }
 
-#colourselect{
+#currentcolour{
 	width:32px;
 	height:32px;
 	margin:0px;
+	-webkit-appearance: none;
+	border: none;
+	opacity: 0;
+	display: block;
 }
 
 .icon-img {
