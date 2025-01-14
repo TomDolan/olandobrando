@@ -16,7 +16,8 @@
 }
 
 #chainimg img{
-	width:250px;
+	flex-grow: 1;
+	max-width:250px;
 	background-color:rgba(0,200,0,.1);
 }
 
