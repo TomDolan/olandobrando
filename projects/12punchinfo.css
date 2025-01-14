@@ -10,12 +10,13 @@
 	flex-grow: 1;
 	display:flex;
 	justify-content:center;
+	align-content: top;
 	padding-top:55px;
 	background-color:rgba(0,200,0,.1);
 }
 
 #chainimg img{
-	max-width:250px;
+	width:250px;
 	background-color:rgba(0,200,0,.1);
 }
 
