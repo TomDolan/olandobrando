@@ -2,56 +2,192 @@
 
 <html>
 <head>	
-	<title>FairIsle</title>
+	<title>1-2-Punch Info</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="shortcut icon" type="image/jpg" href="../olandoicon.png"/>
 	<link rel="stylesheet" type="text/css" href="../olando.css">
 	<link rel="stylesheet" type="text/css" href="project.css">
-	<link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Roboto:100,300' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
-	<a id = "scrollingobox" href="https://olandobrando.com">
-		<canvas id = "scrollingo">Your browser does not support the HTML5 canvas tag.</canvas>
-	</a>
+	<div id="header"">
+		<a id = "scrollingobox" href="https://olandobrando.com">
+			<canvas id = "scrollingo">Your browser does not support the HTML5 canvas tag.</canvas>
+		</a>
 
-	<div id="navbar">	
-			
-		<div id = "scrollinglandobox">
-			<a href="https://olandobrando.com">
-				<canvas id = "scrollinglando">Your browser does not support the HTML5 canvas tag.</canvas>
-			</a>
-		</div>
-		
-		<div id="links">
-		
-			<div class="link">
-				<a href="https://olandobrando.com/projects">Projects</a>
+		<div id="navbar">	
+				
+			<div id = "scrollinglandobox">
+				<a href="https://olandobrando.com">
+					<canvas id = "scrollinglando">Your browser does not support the HTML5 canvas tag.</canvas>
+				</a>
 			</div>
 			
-			<div class="link">
-				<a href="https://olandobrando.com/fairisle">FairIsle</a>
+			<div id="links">
+			
+				<div class="link">
+					<a href="https://olandobrando.com/projects">Projects</a>
+				</div>
+				
+				<div class="link">
+					<a href="https://olandobrando.com/fairisle">1-2-Punch</a>
+				</div>
+				
+				<div class="link">
+					<a href="https://olandobrando.com/info">Info</a>
+				</div>
 			</div>
 			
-			<div class="link">
-				<a class="currentpage" href="https://olandobrando.com/info">Info</a>
+			
+			<div class="hamburger">
+				<span class="bar"></span>
+				<span class="bar"></span>
+				<span class="bar"></span>
 			</div>
+	
 		</div>
-		
-		
-		<div class="hamburger">
-			<span class="bar"></span>
-			<span class="bar"></span>
-			<span class="bar"></span>
-		</div>
-
 	</div>
-
-	<div id="projecttext">
+	
+	<div id="maincontent">
+		<div id="projecttext">
+			<H1>1-2-Punch</H1>
+			
+			<div class="content">
+				<p>
+					1-2-Punch simulates the appearance of knit fabric to virtually prototype Fair Isle patterns. This tool offers a functional and visually intuitive solution for knitters and textile designers. The virtual knit display allows designers to significantly reduce time and materials taken to produce prototypes traditionally. Keyboard commands, parameter controls and troubleshooting tools enable faster, more efficient creativity.
+				</p>
+			</div>
+			
+			<br><H2 class="collapsible">Fair isle</H2>
+			<div class="content">
+				<p>
+					The 1-2-Punch display is a digital swatch of Fair Isle knit. Fair Isle is a traditional form of stranded colourwork, originated in Scotland. It is a simple knitting process with a number of strict constraints, however this is what gives Fair Isle its distinctive style. 
+				</p><p>
+					For each stitch, one yarn colour is knit, and the other is left as a strand or float at the back of the knitting. This stranding means long runs of the same colour leave a long float behind, which can get caught easily, for example, when putting on a garment. And so, traditionally in fair isle knitting, patterns do not contain long runs of the same colour along a row.
+				</p><p>
+					In 1-2-Punch designers can toggle on and off the long floats alert which will highlight any areas with more than 7 continuous stitches of the same colour.
+				</p><p>
+					The long float alert helps to ensure the functionality of the knit as long floats can easily get caught during wear, and can cause tension issues while knitting. Adhering to this constraint also retains, necessarily, some of the characteristic style of traditional fair isle knitting.
+				</p>
+			</div>
+		
+			<br><H2 class="collapsible">Punch cards</H2>
+			<div class="content">
+				<p>
+					Traditional flat bed knitting machines are operated manually and when needle selection is required, as with Fair Isle knits, punch cards are used to automate selection. A punch card can be any length in rows, but on most machines is 24 stitches wide. This means that any pattern created must be a 24 stitch repeating pattern (or a 2, 3, 4, 6, 8 or 12 stitch repeat within the 24). This is another constraint lending to the characteristic look of machine knit Fair Isle, any pattern must repeat horizontally across the length of the knit. 
+				</p><p>
+					Creating a punch card takes significant time, as does knitting swatches to test the result. Testing is necessary though, as the effect of the fair isle pattern is typically not obvious until the punch card has been knit, as the grid representation of the punch card does not give a clear picture of the final fabric.
+				</p><p>
+					The 1-2-Punch interface is a section of virtual knit, with a 24 stitch repeat pattern. Designers can test their fair isle patterns without the need for creating a punch card and knitting a swatch.
+				</p><p>
+					When creating the physical punchcard, the designer can toggle on and off the Punch Card display option which will convert the repeat knit pattern to a single 24 stitch punch card grid. 
+				</p>
+			</div>
+		
+			<br><H2 class="collapsible">Interface</H2>
+			<div class="content">
+				<p>
+					To design on 1-2-Punch there are a number of ways a designer can interact with the pattern. 
+				</p>
+				<ul>
+					<li>Click on a stitch to swap colour</li>
+					<li>Clicking and dragging will draw a line following the mouse in the colour of the first stitch</li>
+					<li>Shift+click on a stitch to draw a straight line from the previously clicked stitch</li>
+					<li>f+click (fill command) will swap the colour of a stitch and all neighbouring stitches of the same colour </li>
+					<li>z will undo the previous click</li>
+					<li>Arrow keys will move the pattern correspondingly, note: not moving the knitting itself</li>
+				</ul>
+				<p>
+					In the bottom right is the toolbar, with options for creating and saving designs, and customising the parameters of the knit. From the top down they are:
+				</p>
+				<ul>
+					<li>Info</li>
+					<ul><li>Info page link</li></ul>
+					
+					<li>New/Open</li>
+					<ul>
+						<li>Create a blank knit page</li>
+						<li>Load using a 1-2-Punch code</li>
+						<li>Load from the preset list of examples</li>
+					</ul>
+					
+					<li>Save</li>
+					<ul>
+						<li>Save or copy in image format</li>
+						<li>Copy array will copy in a standard [[1,0,1,...],[0,1,0,...],[1,1,0,...],...] format</li>
+						<li>Copy code will copy in a condensed 32-bit format which can be re loaded using the New/Open menu</li>
+						<li>Copy URL will copy a URL containing the punch card code, as well as colour values</li>
+					</ul>
+					
+					<li>Set Length</li>
+					<ul>
+						<li>Decreasing length will remove rows at the end of the punch card</li>
+						<li>Increasing will add rows repeating from the start of the current card</li>
+					</ul>
+					
+					<li>Punch Card View</li>
+					<ul>
+						<li>Render the pattern as a punch card, editing tools still available</li>
+						<li>Toggle between knit and punch card view</li>
+					</ul>
+					
+					<li>Grid On/Off</li>
+					<ul>
+						<li>Toggle grid function on and off to see the punch card repeats</li>
+					</ul>
+					
+					<li>Zoom</li>
+					<ul>
+						<li>Sliding zoom function</li>
+					</ul>
+					
+					<li>Translate</li>
+					<ul>
+						<li>Alternative to arrow keys for moving the pattern</li>
+					</ul>
+					
+					<li>Colour Select</li>
+					<ul>
+						<li>Colour 1 and 2 selection</li>
+						<li>Background colour selection</li>
+					</ul>
+					
+					<li>Highlight Long Floats</li>
+					<ul>
+						<li>Toggle long float alerts</li>
+					</ul>
+				</ul>
+			</div>
+		
+			<br><H2 class="collapsible">Examples</H2>
+			<div class="content">
+				<p>
+					Below are three example patterns created with 1-2-Punch
+				</p>
+				<p><a href="https://olandobrando.com/Chains">Chains</a></p>
+				<p><a href="https://olandobrando.com/Letters">Letters</a></p>
+				<p><a href="https://olandobrando.com/Faces">Faces</a></p>
+			</div>
+		</div> 
+		<div id="projectimg">
+			<img src = "chain.svg" alt="chain svg file"/>
+		</div>
+	</div>
+	
+	<div id="footer">
+	
 		<p>
-			Project text
+			CONTACT
+		<br>
+			Tommy Dolan
+		<br>
+			olandobrando@gmail.com
+		<br>
+			@olandobrando
 		</p>
-	</div> 
+	
+	</div>
 
 	<script src="project.js"></script>
 

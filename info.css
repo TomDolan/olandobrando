@@ -16,11 +16,3 @@
 	margin-right:50px;
 	max-width:650px;
 }
-
-
-#tester{
-	position: fixed;
-	bottom: 100px;
-	right:100px;
-	z-index: 100;
-}

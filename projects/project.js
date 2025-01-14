@@ -16,7 +16,8 @@ var landoctx = landocanvas.getContext("2d");
 landoctx.scale(ratio, ratio);
 
 var pi = Math.PI;
-var t = window.scrollY/50*-1;;
+var t = window.scrollY/50*-1;
+var landostuck=1;
 
 octx.lineWidth = 1;
 
@@ -56,6 +57,7 @@ function drawo(){
 }
 
 function drawlando(){
+	landoctx.clearRect(0, 0, 200, 50); 
 	r = 18;
 	u = r/2.5;
 	landoctx.save();
@@ -154,9 +156,14 @@ function drawbullet(x,y,r,xr,sign){
 document.onscroll = function(){
 	
 	t=window.scrollY/50*1;
-	//document.getElementById("tester").innerHTML = t;
 	drawo();
-	
+	if (window.scrollY==0){
+		document.getElementById("scrollinglando").style.position = "fixed";
+		landostuck=1;
+	} else if (window.scrollY>0&&landostuck){
+		landostuck=0;
+		document.getElementById("scrollinglando").style.position = "static";
+	}
 };
 
 
@@ -167,3 +174,19 @@ document.onvisibilitychange = async(evt) => {
 		drawlando();
   }
 };
+
+
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}

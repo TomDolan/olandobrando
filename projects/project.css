@@ -1,28 +1,86 @@
-#infotext{
-	position:absolute;
-	top:50px;
-	left:0px;
-	width: 100%;
-	/* background-color:rgba(100,0,0,.2); */
-	text-align:right;
-	
+body{
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+#projecttext{
+	padding-left: 52px;
+	padding-right:50px;
+	text-align:left;
+	max-width:850px;
+	//background-color:rgba(200,0,0,.1);
+}
+
+#projectimg{
+	flex-grow: 1;
 	display:flex;
-	flex-direction:column;
-	align-items:flex-end;
+	justify-content:center;
+	padding-top:55px;
+	//background-color:rgba(0,200,0,.1);
 }
 
-#infotext p{
-	margin-left:50px;
-	margin-right:50px;
+#projectimg img{
+	max-width:250px;
+	//background-color:rgba(0,200,0,.1);
+}
+
+@media only screen and (max-width: 1220px) {
+	#projectimg{
+		display:none;
+	}
+}
+
+#projecttext p{
+	padding-top:10px;
+	padding-bottom:10px;
+	//background-color:rgba(200,0,0,.1);
+}
+
+#projecttext h1 { 
+	font-weight: 100; 
+	font-size: 38px;
+}
+
+#projecttext h2 { 
+	font-weight: 300;
+	font-size: 24px; 
+}
+
+#projecttext ul{
+	padding-left:25px;
 	max-width:650px;
+	list-style-type: circle;
+}
+
+#projecttext a{
+	color: #555;
+	font-size:16px;
+	text-decoration: none;	
 }
 
 
-#tester{
-	position: fixed;
-	bottom: 100px;
-	right:100px;
-	z-index: 100;
+#projecttext a:visited {
+  color: #777;
+}
+
+#projecttext a:hover {
+  color: #222;
+}
+
+#projecttext a:active {
+  color: #000;
+}
+
+.collapsible {
+  cursor: pointer;
+}
+
+.active, .collapsible:hover {
+}
+
+.content {
+  padding: 0 18px;
 }
 
 #comingsoondiv {
