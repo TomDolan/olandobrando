@@ -12,29 +12,9 @@ body{
 	//background-color:rgba(200,0,0,.1);
 }
 
-#projectimg{
-	flex-grow: 1;
-	display:flex;
-	justify-content:center;
-	padding-top:55px;
-	//background-color:rgba(0,200,0,.1);
-}
-
-#projectimg img{
-	max-width:250px;
-	//background-color:rgba(0,200,0,.1);
-}
-
-@media only screen and (max-width: 1220px) {
-	#projectimg{
-		display:none;
-	}
-}
-
 #projecttext p{
 	padding-top:10px;
 	padding-bottom:10px;
-	//background-color:rgba(200,0,0,.1);
 }
 
 #projecttext h1 { 
