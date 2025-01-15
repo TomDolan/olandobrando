@@ -894,7 +894,7 @@ function closemostmenus() {
 }
 
 function tourl(str, n) {
-	var url = "https://olandobrando.com/fairisle?PC="+tocode(punchcard, n)+"&colour1="+colour1.substr(1,6)+"&colour2="+colour2.substr(1,6)+"&bgcolour="+bgcolour.substr(1,6)
+	var url = "https://olandobrando.com/12punch?PC="+tocode(punchcard, n)+"&colour1="+colour1.substr(1,6)+"&colour2="+colour2.substr(1,6)+"&bgcolour="+bgcolour.substr(1,6)
 	return url;
 }
 
