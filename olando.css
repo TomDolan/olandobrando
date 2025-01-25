@@ -153,8 +153,9 @@ body {
 
 .hamburger {
     display: none;
-	position:relative;
+	position:absolute;
 	top:16px;
+	right:27px;
 }
 
 .bar {
@@ -183,7 +184,7 @@ body {
 		z-index: 100;
     }
 
-.hamburger {
+.hamburger.active{
 		position:fixed;
 		top:16px;
 		right:27px;
