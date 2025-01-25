@@ -63,6 +63,11 @@ body{
   padding: 0 18px;
 }
 
+.projectimage {
+	width:100%;
+	max-width:650px;
+}
+
 #comingsoondiv {
 position:absolute;
 top:50%;
