@@ -74,9 +74,9 @@
 				<p>
 					It’s easy to make a simple knit chain, but this leaves large floats everywhere on the pattern
 				</p>
-				<image class="projectimage" src="projectimages/chains/initialchain.png" alt="initial chains">
-				<p class="imgsubtitle">	
-					Click to show floats
+				<image class="projectimage" id="initialchain" src="projectimages/chains/initialchain.png" alt="initial chains">
+				<p class="imgsubtitle" id="initialchainsubtitle">	
+					Click image to show floats
 				</p>
 			</div>
 			<br><H2 class="collapsible">	
@@ -98,10 +98,11 @@
 			<div class="content">
 				<p>	
 					Another way of reducing the spacing between the chains is by creating a chain along the diagonal. A nice feature of this chain is that it is in a sense one continuous chain. To edit each link in the chain just follow along the chain and after 9 links you will be back at the first edited link
-				</p><p>	
-					Change to square links
 				</p>
-				<image class="projectimage" src="projectimages/chains/diagonal0.png" alt="diagonal chains">
+				<image class="projectimage" id="diagonalchain" src="projectimages/chains/diagonal0.png" alt="diagonal chains">
+				<p class="imgsubtitle" id="diagonalchainsubtitle">	
+					Click to change to square links
+				</p>
 			</div>
 			<br><H2 class="collapsible">	
 				One chain to rule them all
@@ -111,10 +112,11 @@
 					I wanted to take advantage of the finer detail I could make if I used a larger scale. One chain across the whole 24 stitches means finer resolution, smoother curvature in the chain and smaller gaps between links.
 				</p><p>	
 					Unfortunately there are still large areas of the pattern which result in long floats
-				</p><p>	
-					Click to view long floats
 				</p>
-				<image class="projectimage" src="projectimages/chains/plainchain.png" alt="plain chain">
+				<image class="projectimage" id="plainchain" src="projectimages/chains/plainchain.png" alt="plain chain">
+				<p class="imgsubtitle" id="plainchainsubtitle">	
+					Click to show floats
+				</p>
 				<p>	
 					My solution has been to introduce a 1x1 checkerboard as a background which removes all long floats from the pattern. Visually this checkerboard acts as a median colour between colour 1 and 2. Essentially providing a 3rd colour to play with
 				</p>
@@ -158,6 +160,7 @@
 	</div>
 
 	<script src="project.js"></script>
+	<script src="chains.js"></script>
 
 	<script src="../navigation.js"></script>
 </body>
