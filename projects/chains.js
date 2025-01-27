@@ -55,7 +55,6 @@ function diagonalchange() {
 function roundsquareswap(){
 	nsquare=nsquare+1;
 	if(nsquare>9){
-		alert("more");
 		nsquare=9;
 		return;
 	}
@@ -65,7 +64,6 @@ function roundsquareswap(){
 function squareroundswap(){
 	nsquare=nsquare-1;
 	if(nsquare<0){
-		alert("less");
 		nsquare=0;
 		return;
 	}
