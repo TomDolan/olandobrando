@@ -59,13 +59,6 @@ body{
   color: #000;
 }
 
-.collapsible {
-  cursor: pointer;
-}
-
-.active, .collapsible:hover {
-}
-
 .content {
   padding: 0 18px;
 }
@@ -73,6 +66,17 @@ body{
 .projectimage {
 	width:100%;
 	max-width:650px;
+}
+
+.gallery {
+	width:100%;
+	max-width:650px;
+	display:flex;
+  	flex-wrap: nowrap;
+}
+
+.galleryimage {
+	width:25%;
 }
 
 #comingsoondiv {

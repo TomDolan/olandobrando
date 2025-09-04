@@ -51,8 +51,80 @@
 	
 	<div id="maincontent">
 		<div id="projecttext">	
-			<div id="comingsoondiv">
-				<img width="200" src="../comingsoon.png">
+
+			<H1>Letters</H1>
+			
+			<div class="content">
+				<p>
+					Font creation is always a fun blending of rule following and rule breaking, specificity and ambiguity. I like fonts 
+					that follow convention enough to be readable but I love fonts that sacrifice a little readability for whatever purpose. 
+					In my olando logo the sacrifice is for the repeated shape of the half capsule through the word. The sacrifice for 
+					my knitted letters is the available letter size. 
+				</p><p>
+					The issue with knitted letters on a punchcard operated machine is that any pattern is limited to 24 stitches wide, 
+					repeating across the garment. Large detailed letters can be made vertically on the garment. But I wanted to write 
+					words horizontally and so I made the smallest knit text I could
+				</p>	
+			</div>
+			<br><H2>	
+				First attempts
+			</H2>
+			<div class="content">
+			<p>
+					I chose to start with lowercase letters for simplicity but these still come in different widths and heights. I chose 
+					to make the majority of letters 3 stitches wide. With i and l a single stitch wide. In terms of height there are 
+					standard height letters acemnorsuvwxz, tall letters bdfhkl, and medium tall it. There are letters with a tail 
+					underneath the letter gjpqy. And finally j, medium tall with a tail below. 
+				</p><p>
+					For standard height letters like e and s, there must be at least 5 stitches to contain enough information to be 
+					readable. So 5 rows is my standard height. With 3 rows above and below for the tall and tail letters
+				</p>				
+				<image class="projectimage" id="initialletters" src="projectimages/letters/initialletters.png" alt="Initial letters" onclick="showfloats('initialletters');">
+				<p class="imgsubtitle" id="initialletterssubtitle" onclick="showfloats('initialletters');">	
+					Basic font (click to show floats)
+				</p>	
+			</div>
+			<br><H2>	
+				Dealing with floats
+			</H2>
+			<div class="content">
+				<p>
+					The issue here is the long floats between tall and tail letters. Letters therefore must either be uniform in height 
+					like Unicode font or the blank space must be filled in somehow. The uniform height means all letters must be 11 rows 
+					tall, the problem is solved but I’m not particularly thrilled by the solution. 
+				</p>				
+				<image class="projectimage" id="unicodeletters" src="projectimages/letters/unicodeletters.png" alt="Unicode letters" onclick="showfloats('unicodeletters');">
+				<p class="imgsubtitle" id="unicodeletterssubtitle" onclick="showfloats('unicodeletters');">	
+					Unicode knit (click to show floats)
+				</p>
+				<p>
+					There are now no long floats between letters but there are still issues if short words leave space between the repeats. 
+					This could be solved by using all 5 letter words as below. This seems like it goes against the spirit of what I was 
+					trying to make, I would prefer to make a font which is independent of word choice.  
+				</p>				
+				<image class="projectimage" id="unicodelettersimproved" src="projectimages/letters/unicodelettersimproved.png" alt="Unicode letters" onclick="showfloats('unicodelettersimproved');">
+				<p class="imgsubtitle" id="unicodeletterssubtitle" onclick="showfloats('unicodelettersimproved');">	
+					Alternate word choices to eliminate long floats (click to show floats, whole row floats are fine)
+				</p><p>	
+					I already used the checkerboard pattern as a background in previous projects. It acts as a pseudo third colour in the 
+					pattern and removes the issue of long floats. This allows for very compact letters but sacrifices a lot of readability 
+					up close. I think it is interesting, especially knit in a fine yarn, this would be quite small text 
+				</p>				
+				<image class="projectimage" id="checkerboardletters" src="projectimages/letters/checkerboardletters.png" alt="Checkerboard letters">
+				<p class="imgsubtitle" id="checkerboardletterssubtitle">	
+					Checkerboard letters (click to zoom out)
+				</p>
+			
+			<!-- 
+	<image class="projectimage" id="lettersgalleryimage" src="projectimages/letters/checkerboardletters.png" alt="Letters gallery">
+					
+				<div class="gallery"">
+					<image class="galleryimage" src="projectimages/chains/chainknit.png" alt="knitted chains" onclick="swapimage(this,'knitgalleryimage');">
+					<image class="galleryimage" src="projectimages/chains/bigchainswatch.png" alt="knitted chains" onclick="swapimage(this,'knitgalleryimage');">
+					<image class="galleryimage" src="projectimages/chains/jumperpeices.png" alt="knitted chains" onclick="swapimage(this,'knitgalleryimage');">
+					<image class="galleryimage" src="projectimages/chains/tommychain.png" alt="knitted chains" onclick="swapimage(this,'knitgalleryimage');">
+				</div>
+ -->
 			</div>
 		</div>
 	</div>
@@ -72,6 +144,7 @@
 	</div>
 
 	<script src="project.js"></script>
+	<script src="letters.js"></script>
 
 	<script src="../navigation.js"></script>
 </body>

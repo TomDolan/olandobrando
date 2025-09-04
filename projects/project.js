@@ -175,18 +175,17 @@ document.onvisibilitychange = async(evt) => {
   }
 };
 
+function swapimage(imgs,imgid) {
+  var expandImg = document.getElementById(imgid);
+  expandImg.src = imgs.src;
+}
 
-var coll = document.getElementsByClassName("collapsible");
-var i;
-
-for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.display === "block") {
-      content.style.display = "none";
-    } else {
-      content.style.display = "block";
-    }
-  });
+function showfloats(imgid) {
+	if(document.getElementById(imgid).getAttribute('src')=="projectimages/letters/"+imgid+"floats.png"){
+		document.getElementById(imgid).src = "projectimages/letters/"+imgid+".png";
+	} else if (document.getElementById(imgid).getAttribute('src')=="projectimages/letters/"+imgid+".png"){
+		document.getElementById(imgid).src = "projectimages/letters/"+imgid+"floats.png";
+	} else {
+		alert("error")
+	}
 }

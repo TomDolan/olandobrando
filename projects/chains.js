@@ -1,4 +1,3 @@
-var nsquare=0;
 document.getElementById("initialchain").onclick = function() {initialchainfloats()};
 document.getElementById("initialchainsubtitle").onclick = function() {initialchainfloats()};
 
@@ -30,42 +29,12 @@ document.getElementById("diagonalchainsubtitle").onclick = function() {diagonalc
 
 function diagonalchange() {
 	if(document.getElementById("diagonalchain").getAttribute('src')=="projectimages/chains/diagonal0.png"){
-		setTimeout(roundsquareswap, 100);
-		setTimeout(roundsquareswap, 200);
-		setTimeout(roundsquareswap, 300);
-		setTimeout(roundsquareswap, 400);
-		setTimeout(roundsquareswap, 500);
-		setTimeout(roundsquareswap, 600);
-		setTimeout(roundsquareswap, 700);
-		setTimeout(roundsquareswap, 800);
-		setTimeout(roundsquareswap, 900);
-	} else if (document.getElementById("diagonalchain").getAttribute('src')=="projectimages/chains/diagonal9.png"){
-		setTimeout(squareroundswap, 100);
-		setTimeout(squareroundswap, 200);
-		setTimeout(squareroundswap, 300);
-		setTimeout(squareroundswap, 400);
-		setTimeout(squareroundswap, 500);
-		setTimeout(squareroundswap, 600);
-		setTimeout(squareroundswap, 700);
-		setTimeout(squareroundswap, 800);
-		setTimeout(squareroundswap, 900);
+		document.getElementById("diagonalchain").src = "projectimages/chains/roundtosquare.gif";
+	} else if (document.getElementById("diagonalchain").getAttribute('src')=="projectimages/chains/roundtosquare.gif"){
+		document.getElementById("diagonalchain").src = "projectimages/chains/squaretoround.gif";
+	} else if (document.getElementById("diagonalchain").getAttribute('src')=="projectimages/chains/squaretoround.gif"){
+		document.getElementById("diagonalchain").src = "projectimages/chains/roundtosquare.gif";
+	} else {
+		alert("error")
 	}
-}
-
-function roundsquareswap(){
-	nsquare=nsquare+1;
-	if(nsquare>9){
-		nsquare=9;
-		return;
-	}
-	document.getElementById("diagonalchain").src = "projectimages/chains/diagonal"+nsquare+".png";
-}
-
-function squareroundswap(){
-	nsquare=nsquare-1;
-	if(nsquare<0){
-		nsquare=0;
-		return;
-	}
-	document.getElementById("diagonalchain").src = "projectimages/chains/diagonal"+nsquare+".png";
 }
