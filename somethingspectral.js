@@ -35,8 +35,8 @@ for (var i = 0; i<=nx; i++){
 	}
 }
 
-var pageX=W/2;
-var pageY=H/2;
+var pageX=W;
+var pageY=H;
 var dx = 0;
 var dy = 0;
 var r = 0;
@@ -146,7 +146,7 @@ let round = 0;
 function loopGame(){
     move();
     round++;
-    if (round < 1000) {
+    if (round < 10000) {
         setTimeout(loopGame, 50)
     }
 }
